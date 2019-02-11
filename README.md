@@ -6,4 +6,4 @@
 | Jeffrey Maher       |                         | Yoshi? |
 | Tran Hai Vong Thang |                         ||  
 | Melanie Damilig     |                         ||
-| Renny Xu            |                         ||
+| Renny Xu            |                         |Swords|
