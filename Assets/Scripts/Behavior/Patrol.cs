@@ -17,25 +17,7 @@ public class Patrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timer > 0)
-        {
-            if (transform.position.x != routine[roomNb].position.x && transform.position.z != routine[roomNb].transform.position.z)
-            {
-                agent.SetDestination(routine[roomNb].transform.position);
-            }
-            else
-            {
-                timer -= Time.deltaTime;
-            }
-        }
-        else
-        {
-            timer = 3;
-            roomNb++;
-        }
-        if(roomNb > routine.Length - 1)
-        {
-            roomNb = 0;
-        }
+      //  Instruction.CurrentInstruction(agent, routine, roomNb, timer);
+      
     }
 }
