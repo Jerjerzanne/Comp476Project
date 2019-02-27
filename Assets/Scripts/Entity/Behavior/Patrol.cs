@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Patrol : MonoBehaviour
+public class Patrol : Order
 {
     public NavMeshAgent agent;
-    public Transform[] routine;
     private int roomNb = 0;
     private float timer = 1;
     void Start()

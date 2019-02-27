@@ -3,18 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Vents : MonoBehaviour
+public class Vent : Interactable
 {
     #region Variables
     //Private variables
 
     //Editor variables
-    public Vents exit;
+    public Instruction ventInstruction;
+    public Vent exit;
     //Piece of the UI
 
     #endregion
 
     #region Methods
+
+    //Overriding methods
+
+    public override Instruction EntityInteract(Entity entity)
+    {
+        return ventInstruction;
+    }
+
+    public override void PlayerInteract(Player player)
+    {
+        base.PlayerInteract(player);
+        InteractVent(player.gameObject);
+    }
+
+    //class methods
 
     /// <summary>
     /// Teleports entity to the exit vent
@@ -24,9 +40,9 @@ public class Vents : MonoBehaviour
         if (exit != null)
         {
             entity.GetComponent<NavMeshAgent>().Warp(exit.transform.position);
-            //entity.transform.position = exit.transform.position;
         }
     }
+
     #endregion
 
     #region Functions
@@ -52,7 +68,7 @@ public class Vents : MonoBehaviour
             if (Input.GetButtonDown("Interact"))
             {
                 Debug.Log("Player interacted with the vent");
-                InteractVent(other.gameObject);
+                PlayerInteract(other.GetComponent<Player>());
             }
         }
     }

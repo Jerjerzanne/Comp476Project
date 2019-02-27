@@ -5,64 +5,64 @@ using UnityEngine.AI;
 
 public class Instruction : MonoBehaviour
 {
-    public enum Instructions
-    {
-        GOTO = 0, INTERACT = 1
-    }
+    //public enum InstructionType
+    //{
+    //    GOTO = 0, INTERACT = 1
+    //}
 
-    public Instructions givenInstruction { set; get; }
-
-    public NavMeshAgent agent;
-    public Transform[] routine;
-    private int roomNb = 0;
+    //public InstructionType givenInstruction { set; get; }
+    //private Instruction returnedInstruction;
+    //public NavMeshAgent agent;
+    //public Transform[] routine;
+    public Transform location;
+    //private int roomNb = 0;
     private float timer = 1;
-    private float callForOrder;
-    void Start()
+    //private float callForOrder;
+
+    #region Methods
+
+    public void Execute(Entity entity, NavMeshAgent entityAgent)
     {
+        //switch (givenInstruction)
+        //{
+        //    case InstructionType.GOTO:
+        //Debug.Log("GoTo");
+
+
+        if (entity.transform.position.x != location.position.x && entity.transform.position.z != location.transform.position.z)
+        {
+            entityAgent.SetDestination(location.transform.position);
+        }
+        else
+        {
+            if (timer > 0)
+            {
+                timer -= Time.deltaTime;
+            }
+            else
+            {
+                entity.instructionEvent.Invoke(null);
+            }
+        }
+
+        //break;
+        //case InstructionType.INTERACT:
+        //    if (entity.transform.position.x != routine[roomNb].position.x && entity.transform.position.z != routine[roomNb].transform.position.z)
+        //    {
+        //        entityAgent.SetDestination(routine[roomNb].transform.position);
+        //    }
+        //    else
+        //    {
+        //        Instruction interactableInteraction = this.GetComponent<Interactable>().EntityInteract(entity);
+        //        entity.instructionEvent.Invoke(interactableInteraction);
+        //    }
+        //    break;
     }
 
-    void Update()
-    {
-        CurrentInstruction();
-    }
-    void CurrentInstruction()
-    {
-        switch (givenInstruction)
-        {
-            case Instructions.GOTO:
-                Debug.Log("GoTo");
-                if (timer > 0)
-                {
-                    if (transform.position.x != routine[roomNb].position.x && transform.position.z != routine[roomNb].transform.position.z)
-                    {
-                        agent.SetDestination(routine[roomNb].transform.position);
-                    }
-                    else
-                    {
-                        timer -= Time.deltaTime;
-                    }
-                }
-                else
-                {
-                    timer = 1;
-                    roomNb++;
-                }
-                if (roomNb > routine.Length - 1)
-                {
-                    roomNb = 0;
-                }
-                break;
-            case Instructions.INTERACT:
-                if (transform.position.x != routine[roomNb].position.x && transform.position.z != routine[roomNb].transform.position.z)
-                {
-                    agent.SetDestination(routine[roomNb].transform.position);
-                }
-                else
-                {
-                    Instruction interactableInteraction = this.GetComponent<Interactable>().EntityInteract;
-                }
-                break;
-        }
-        
-    }
+#endregion
+
+#region Functions
+
+#endregion
+
 }
