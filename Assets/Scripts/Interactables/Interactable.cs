@@ -9,18 +9,19 @@ public class Interactable : MonoBehaviour
 {
     #region Variables
 
+    public Instruction nextInstruction;
     //editor variables
 
     #endregion
 
     #region Methods
-    
+
     /// <summary>
     /// Manages interactions between the interactable and the entity
     /// </summary>
     public virtual Instruction EntityInteract(Entity entity)
     {
-        return null;
+        return nextInstruction;
     }
 
     /// <summary>

@@ -18,12 +18,6 @@ public class Vent : Interactable
     #region Methods
 
     //Overriding methods
-
-    public override Instruction EntityInteract(Entity entity)
-    {
-        return ventInstruction;
-    }
-
     public override void PlayerInteract(Player player)
     {
         base.PlayerInteract(player);
