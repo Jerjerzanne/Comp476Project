@@ -33,7 +33,7 @@ public class Entity : Destructible
     public Order CurrentOrder
     {
         get;
-        set;
+        set; // TODO: Remove instructions from stack when new order given
     }
 
     /// <summary>
@@ -95,20 +95,22 @@ public class Entity : Destructible
     private void Awake()
     {
         Instructions = new Stack<Instruction>();
-        // instructionEvent.AddListener(EndOfInstruction);
         CurrentOrder = this.initialOrder;
-        for (int i = 0; i < CurrentOrder.routine.Length; i++)
+        CurrentOrder.ExtractInstructions(this);
+
+        // Insert all instructions to the entity's instruction stack
+        for (int i = 0; i < CurrentOrder.instructions.Count; i++)
         {
-            Debug.Log(CurrentOrder.routine[i]);
+            Debug.Log(CurrentOrder.instructions[i]);
             Debug.Log(Instructions);
-            Instructions.Push(CurrentOrder.routine[i]);
+            Instructions.Push(CurrentOrder.instructions[i]);
         }
         GetNextInstruction();
     }
 
     private void Update()
     {
-        CurrentInstruction.Execute(this, this.GetComponent<NavMeshAgent>());
+        CurrentInstruction.Execute();
     }
     #endregion
 

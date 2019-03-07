@@ -5,12 +5,25 @@ using UnityEngine.AI;
 
 public class Patrol : Order
 {
-    public NavMeshAgent agent;
+    NavMeshAgent agent;
     private int roomNb = 0;
     private float timer = 1;
     void Start()
     {
         
+    }
+
+    private void Awake()
+    {
+    }
+
+    override public void ExtractInstructions(Entity entity)
+    {
+        instructions = new List<Instruction>();
+        foreach (GameObject obj in routine)
+        {
+            instructions.Add(new Goto(obj.transform.position, timer, entity));
+        }
     }
 
     // Update is called once per frame

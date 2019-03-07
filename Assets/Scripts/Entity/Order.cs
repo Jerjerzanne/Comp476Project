@@ -10,7 +10,16 @@ public class Order : MonoBehaviour
     #region Variables
     
     //Editor fields
-    public Instruction[] routine;
+    public GameObject[] routine;
+    public List<Instruction> instructions;
+
+    #endregion
+
+    #region Methods
+
+
+    virtual public void ExtractInstructions(Entity entity) { }
+
 
     #endregion
 }
