@@ -5,5 +5,5 @@
 | Simon Roy           | simon.roy5219@gmail.com | Samus  |
 | Jeffrey Maher       |                         | Yoshi? |
 | Tran Hai Vong Thang |                         ||  
-| Melanie Damilig     |                         ||
+| Melanie Damilig     | m.damilig@hotmail.com   |Dark Samus|
 | Renny Xu            |                         |Swords|
