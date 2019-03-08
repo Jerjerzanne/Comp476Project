@@ -30,8 +30,9 @@ public class Player : Destructible
 
     #region Functions
 
-    private void Awake()
+    protected void Awake()
     {
+        base.Awake();
         CurrentGrowth = initialGrowth;
     }
 

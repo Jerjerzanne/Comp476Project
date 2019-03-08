@@ -71,7 +71,7 @@ public class Destructible : MonoBehaviour
 
     #region Functions
 
-    void Awake()
+    protected void Awake()
     {
         CurrentHealth = maxHealth;
     }

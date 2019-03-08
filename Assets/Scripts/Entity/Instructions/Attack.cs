@@ -22,7 +22,7 @@ public class Attack : Instruction
         RaycastHit hit;
         if (Physics.Raycast(instructionRunner.transform.position, target.transform.position - instructionRunner.transform.position, out hit, Mathf.Infinity))
         {
-            Debug.DrawRay(instructionRunner.transform.position, (target.transform.position - instructionRunner.transform.position) * 4f);
+            //Debug.DrawRay(instructionRunner.transform.position, (target.transform.position - instructionRunner.transform.position) * 4f);
 
             //Debug.Log("Ray connected with " + hit.collider.gameObject.name);
             Destructible raycastTarget = hit.collider.gameObject.GetComponent<Destructible>();
