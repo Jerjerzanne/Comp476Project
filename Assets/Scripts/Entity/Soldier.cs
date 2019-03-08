@@ -47,20 +47,22 @@ public class Soldier : Entity
     #endregion
 
 
-    void OnGUI()
-    {
-        // Make a multiline text area that modifies stringToEdit.
+    //void OnGUI()
+    //{
+    //    // Make a multiline text area that modifies stringToEdit.
 
-        string text = "";
-        if (CurrentInstruction != null)
-        {
-            text = CurrentInstruction.ToString() + "\n";
-        }
-        foreach (Instruction stackInt in Instructions)
-        {
-            text += stackInt + "\n";
-        }
-
-        GUI.TextArea(new Rect(10, 10, 200, 100), text, 200);
-    }
+    //    string text = "";
+    //    int count = 0;
+    //    if (CurrentInstruction != null)
+    //    {
+    //        text = CurrentInstruction.ToString() + "\n";
+    //        count++;
+    //    }
+    //    foreach (Instruction stackInt in Instructions)
+    //    {
+    //        text += stackInt + "\n";
+    //        count++;
+    //    }
+    //    GUI.TextArea(new Rect(10, 10, 100, count* 10 + 15), text, 200);
+    //}
 }
