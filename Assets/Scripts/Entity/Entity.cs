@@ -21,6 +21,8 @@ public class Entity : Destructible
     [SerializeField, Header("Entity")]
     private Order initialOrder;
 
+    private Order _currentOrder;
+
     public MyInstructionEvent instructionEvent;
 
     #endregion
@@ -32,8 +34,23 @@ public class Entity : Destructible
     /// </summary>
     public Order CurrentOrder
     {
-        get;
-        set; // TODO: Remove instructions from stack when new order given
+        get { return _currentOrder; }
+        set
+        {
+            _currentOrder = value;
+            CurrentOrder.ExtractInstructions(this);
+
+            Instructions.Clear();
+            CurrentOrder.instructions.Reverse();
+            // Insert all instructions to the entity's instruction stack
+            for (int i = 0; i < CurrentOrder.instructions.Count; i++)
+            {
+                Debug.Log(CurrentOrder.instructions[i]);
+                Debug.Log(Instructions);
+                Instructions.Push(CurrentOrder.instructions[i]);
+            }
+            GetNextInstruction();
+        } 
     }
 
     /// <summary>
@@ -96,16 +113,6 @@ public class Entity : Destructible
     {
         Instructions = new Stack<Instruction>();
         CurrentOrder = this.initialOrder;
-        CurrentOrder.ExtractInstructions(this);
-
-        // Insert all instructions to the entity's instruction stack
-        for (int i = 0; i < CurrentOrder.instructions.Count; i++)
-        {
-            Debug.Log(CurrentOrder.instructions[i]);
-            Debug.Log(Instructions);
-            Instructions.Push(CurrentOrder.instructions[i]);
-        }
-        GetNextInstruction();
     }
 
     private void Update()
