@@ -19,7 +19,12 @@ public class Instruction
     //public Transform[] routine;
 
     #region Methods
-    
+
+    protected Instruction(Entity entity)
+    {
+        instructionRunner = entity;
+    }
+
     /// <summary>
     /// Base function for all instructions. Called when we run an instruction.
     /// </summary>

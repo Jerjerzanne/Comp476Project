@@ -5,7 +5,12 @@ using UnityEngine.AI;
 
 public class SearchRoom : Instruction
 {
-    
+
+    public SearchRoom( Entity entity) : base(entity)
+    {
+
+    }
+
     override public void Execute()
     {
         // Set of points to travel to

@@ -78,6 +78,7 @@ public class Entity : Destructible
         else
         {
             Debug.Log(this.name + " ran out of instructions.");
+            CurrentInstruction = null;
         }
     }
 
@@ -90,6 +91,7 @@ public class Entity : Destructible
         if (extentedInstruction != null)
         {
             Instructions.Push(extentedInstruction);
+            CurrentInstruction = Instructions.Pop();
         }
         else
         {
@@ -115,9 +117,12 @@ public class Entity : Destructible
         CurrentOrder = this.initialOrder;
     }
 
-    private void Update()
+    protected void Update()
     {
-        CurrentInstruction.Execute();
+        if (CurrentInstruction != null)
+        {
+            CurrentInstruction.Execute();
+        }
     }
     #endregion
 

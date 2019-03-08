@@ -13,11 +13,10 @@ public class Goto : Instruction
 
     #region Methods
 
-    public Goto(Vector3 location, float timer, Entity entity)
+    public Goto(Vector3 location, float timer, Entity entity): base(entity)
     {
         this.location = location;
         this.timer = timer;
-        instructionRunner = entity;
         entityAgent = instructionRunner.GetComponent<NavMeshAgent>();
     }
 

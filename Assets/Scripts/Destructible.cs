@@ -6,7 +6,7 @@ using UnityEngine;
 /// Destructible game entity
 /// </summary>
 public class Destructible : MonoBehaviour
-{
+{ 
     #region Constants
 
     /// <summary>
@@ -47,12 +47,33 @@ public class Destructible : MonoBehaviour
             Die();
         }
     }
+
     /// <summary>
     /// the destructible changes layer to death layer
     /// </summary>
     protected virtual void Die()
     {
         this.gameObject.layer = deathLayer;
+    }
+
+    public bool IsDead()
+    {
+        if (CurrentHealth <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    #endregion
+
+    #region Functions
+
+    void Awake()
+    {
+        CurrentHealth = maxHealth;
     }
     #endregion
 
