@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641252, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1851,21 +1851,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1707029420184445278, guid: 8e0c05e0f3d11df4ba1e863a6a65479d,
-        type: 3}
-      propertyPath: m_Name
-      value: Vent
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707029420184445278, guid: 8e0c05e0f3d11df4ba1e863a6a65479d,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707029420184445272, guid: 8e0c05e0f3d11df4ba1e863a6a65479d,
-        type: 3}
-      propertyPath: exit
-      value: 
-      objectReference: {fileID: 834757719}
     - target: {fileID: 1707029420184445274, guid: 8e0c05e0f3d11df4ba1e863a6a65479d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1921,6 +1906,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1707029420184445278, guid: 8e0c05e0f3d11df4ba1e863a6a65479d,
+        type: 3}
+      propertyPath: m_Name
+      value: Vent
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707029420184445278, guid: 8e0c05e0f3d11df4ba1e863a6a65479d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707029420184445272, guid: 8e0c05e0f3d11df4ba1e863a6a65479d,
+        type: 3}
+      propertyPath: exit
+      value: 
+      objectReference: {fileID: 834757719}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e0c05e0f3d11df4ba1e863a6a65479d, type: 3}
 --- !u!4 &1188751564 stripped
@@ -2419,6 +2419,7 @@ GameObject:
   - component: {fileID: 1601922077}
   - component: {fileID: 1601922076}
   - component: {fileID: 1601922075}
+  - component: {fileID: 1601922078}
   - component: {fileID: 1601922074}
   - component: {fileID: 1601922079}
   - component: {fileID: 1601922080}
@@ -2502,6 +2503,27 @@ Transform:
   m_Father: {fileID: 976460665}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1601922078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601922073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3e2c9bcdb6283e44ae0152870990cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visionRadius: 5
+  visionAngle: 83
+  maskOfTarget:
+    serializedVersion: 2
+    m_Bits: 512
+  maskOfObstacle:
+    serializedVersion: 2
+    m_Bits: 0
+  listOfTargets: []
 --- !u!195 &1601922079
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5355,21 +5377,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 495853694}
     m_Modifications:
-    - target: {fileID: 1707029420184445278, guid: 8e0c05e0f3d11df4ba1e863a6a65479d,
-        type: 3}
-      propertyPath: m_Name
-      value: Vent
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707029420184445278, guid: 8e0c05e0f3d11df4ba1e863a6a65479d,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707029420184445272, guid: 8e0c05e0f3d11df4ba1e863a6a65479d,
-        type: 3}
-      propertyPath: exit
-      value: 
-      objectReference: {fileID: 1812595965}
     - target: {fileID: 1707029420184445274, guid: 8e0c05e0f3d11df4ba1e863a6a65479d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5425,6 +5432,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1707029420184445278, guid: 8e0c05e0f3d11df4ba1e863a6a65479d,
+        type: 3}
+      propertyPath: m_Name
+      value: Vent
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707029420184445278, guid: 8e0c05e0f3d11df4ba1e863a6a65479d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707029420184445272, guid: 8e0c05e0f3d11df4ba1e863a6a65479d,
+        type: 3}
+      propertyPath: exit
+      value: 
+      objectReference: {fileID: 1812595965}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e0c05e0f3d11df4ba1e863a6a65479d, type: 3}
 --- !u!1001 &6020397070774406822
