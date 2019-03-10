@@ -19,9 +19,9 @@ public class VisionEditor : Editor
         Handles.DrawLine(cov.transform.position, cov.transform.position + angleB * cov.visionRadius);
 
         Handles.color = Color.red;
-        foreach (Transform target in cov.listOfTargets)
+        foreach (GameObject target in cov.listOfTargets)
         {
-            Handles.DrawLine(cov.transform.position, target.position);
+            Handles.DrawLine(cov.transform.position, target.transform.position);
         }
     }
 }

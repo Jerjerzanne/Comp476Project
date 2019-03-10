@@ -10,6 +10,11 @@ public class MyInstructionEvent : UnityEvent<Instruction>
 {
 }
 
+[System.Serializable]
+public class MyReactionEvent : UnityEvent<GameObject[]>
+{
+}
+
 /// <summary>
 /// Manages all AI entity
 /// </summary>
@@ -25,8 +30,10 @@ public class Entity : Destructible
 
     public MyInstructionEvent instructionEvent;
 
-    #endregion
+    public MyReactionEvent reactionEvent;
 
+    #endregion
+    
     #region Properties
 
     /// <summary>
@@ -98,6 +105,11 @@ public class Entity : Destructible
             GetNextInstruction();
         }
     }
+
+    virtual protected void DetectionReaction(GameObject[] target)
+    {
+        
+    }
     #endregion
 
     #region Functions
@@ -108,7 +120,11 @@ public class Entity : Destructible
         if (instructionEvent == null)
             instructionEvent = new MyInstructionEvent();
 
+        if (reactionEvent == null)
+            reactionEvent = new MyReactionEvent();
+
         instructionEvent.AddListener(EndOfInstruction);
+        reactionEvent.AddListener(DetectionReaction);
     }
 
     private void Awake()

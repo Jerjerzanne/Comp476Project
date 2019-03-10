@@ -14,36 +14,44 @@ public class Soldier : Entity
         CurrentInstruction = Instructions.Pop();
     }
 
+    
+    override protected void DetectionReaction(GameObject[] target)
+    {
+       // detectionRange = GetComponent<ConeOfVision>().getDistanceToTarget();
+       // Collider[] target = Physics.OverlapSphere(this.transform.position, detectionRange, 1 << 9);
+        if (target.Length > 0 && target[0].GetComponent<Destructible>() != null)
+        {
+            if (CurrentInstruction == null)
+            {
+                Debug.Log(target[0].name + " has a tag " + target[0].gameObject.layer);
+                //Instructions.Push(new Goto(this.transform.position, 0,  this));
+                TargetAcquired(target[0].gameObject.GetComponent<Destructible>());
+            }
+            else if (CurrentInstruction.GetType() == typeof(Chase))
+            {
+                Instructions.Pop();
+                Debug.Log(target[0].name + " has a tag " + target[0].gameObject.layer);
+                TargetAcquired(target[0].gameObject.GetComponent<Destructible>());
+            }
+            else if (CurrentInstruction.GetType() != typeof(Attack))
+            {
+                Debug.Log(target[0].name + " has a tag " + target[0].gameObject.layer);
+                TargetAcquired(target[0].gameObject.GetComponent<Destructible>());
+            }
+
+        }
+    }
     #endregion
 
     #region Functions
 
     protected void Update()
     {
-        Collider[] targetHit = Physics.OverlapSphere(this.transform.position, detectionRange, 1 << 9);
-        if (targetHit.Length > 0 && targetHit[0].GetComponent<Destructible>() != null)
-        {
-            if (CurrentInstruction == null)
-            {
-                Debug.Log(targetHit[0].name + " has a tag " + targetHit[0].gameObject.layer);
-                //Instructions.Push(new Goto(this.transform.position, 0,  this));
-                TargetAcquired(targetHit[0].gameObject.GetComponent<Destructible>());
-            }
-            else if (CurrentInstruction.GetType() == typeof(Chase))
-            {
-                Instructions.Pop();
-                Debug.Log(targetHit[0].name + " has a tag " + targetHit[0].gameObject.layer);
-                TargetAcquired(targetHit[0].gameObject.GetComponent<Destructible>());
-            }
-            else if(CurrentInstruction.GetType() != typeof(Attack))
-            {
-                Debug.Log(targetHit[0].name + " has a tag " + targetHit[0].gameObject.layer);
-                TargetAcquired(targetHit[0].gameObject.GetComponent<Destructible>());
-            }
-           
-        }
+        //DetectionReaction();
         base.Update();
     }
+
+
     #endregion
 
 

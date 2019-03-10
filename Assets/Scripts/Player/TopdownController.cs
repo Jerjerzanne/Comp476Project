@@ -30,7 +30,6 @@ public class TopdownController : MonoBehaviour
         pos.z = 15f;
        
         pos = Camera.main.ScreenToWorldPoint(pos);
-        Debug.Log(pos);
         Debug.DrawRay(this.transform.position, (new Vector3(pos.x, this.transform.position.y, pos.z) - this.transform.position));
         transform.LookAt(new Vector3(pos.x, this.transform.position.y, pos.z));
     }
