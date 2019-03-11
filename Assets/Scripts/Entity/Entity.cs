@@ -106,6 +106,10 @@ public class Entity : Destructible
         }
     }
 
+    /// <summary>
+    /// How the entity reacts to a detection event
+    /// </summary>
+    /// <param name="target"></param>
     virtual protected void DetectionReaction(GameObject[] target)
     {
         
@@ -117,6 +121,12 @@ public class Entity : Destructible
     void Start()
     {
        
+       
+    }
+
+    private void Awake()
+    {
+
         if (instructionEvent == null)
             instructionEvent = new MyInstructionEvent();
 
@@ -125,10 +135,7 @@ public class Entity : Destructible
 
         instructionEvent.AddListener(EndOfInstruction);
         reactionEvent.AddListener(DetectionReaction);
-    }
 
-    private void Awake()
-    {
         Instructions = new Stack<Instruction>();
         CurrentOrder = this.initialOrder;
     }

@@ -6,12 +6,12 @@ public class Attack : Instruction
 {
 
     private Destructible target;
-   
+
     private Vector3 lastPosition;
 
     #region Methods
 
-    public Attack(Destructible target, Entity entity): base(entity)
+    public Attack(Destructible target, Entity entity) : base(entity)
     {
         this.target = target;
         lastPosition = target.transform.position;
@@ -34,7 +34,7 @@ public class Attack : Instruction
                     {
                         Debug.Log(instructionRunner.name + " is attacking target " + target.name);
                         lastPosition = target.transform.position;
-                        instructionRunner.transform.LookAt(target.transform); //*Maybe add steering behavior in the future*
+                        instructionRunner.transform.LookAt(new Vector3(target.transform.position.x, instructionRunner.transform.position.y, target.transform.position.z)); //*Maybe add steering behavior in the future*
 
                         //TODO: Shooting method
                     }
@@ -43,7 +43,7 @@ public class Attack : Instruction
                         Debug.Log(target.name + " is dead. returning to previous behavior.");
                         instructionRunner.instructionEvent.Invoke(null);
                     }
-                  
+
                 }
             }
             else
@@ -56,7 +56,7 @@ public class Attack : Instruction
         {
             Debug.Log("Raycast did not connect.");
         }
-        
+
     }
     #endregion
 }
