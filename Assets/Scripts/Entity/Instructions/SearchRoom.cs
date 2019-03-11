@@ -17,7 +17,12 @@ public class SearchRoom : Instruction
     private float startTimer;
     //private float lost ;
     private float navigateTimer;
-
+    // Conditional values:
+    
+    // This value checks whether the current Execution is the first one or not.
+    // If so, we want to give the NPC a point to reach so we are sure it is within the room
+    // before starting our timer.
+    bool firstTime = true; 
     #endregion
 
     public SearchRoom(Room room, float timer, float navigateTimer, Entity entity) : base(entity)
@@ -27,18 +32,6 @@ public class SearchRoom : Instruction
         this.navigateTimer = navigateTimer;
 
         points = new List<Vector3>(room.waypoints);
-        if (points == null)
-        {
-            Debug.Log("Cannot search room without waypoints.");
-            //instructionRunner.instructionEvent.Invoke(null);
-        }
-        else
-        {
-            int index = UnityEngine.Random.Range(0, points.Count - 1);
-            currentPoint = points[index];
-            points.Remove(currentPoint);
-            SetWaypoint();
-        }
     }
 
     #region Methods
@@ -55,37 +48,59 @@ public class SearchRoom : Instruction
         Debug.Log(index + " and the count: " + points.Count);
         currentPoint = points[index];
         points.Remove(currentPoint);
+
         SetWaypoint();
     }
 
     private void SetWaypoint()
     {
         instructionRunner.Instructions.Push(instructionRunner.CurrentInstruction);
+        Debug.Log("Goto: " + currentPoint + ", stay for " + navigateTimer);
         instructionRunner.instructionEvent.Invoke(new Goto(currentPoint, navigateTimer, instructionRunner));
     }
-
     override public void Execute()
     {
-        Debug.Log("there...");
-        if (startTimer == 0.0f)
+        if (firstTime)
         {
-            Debug.Log("Arrived at the room.");
-            startTimer = Time.time;
-            GetWaypoint();
-        }
-        else
-        {
-            timer -= Mathf.Abs(startTimer - Time.time);
-
-            if (timer <= 0.0f)
+            if (points == null)
             {
-                Debug.Log("Search has ended. Returning to previous behavior");
+                Debug.Log("ERROR: Cannot search room without waypoints. Cancelling SearchRoom behavior...");
+
                 instructionRunner.instructionEvent.Invoke(null);
             }
             else
+            { 
+                int index = UnityEngine.Random.Range(0, points.Count - 1);
+                currentPoint = points[index];
+                points.Remove(currentPoint);
+
+                SetWaypoint();
+
+                firstTime = false;
+            }
+        }
+        else
+        { 
+            if (startTimer == 0.0f)
             {
+                Debug.Log("Arrived at the room.");
                 startTimer = Time.time;
                 GetWaypoint();
+            }
+            else
+            {
+                timer -= Mathf.Abs(startTimer - Time.time);
+
+                if (timer <= 0.0f)
+                {
+                    Debug.Log("Search has ended. Returning to previous behavior");
+                    instructionRunner.instructionEvent.Invoke(null);
+                }
+                else
+                {
+                    startTimer = Time.time;
+                    GetWaypoint();
+                }
             }
         }
     }
