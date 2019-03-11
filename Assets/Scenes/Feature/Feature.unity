@@ -1809,6 +1809,31 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a78efc527dc274b4c923e35bafda9a89, type: 2}
+    - target: {fileID: 8040949199046764403, guid: b7c56a3a5afa8bf429350b66088d4ffb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763108402828427250, guid: b7c56a3a5afa8bf429350b66088d4ffb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2585273706634844311, guid: b7c56a3a5afa8bf429350b66088d4ffb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5943702678829717452, guid: b7c56a3a5afa8bf429350b66088d4ffb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401705378444857259, guid: b7c56a3a5afa8bf429350b66088d4ffb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7c56a3a5afa8bf429350b66088d4ffb, type: 3}
 --- !u!1 &1033252390
@@ -1860,7 +1885,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 528f4855ca8093943aa466e3ec6666e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2607,13 +2632,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visionRadius: 5
-  visionAngle: 83
+  visionAngle: 64
   maskOfTarget:
     serializedVersion: 2
     m_Bits: 512
   maskOfObstacle:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 12288
   meshes: 1
   meshFilter: {fileID: 1033252393}
   listOfTargets: []
@@ -3658,6 +3683,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TileSpriteArray.Array.data[11].m_RefCount
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040949199046764403, guid: b7c56a3a5afa8bf429350b66088d4ffb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2585273706634844311, guid: b7c56a3a5afa8bf429350b66088d4ffb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5943702678829717452, guid: b7c56a3a5afa8bf429350b66088d4ffb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401705378444857259, guid: b7c56a3a5afa8bf429350b66088d4ffb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7c56a3a5afa8bf429350b66088d4ffb, type: 3}
@@ -5804,6 +5849,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Doors
       objectReference: {fileID: 0}
+    - target: {fileID: 6412444443010333221, guid: 762fc074b0f6565468c8fdfaae6cef02,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6412444443010333226, guid: 762fc074b0f6565468c8fdfaae6cef02,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5858,6 +5908,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412444442956855217, guid: 762fc074b0f6565468c8fdfaae6cef02,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412444443302554264, guid: 762fc074b0f6565468c8fdfaae6cef02,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 762fc074b0f6565468c8fdfaae6cef02, type: 3}
