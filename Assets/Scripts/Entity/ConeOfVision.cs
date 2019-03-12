@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ConeOfVision : MonoBehaviour
 {
+    #region Variables
+
     public float visionRadius;
     [Range(0,360)]
     public float visionAngle;
@@ -21,12 +23,17 @@ public class ConeOfVision : MonoBehaviour
     [HideInInspector]
     public List<GameObject> listOfTargets = new List<GameObject>();
 
-    void Awake()
+    #endregion
+
+    #region Create Cone of Vision
+    void Start()
     {
         meshOfVision = new Mesh();
         meshOfVision.name = "Vision Mesh";
         meshFilter.mesh = meshOfVision;
-
+    }
+    void Awake()
+    {
         myEntity = this.GetComponent<Entity>();
     }
     void Update()
@@ -64,7 +71,8 @@ public class ConeOfVision : MonoBehaviour
         myEntity.reactionEvent.Invoke(listOfTargets.ToArray());
         //Debug.Log(listOfTargets.ToArray());
     }
-    
+
+
     /// <summary>
     /// Return a vector direction from the angles
     /// </summary>
@@ -89,11 +97,18 @@ public class ConeOfVision : MonoBehaviour
         return distanceTarget;
     }
 
+    #endregion
+
+    #region DrawingCone
+
+    /// <summary>
+    /// Draw the meshes for the cone of vision
+    /// </summary>
     void DrawConeOfVision()
     {
         int meshCount = Mathf.RoundToInt(visionAngle * meshes); //How many mesh of rays
         float meshCountSize = visionAngle / meshCount; // size of the mesh
-        List<Vector3> visiblePoints = new List<Vector3>();
+        List<Vector3> visiblePoints = new List<Vector3>(); // list of visibles points to create the meshes
         for(int i = 0; i <= meshCount; i++)
         {
             float angle = transform.eulerAngles.y - visionAngle / 2 + meshCountSize * i;
@@ -104,15 +119,16 @@ public class ConeOfVision : MonoBehaviour
         int numOfVertices = visiblePoints.Count + 1;
         Vector3[] vertices = new Vector3[numOfVertices];
         int[] triangle = new int[(numOfVertices - 2) * 3];
-        vertices[0] = Vector3.zero;
+        vertices[0] = Vector3.zero; //first vertice relative to gameobject
+
         for(int i = 0; i < numOfVertices - 1; i++)
         {
-            vertices[i + 1] = visiblePoints[i];
+            vertices[i + 1] = transform.InverseTransformPoint(visiblePoints[i]);
             if (i < numOfVertices - 2)
             {
-                triangle[i + 3] = 0;
-                triangle[i + 3 + 1] = i + 1;
-                triangle[i + 3 + 2] = i + 2;
+                triangle[i * 3] = 0; //first vertex of the triangle
+                triangle[i * 3 + 1] = i + 1;
+                triangle[i * 3 + 2] = i + 2;
             }
         }
 
@@ -140,6 +156,7 @@ public class ConeOfVision : MonoBehaviour
             return new VisionCast(false, transform.position + direction * visionRadius, visionRadius, globalAngle);
         }
     }
+    #endregion
 
     #region struct
     /// <summary>
