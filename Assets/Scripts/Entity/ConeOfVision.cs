@@ -62,7 +62,7 @@ public class ConeOfVision : MonoBehaviour
             }
         }
         myEntity.reactionEvent.Invoke(listOfTargets.ToArray());
-        Debug.Log(listOfTargets.ToArray());
+        //Debug.Log(listOfTargets.ToArray());
     }
     
     /// <summary>
