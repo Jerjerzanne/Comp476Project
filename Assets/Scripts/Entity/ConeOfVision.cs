@@ -60,8 +60,8 @@ public class ConeOfVision : MonoBehaviour
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, maskOfObstacle))
                 {
                     listOfTargets.Add(target);
+                    distanceTarget = Vector3.Distance(transform.position, listOfTargets[i].transform.position);
                 }
-                distanceTarget = Vector3.Distance(transform.position, listOfTargets[i].transform.position);
             }
             else
             {

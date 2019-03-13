@@ -27,9 +27,9 @@ public class Entity : Destructible
     private Order initialOrder;
 
     private Order _currentOrder;
+    private Weapon _weapon;
 
     public MyInstructionEvent instructionEvent;
-
     public MyReactionEvent reactionEvent;
 
     #endregion
@@ -110,10 +110,19 @@ public class Entity : Destructible
     /// How the entity reacts to a detection event
     /// </summary>
     /// <param name="target"></param>
-    virtual protected void DetectionReaction(GameObject[] target)
+    protected virtual void DetectionReaction(GameObject[] target){}
+
+    /// <summary>
+    /// Command the entity to use his weapon
+    /// </summary>
+    public virtual void UseWeapon()
     {
-        
+        if (_weapon != null)
+        {
+            _weapon.Fire();
+        }
     }
+
     #endregion
 
     #region Functions
@@ -137,7 +146,11 @@ public class Entity : Destructible
         reactionEvent.AddListener(DetectionReaction);
 
         Instructions = new Stack<Instruction>();
-        CurrentOrder = this.initialOrder;
+        _weapon = GetComponent<Weapon>();
+        if (initialOrder != null)
+        {
+            CurrentOrder = this.initialOrder;
+        }
     }
 
     protected void Update()

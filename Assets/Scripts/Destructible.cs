@@ -41,6 +41,7 @@ public class Destructible : MonoBehaviour
     /// <param name="damage"></param>
     public virtual void TakeDamage(int damage)
     {
+        Debug.Log(this.name + " took " + damage);
         CurrentHealth -= damage;
         if(CurrentHealth <= 0)
         {
@@ -53,6 +54,7 @@ public class Destructible : MonoBehaviour
     /// </summary>
     protected virtual void Die()
     {
+        Debug.Log(this.name + " died.");
         this.gameObject.layer = deathLayer;
     }
 

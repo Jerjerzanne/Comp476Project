@@ -22,9 +22,9 @@ public class Attack : Instruction
         RaycastHit hit;
         if (Physics.Raycast(instructionRunner.transform.position, target.transform.position - instructionRunner.transform.position, out hit, Mathf.Infinity))
         {
-            //Debug.DrawRay(instructionRunner.transform.position, (target.transform.position - instructionRunner.transform.position) * 4f);
+            ////Debug.DrawRay(instructionRunner.transform.position, (target.transform.position - instructionRunner.transform.position) * 4f);
 
-            Debug.Log("Ray connected with " + hit.collider.gameObject.name);
+            //Debug.Log("Ray connected with " + hit.collider.gameObject.name);
             Destructible raycastTarget = hit.collider.gameObject.GetComponent<Destructible>();
             if (raycastTarget != null)
             {
@@ -32,15 +32,16 @@ public class Attack : Instruction
                 {
                     if (!target.IsDead())
                     {
-                        Debug.Log(instructionRunner.name + " is attacking target " + target.name);
+                        //Debug.Log(instructionRunner.name + " is attacking target " + target.name);
                         lastPosition = target.transform.position;
                         instructionRunner.transform.LookAt(new Vector3(target.transform.position.x, instructionRunner.transform.position.y, target.transform.position.z)); //*Maybe add steering behavior in the future*
 
+                        instructionRunner.UseWeapon();
                         //TODO: Shooting method
                     }
                     else
                     {
-                        Debug.Log(target.name + " is dead. returning to previous behavior.");
+                        //Debug.Log(target.name + " is dead. returning to previous behavior.");
                         instructionRunner.instructionEvent.Invoke(null);
                     }
 
@@ -48,13 +49,13 @@ public class Attack : Instruction
             }
             else
             {
-                Debug.Log(target.name + " has been lost. Beginning Chase.");
+                //Debug.Log(target.name + " has been lost. Beginning Chase.");
                 instructionRunner.instructionEvent.Invoke(new Chase(lastPosition, instructionRunner));
             }
         }
         else
         {
-            Debug.Log("Raycast did not connect.");
+            //Debug.Log("Raycast did not connect.");
         }
 
     }
