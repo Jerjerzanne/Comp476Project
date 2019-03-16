@@ -25,7 +25,8 @@ public class ConeOfVision : MonoBehaviour
 
     #endregion
 
-    #region Create Cone of Vision
+    #region Functions
+
     void Start()
     {
         meshOfVision = new Mesh();

@@ -27,7 +27,8 @@ public class Entity : Destructible
     private Order initialOrder;
 
     private Order _currentOrder;
-    private Weapon _weapon;
+    protected Weapon _weapon;
+    protected NavMeshAgent _navMeshAgent;
 
     public MyInstructionEvent instructionEvent;
     public MyReactionEvent reactionEvent;
@@ -49,6 +50,7 @@ public class Entity : Destructible
 
             Instructions.Clear();
             CurrentOrder.instructions.Reverse();
+
             // Insert all instructions to the entity's instruction stack
             for (int i = 0; i < CurrentOrder.instructions.Count; i++)
             {
@@ -146,7 +148,10 @@ public class Entity : Destructible
         reactionEvent.AddListener(DetectionReaction);
 
         Instructions = new Stack<Instruction>();
+       
         _weapon = GetComponent<Weapon>();
+        _navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
+
         if (initialOrder != null)
         {
             CurrentOrder = this.initialOrder;

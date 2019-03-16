@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2318919141773365166}
   - component: {fileID: 8913979995669431640}
   - component: {fileID: 4289687417237144346}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wall 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &3482542102669924430
@@ -101,7 +101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6795049763074267786}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wall Z-
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7621357701298855799}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wall Z+
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 6241691107598153791}
   - component: {fileID: 5590130717025341103}
   - component: {fileID: 6157416676727687305}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +336,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &4624575804083733168
@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 6385098654937423042}
   - component: {fileID: 2982339244253612419}
   - component: {fileID: 7979570456727259284}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wall 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +466,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &5816566974857462839
@@ -550,7 +550,7 @@ GameObject:
   - component: {fileID: 8310961128401472389}
   - component: {fileID: 6363233212201132438}
   - component: {fileID: 4906962731686825150}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wall 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -627,7 +627,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &7214639805261061574
@@ -1470,7 +1470,7 @@ GameObject:
   - component: {fileID: 1294600574949382240}
   - component: {fileID: 8817572861006611249}
   - component: {fileID: 1905604220807268103}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wall 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1547,7 +1547,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &8694699160945274477
@@ -1559,7 +1559,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5743440459288173013}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wall X-
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1590,7 +1590,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2009634406259903469}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wall X+
   m_TagString: Untagged
   m_Icon: {fileID: 0}

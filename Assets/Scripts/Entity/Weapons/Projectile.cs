@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    #region Constants
+
+    private const int wallLayer = 13;
+    private const int playerLayer = 9;
+    #endregion
 
     #region Variables
 
@@ -31,12 +36,12 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 1 >> LayerMask.NameToLayer("Wall"))
+        if (other.gameObject.layer == wallLayer)
         {
             Debug.Log("Projectile hit a wall");
             Destroy(this.gameObject);
         }
-        else if(other.gameObject.layer == 1 >> LayerMask.NameToLayer("Player"))
+        else if(other.gameObject.layer == playerLayer)
         {
             other.gameObject.GetComponent<Destructible>().TakeDamage(this._damage);
             Destroy(this.gameObject);

@@ -22,7 +22,7 @@ public class Gun : Weapon
     override public void Fire()
     {
         timer += Time.time - timeSinceFired; 
-        if (timer > rateOfFire)
+        if (timer >  1/rateOfFire)
         {
             Projectile bullet = Instantiate(bulletPrefab, this.transform.position, this.transform.localRotation).GetComponent<Projectile>();
             bullet.SetSpeed(bulletSpeed, damage);

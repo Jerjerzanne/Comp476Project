@@ -9,11 +9,6 @@ public class Destructible : MonoBehaviour
 { 
     #region Constants
 
-    /// <summary>
-    /// Layer of the dead destructible
-    /// </summary>
-    protected const int deathLayer = 12;
-
     #endregion
 
     #region Variables
@@ -55,7 +50,6 @@ public class Destructible : MonoBehaviour
     protected virtual void Die()
     {
         Debug.Log(this.name + " died.");
-        this.gameObject.layer = deathLayer;
     }
 
     public bool IsDead()

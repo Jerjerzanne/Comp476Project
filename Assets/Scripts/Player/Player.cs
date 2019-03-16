@@ -25,9 +25,6 @@ public class Player : Destructible
 
     #endregion
 
-    #region Methods
-    #endregion
-
     #region Functions
 
     protected void Awake()

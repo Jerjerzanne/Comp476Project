@@ -1579,7 +1579,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: MyReactionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  detectionRange: 4
 --- !u!195 &702977390
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1863,7 +1862,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 16183
+    m_Bits: 48951
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2667,7 +2666,7 @@ PrefabInstance:
     - target: {fileID: 4763108402828427250, guid: b7c56a3a5afa8bf429350b66088d4ffb,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2585273706634844311, guid: b7c56a3a5afa8bf429350b66088d4ffb,
         type: 3}
@@ -3718,7 +3717,7 @@ MonoBehaviour:
     m_Bits: 512
   maskOfObstacle:
     serializedVersion: 2
-    m_Bits: 12288
+    m_Bits: 8192
   meshes: 1
   meshFilter: {fileID: 1033252393}
   listOfTargets: []
@@ -3768,7 +3767,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: MyReactionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  detectionRange: 4
 --- !u!114 &1601922081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3781,11 +3779,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f90ead81e6cb2644588e22c016363a8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
   bulletPrefab: {fileID: 1077086788633318468, guid: 728acd0ff01974b4fa9581d292af553a,
     type: 3}
-  bulletSpeed: 5
-  rateOfFire: 1
+  bulletSpeed: 10
+  rateOfFire: 2
 --- !u!4 &1611792853 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2538572281209397729, guid: aae1efa063430b241a761ebf7d026822,
@@ -5116,7 +5114,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: MyReactionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  detectionRange: 4
 --- !u!195 &1867690707
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -7117,7 +7114,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0.5
+  m_BaseOffset: 0.75
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &2143097923
@@ -7201,7 +7198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143097921}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 2.89, z: 1}
+  m_LocalPosition: {x: 1, y: 2.57, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7535,7 +7532,7 @@ PrefabInstance:
     - target: {fileID: 6412444443010333221, guid: 762fc074b0f6565468c8fdfaae6cef02,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6412444443010333226, guid: 762fc074b0f6565468c8fdfaae6cef02,
         type: 3}
@@ -7595,12 +7592,12 @@ PrefabInstance:
     - target: {fileID: 6412444442956855217, guid: 762fc074b0f6565468c8fdfaae6cef02,
         type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6412444443302554264, guid: 762fc074b0f6565468c8fdfaae6cef02,
         type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 762fc074b0f6565468c8fdfaae6cef02, type: 3}

@@ -58,6 +58,7 @@ public class SearchRoom : Instruction
         Debug.Log("Goto: " + currentPoint + ", stay for " + navigateTimer);
         instructionRunner.instructionEvent.Invoke(new Goto(currentPoint, navigateTimer, instructionRunner));
     }
+
     override public void Execute()
     {
         if (firstTime)
