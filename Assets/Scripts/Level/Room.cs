@@ -18,7 +18,8 @@ public class Room : MonoBehaviour
         
         foreach (Transform childTransform in this.GetComponentsInChildren<Transform>())
         {
-           waypoints.Add(childTransform.position);
+            if (childTransform.gameObject.name.Contains("Point")) // TODO: Find a more stable way to detect Point objects only in the list of transforms.
+                waypoints.Add(childTransform.position);
         }
     }
 

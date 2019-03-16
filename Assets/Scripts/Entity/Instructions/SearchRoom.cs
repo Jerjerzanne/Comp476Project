@@ -55,6 +55,7 @@ public class SearchRoom : Instruction
     private void SetWaypoint()
     {
         instructionRunner.Instructions.Push(instructionRunner.CurrentInstruction);
+        Debug.Log(instructionRunner.transform.position);
         Debug.Log("Goto: " + currentPoint + ", stay for " + navigateTimer);
         instructionRunner.instructionEvent.Invoke(new Goto(currentPoint, navigateTimer, instructionRunner));
     }
@@ -71,13 +72,18 @@ public class SearchRoom : Instruction
             }
             else
             { 
-                int index = UnityEngine.Random.Range(0, points.Count - 1);
-                currentPoint = points[index];
-                points.Remove(currentPoint);
+                if (points.Count > 0)
+                { 
+                    int index = UnityEngine.Random.Range(0, points.Count - 1);
+                    currentPoint = points[index];
+                    points.Remove(currentPoint);
 
-                SetWaypoint();
+                    SetWaypoint();
 
-                firstTime = false;
+                    firstTime = false;
+                }
+                else
+                    points = new List<Vector3>(room.waypoints);
             }
         }
         else

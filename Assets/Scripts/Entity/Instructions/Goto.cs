@@ -22,7 +22,7 @@ public class Goto : Instruction
 
     override public void Execute()
     { 
-        if (instructionRunner.transform.position.x != location.x && instructionRunner.transform.position.z != location.z)
+        if (instructionRunner.transform.position.x != location.x || instructionRunner.transform.position.z != location.z)
         {
             entityAgent.SetDestination(location);
         }
