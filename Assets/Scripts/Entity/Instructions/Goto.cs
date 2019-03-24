@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Goto : Instruction
 {
-    float acceptanceRadius = 0.1f;
+    float acceptanceRadius = 0.5f;
     public Vector3 location;
     //private float callForOrder;
     //private int roomNb = 0;
@@ -23,6 +23,7 @@ public class Goto : Instruction
 
     override public void Execute()
     {
+        Debug.Log(location + " VS " + instructionRunner.transform.position);
         if (Mathf.Abs(instructionRunner.transform.position.x - location.x) > acceptanceRadius ||
                 Mathf.Abs(instructionRunner.transform.position.z - location.z) > acceptanceRadius)
         {

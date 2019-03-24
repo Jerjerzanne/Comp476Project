@@ -446,6 +446,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4579002369707372944}
+  - component: {fileID: 9130052181785563401}
   m_Layer: 0
   m_Name: CubeRoom 3 Entry Variant
   m_TagString: Untagged
@@ -476,6 +477,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9130052181785563401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4002084439232284393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3656d89cb40eac4479e2fa6c2f62b27e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints: []
 --- !u!1 &4064032505149952686
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,7 +591,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1429716044848389212}
-  - component: {fileID: 1659195792340065247}
   m_Layer: 0
   m_Name: Waypoints
   m_TagString: Untagged
@@ -603,19 +616,6 @@ Transform:
   m_Father: {fileID: 4579002369707372944}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1659195792340065247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4341753319455152719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3656d89cb40eac4479e2fa6c2f62b27e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints: []
 --- !u!1 &4402354027334431659
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,7 +35,15 @@ public class Interactable : MonoBehaviour
     /// </summary>
     public virtual void PlayerInteract(Player player)
     {
-        // Check cooldown of the inputs:
+
+    }
+
+    /// <summary>
+    /// Function that is called by the Repair instruction when an object is done being repaired.
+    /// </summary>
+    public virtual void Repair()
+    {
+
     }
 
     #endregion
