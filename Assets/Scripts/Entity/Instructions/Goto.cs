@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class Goto : Instruction
 {
+    float acceptanceRadius = 0.1f;
     public Vector3 location;
     //private float callForOrder;
     //private int roomNb = 0;
@@ -21,13 +22,17 @@ public class Goto : Instruction
     }
 
     override public void Execute()
-    { 
-        if (instructionRunner.transform.position.x != location.x || instructionRunner.transform.position.z != location.z)
+    {
+        Debug.Log(instructionRunner.transform.position.z + " != " + location.z);
+        if (Mathf.Abs(instructionRunner.transform.position.x - location.x) > acceptanceRadius ||
+                Mathf.Abs(instructionRunner.transform.position.z - location.z) > acceptanceRadius)
         {
+            Debug.Log("Currently at: " + instructionRunner.transform.position + ", trying to reach " + location);
             entityAgent.SetDestination(location);
         }
         else
         {
+            Debug.Log("At destination");
             if (timer > 0)
             {
                 timer -= Time.deltaTime;
