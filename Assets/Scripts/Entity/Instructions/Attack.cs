@@ -57,8 +57,11 @@ public class Attack : Instruction
             }
             else
             {
-                //Debug.Log(target.name + " has been lost. Beginning Chase.");
-                instructionRunner.instructionEvent.Invoke(new Chase(lastPosition, instructionRunner));
+                if(instructionRunner.tag != "Nest")
+                {
+                    //Debug.Log(target.name + " has been lost. Beginning Chase.");
+                    instructionRunner.instructionEvent.Invoke(new Chase(lastPosition, instructionRunner));
+                }
             }
         }
         else
