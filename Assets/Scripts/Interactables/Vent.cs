@@ -59,10 +59,11 @@ public class Vent : Interactable
     {
         if (other.gameObject.layer == 9)
         {
-            if (Input.GetButtonDown("Interact"))
+            if (Input.GetButtonDown("Interact") && Time.time - lastInteractionTime > cooldownTime)
             {
                 Debug.Log("Player interacted with the vent");
                 PlayerInteract(other.GetComponent<Player>());
+                lastInteractionTime = Time.time;
             }
         }
     }
