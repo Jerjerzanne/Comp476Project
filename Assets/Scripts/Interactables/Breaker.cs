@@ -67,10 +67,12 @@ public class Breaker : Interactable
     {
         if (other.gameObject.layer == 9)
         {
-            if (Input.GetButtonDown("Interact"))
+            if (Input.GetButtonDown("Interact") && Time.time - lastInteractionTime > cooldownTime)
             {
                 Debug.Log("Player interacted with the breaker");
                 PlayerInteract(other.GetComponent<Player>());
+                // Interact cooldown set:
+                lastInteractionTime = Time.time;
             }
         }
         if (other.gameObject.layer == 10)
@@ -88,5 +90,6 @@ public class Breaker : Interactable
             //Stop showing the UI
         }
     }
+
     #endregion
 }

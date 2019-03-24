@@ -55,8 +55,6 @@ public class SearchRoom : Instruction
     private void SetWaypoint()
     {
         instructionRunner.Instructions.Push(instructionRunner.CurrentInstruction);
-        Debug.Log(instructionRunner.transform.position);
-        Debug.Log("Goto: " + currentPoint + ", stay for " + navigateTimer);
         instructionRunner.instructionEvent.Invoke(new Goto(currentPoint, navigateTimer, instructionRunner));
     }
 

@@ -23,16 +23,13 @@ public class Goto : Instruction
 
     override public void Execute()
     {
-        Debug.Log(instructionRunner.transform.position.z + " != " + location.z);
         if (Mathf.Abs(instructionRunner.transform.position.x - location.x) > acceptanceRadius ||
                 Mathf.Abs(instructionRunner.transform.position.z - location.z) > acceptanceRadius)
         {
-            Debug.Log("Currently at: " + instructionRunner.transform.position + ", trying to reach " + location);
             entityAgent.SetDestination(location);
         }
         else
         {
-            Debug.Log("At destination");
             if (timer > 0)
             {
                 timer -= Time.deltaTime;
