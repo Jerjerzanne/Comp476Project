@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,36 +7,86 @@ public class AlienNest : MonoBehaviour
     #region Variables
     public GameObject alienSmall;
     public GameObject alienQueen;
-    public int nbAlienNeed;
-    public int spawnTimer = 3;
-    // Start is called before the first frame update
+    public float queenTimer = 6;
+    public float spawnTimer = 3;
+    bool playerSpotted = false;
+    bool haveAllies = false;
+    bool queenDetected = false;
     #endregion
 
-
+    #region Methods
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("f"))
+        spawnTimer -= Time.deltaTime;
+        queenTimer -= Time.deltaTime;
+        if (spawnTimer < 0)
         {
-            StartCoroutine(WaitSpawn());
+        Spawn();
         }
     }
 
-    private IEnumerator WaitSpawn()
+    private void Spawn()
     {
-        while (enabled)
+        if (playerSpotted && haveAllies)
         {
-            yield return new WaitForSeconds(spawnTimer);
-            SpawnSmall();
+            //switch to atk mode
+        }
+        if (!playerSpotted)
+        {
+            if (spawnTimer < 0)
+            {
+                GameObject alienSClone = (GameObject)Instantiate(alienSmall, transform.position, Quaternion.identity);
+                spawnTimer = 3;
+            }
+        }
+        if (!queenDetected)
+        {
+            if (queenTimer < 0)
+            {
+                GameObject alienQClone = (GameObject)Instantiate(alienQueen, new Vector3(transform.position.x + 1.0f, transform.position.y, transform.position.z + 1.0f), Quaternion.identity);
+                queenTimer = 6;
+            }
+        }
+
+    }
+    #endregion
+
+    #region Triggers
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 9)
+        {
+            playerSpotted = true;
+        }
+        if (other.gameObject.layer == 16)
+        {
+            haveAllies = true;
         }
     }
 
-    private void SpawnSmall()
+    void OnTriggerStay(Collider other)
     {
-
-        //Instantiate the small aliens at the same position we are at
-        GameObject alienSClone = (GameObject)Instantiate(alienSmall, transform.position, Quaternion.identity);
-        //Carry over some varriable to Alien script?
-        //alienSClone.GetComponent<AlienNest>().someVariable = GetComponent<AlienNest>().someVariable;
+        if (other.gameObject.layer == 9)
+        {
+            playerSpotted = true;
+        }
+        if (other.gameObject.layer == 16)
+        {
+            haveAllies = true;
+        }
     }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == 9)
+        {
+            playerSpotted = false;
+        }
+        if (other.gameObject.layer == 16)
+        {
+            haveAllies = false;
+        }
+    }
+    #endregion
 }
