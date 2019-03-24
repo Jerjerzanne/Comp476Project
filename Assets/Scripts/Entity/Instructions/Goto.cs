@@ -23,7 +23,6 @@ public class Goto : Instruction
 
     override public void Execute()
     {
-        Debug.Log(location + " VS " + instructionRunner.transform.position);
         if (Mathf.Abs(instructionRunner.transform.position.x - location.x) > acceptanceRadius ||
                 Mathf.Abs(instructionRunner.transform.position.z - location.z) > acceptanceRadius)
         {

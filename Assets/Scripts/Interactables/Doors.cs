@@ -19,6 +19,7 @@ public class Doors : MonoBehaviour
     //Private variables
     private int _count;
     private Animator _animator;
+    private bool lockedStatus = false;
 
     #endregion
 
@@ -28,6 +29,21 @@ public class Doors : MonoBehaviour
     /// Returns the current state of the door
     /// </summary>
     public doorState CurrentState { set; get; }
+
+    #endregion
+
+    #region Methods
+    
+    /// <summary>
+    /// Toggle the lock status of the controlled door:
+    /// </summary>
+    public void SetLockedState()
+    {
+        if (lockedStatus)
+            lockedStatus = false;
+        else
+            lockedStatus = true;
+    }
 
     #endregion
 
@@ -45,7 +61,7 @@ public class Doors : MonoBehaviour
         {
             Debug.Log(other.gameObject.name + " entered the door range");
             _count++;
-            if(CurrentState == doorState.CLOSED)
+            if(CurrentState == doorState.CLOSED && !lockedStatus)
             {
                 Debug.Log("Opening the doors");
                 this.CurrentState = doorState.OPEN;
@@ -60,9 +76,9 @@ public class Doors : MonoBehaviour
         {
             Debug.Log( other.gameObject.name+ " left the door range");
             _count--;
-                if (_count == 0)
-                {
-                    Debug.Log("Closing the doors");
+            if (_count == 0)
+            {
+                Debug.Log("Closing the doors");
                 this.CurrentState = doorState.CLOSED;
                 this._animator.SetBool("Open", false);
             }
