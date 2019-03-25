@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Nest : Order
 {
-    private int roomNb = 0;
-    private float timer = 1;
+    private float timer = 10.0f;
 
     void Start()
     {
@@ -23,7 +21,7 @@ public class Nest : Order
         foreach (GameObject obj in routine)
         {
             // Spawn
-            //instructions.Add(new Spawn(obj.transform.position, timer, entity));
+            instructions.Add(new Spawn(obj.transform.position + obj.transform.forward, timer, entity));
         }
     }
 
