@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Nest : Order
 {
-    private float timer = 10.0f;
+    private float timer = 15.0f;
 
     void Start()
     {
@@ -21,6 +21,7 @@ public class Nest : Order
         foreach (GameObject obj in routine)
         {
             // Spawn
+            // TODO: possibly randomize the spawn location
             instructions.Add(new Spawn(obj.transform.position + obj.transform.forward, timer, entity));
         }
     }

@@ -6,14 +6,17 @@ public class Spawn : Instruction
 {
     public GameObject alienSmallPrefab;
     public Vector3 location;
-    private float timer = 3.0f;
+    private float timerMax;
+    private float timer;
+    private int spawnMaxCount = 5;
 
     #region Methods
 
-    public Spawn(Vector3 location, float timer, Entity entity) : base(entity)
+    public Spawn(Vector3 location, float timerMax, Entity entity) : base(entity)
     {
         this.location = location;
-        this.timer = timer;
+        this.timerMax = timerMax;
+        this.timer = 0;
         // TODO: search for a more ideal way of loading the prefab
         alienSmallPrefab = Resources.Load("Prefabs/Entities/AlienSmall", typeof(GameObject)) as GameObject;
     }
@@ -31,7 +34,12 @@ public class Spawn : Instruction
         {
             // TODO: limit number of spawns per nest
             SpawnAlienSmall();
-            timer = 3;
+            timer = timerMax;
+
+            if ((instructionRunner as AlienNest).CountSpawns() >= spawnMaxCount)
+            {
+                instructionRunner.instructionEvent.Invoke(new CreateQueen(location, 60.0f, instructionRunner));
+            }
         }
     }
 

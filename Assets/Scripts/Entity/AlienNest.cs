@@ -5,14 +5,9 @@ using UnityEngine;
 public class AlienNest : Entity
 {
     #region Variables
-    public GameObject alienSmall;
-    public GameObject alienQueen;
-    public float queenTimer = 60;
-    public float spawnTimer = 10;
-    public float spawnCountTimer = 5;
-    bool playerSpotted = false;
-    bool haveAllies = false;
-    bool queenDetected = false;
+    public float spawnCountTimer = 5.0f;
+    public int spawnCount = 0;
+
     public LayerMask entityMask;
     public LayerMask wallMask;
 
@@ -21,26 +16,17 @@ public class AlienNest : Entity
 
     #region Methods
 
-    protected void Start()
-    {
-        //StartCoroutine("CountSpawns");
-    }
-
     // Update is called once per frame
     void Update()
     {
-        spawnTimer -= Time.deltaTime;
-        /*queenTimer -= Time.deltaTime;
         spawnCountTimer -= Time.deltaTime;
 
-        if (spawnTimer < 0)
-        {
-            Spawn();
-        }*/
         if (spawnCountTimer < 0)
         {
-            CountSpawns();
-            spawnCountTimer = 5;
+            int count = CountSpawns();
+            Debug.Log("New Rate of Fire: " + count);
+            (_weapon as Gun).rateOfFire = count;
+            spawnCountTimer = 5.0f;
         }
 
         base.Update();
@@ -86,7 +72,7 @@ public class AlienNest : Entity
 
     private void Spawn()
     {
-        if (playerSpotted && haveAllies)
+        /*if (playerSpotted && haveAllies)
         {
             //switch to atk mode
         }
@@ -106,29 +92,29 @@ public class AlienNest : Entity
                 queenTimer = 6;
             }
         }
-
+        */
     }
 
-    private void CountSpawns()
+    public int CountSpawns()
     {
         float searchRadius = 5.0f;
         Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, searchRadius, entityMask);
-        Debug.Log("New Rate of Fire: " + hitColliders.Length);
-        (_weapon as Gun).rateOfFire = hitColliders.Length;
+        return hitColliders.Length;
     }
+
     #endregion
 
     #region Triggers
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 9)
+        /*if (other.gameObject.layer == 9)
         {
             playerSpotted = true;
         }
         if (other.gameObject.layer == 16)
         {
             haveAllies = true;
-        }
+        }*/
     }
 
     void OnTriggerStay(Collider other)
@@ -145,14 +131,14 @@ public class AlienNest : Entity
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == 9)
+        /*if (other.gameObject.layer == 9)
         {
             playerSpotted = false;
         }
         if (other.gameObject.layer == 16)
         {
             haveAllies = false;
-        }
+        }*/
     }
     #endregion
 }
