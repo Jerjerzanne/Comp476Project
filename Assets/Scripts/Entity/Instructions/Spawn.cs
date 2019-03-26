@@ -5,16 +5,14 @@ using UnityEngine;
 public class Spawn : Instruction
 {
     public GameObject alienSmallPrefab;
-    public Vector3 location;
     private float timerMax;
     private float timer;
     private int spawnMaxCount = 5;
 
     #region Methods
 
-    public Spawn(Vector3 location, float timerMax, Entity entity) : base(entity)
+    public Spawn(float timerMax, Entity entity) : base(entity)
     {
-        this.location = location;
         this.timerMax = timerMax;
         this.timer = 0;
         // TODO: search for a more ideal way of loading the prefab
@@ -23,7 +21,7 @@ public class Spawn : Instruction
 
     private void SpawnAlienSmall()
     {
-        Object.Instantiate(alienSmallPrefab, location, Quaternion.identity);
+        Object.Instantiate(alienSmallPrefab, instructionRunner.transform.position + instructionRunner.transform.forward, Quaternion.identity);
     }
 
     override public void Execute()
@@ -32,14 +30,14 @@ public class Spawn : Instruction
 
         if (timer < 0)
         {
+            if ((instructionRunner as AlienNest).CountSpawns() >= spawnMaxCount)
+            {
+                instructionRunner.instructionEvent.Invoke(new CreateQueen(60.0f, instructionRunner));
+            }
+
             // TODO: limit number of spawns per nest
             SpawnAlienSmall();
             timer = timerMax;
-
-            if ((instructionRunner as AlienNest).CountSpawns() >= spawnMaxCount)
-            {
-                instructionRunner.instructionEvent.Invoke(new CreateQueen(location, 60.0f, instructionRunner));
-            }
         }
     }
 

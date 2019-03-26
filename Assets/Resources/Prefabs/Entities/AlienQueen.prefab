@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5310424939876561406}
   - component: {fileID: 8162094872281228823}
   - component: {fileID: 8641968222154266381}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AlienQueen
   m_TagString: Untagged
   m_Icon: {fileID: 0}

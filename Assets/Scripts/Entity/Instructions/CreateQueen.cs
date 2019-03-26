@@ -5,15 +5,13 @@ using UnityEngine;
 public class CreateQueen : Instruction
 {
     public GameObject alienQueenPrefab;
-    public Vector3 location;
     private float timerMax;
     private float timer;
 
     #region Methods
 
-    public CreateQueen(Vector3 location, float timerMax, Entity entity) : base(entity)
+    public CreateQueen(float timerMax, Entity entity) : base(entity)
     {
-        this.location = location;
         this.timerMax = timerMax;
         this.timer = 0;
         // TODO: search for a more ideal way of loading the prefab
@@ -22,7 +20,7 @@ public class CreateQueen : Instruction
 
     private void SpawnAlienQueen()
     {
-        Object.Instantiate(alienQueenPrefab, location, Quaternion.identity);
+        Object.Instantiate(alienQueenPrefab, instructionRunner.transform.position + instructionRunner.transform.forward, Quaternion.identity);
     }
 
     override public void Execute()

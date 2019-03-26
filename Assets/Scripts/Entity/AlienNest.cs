@@ -5,32 +5,16 @@ using UnityEngine;
 public class AlienNest : Entity
 {
     #region Variables
-    public float spawnCountTimer = 5.0f;
-    public int spawnCount = 0;
+
+    private float searchRadius = 5.0f;
+    private float spawnCountTimer = 5.0f;
 
     public LayerMask entityMask;
     public LayerMask wallMask;
 
-
     #endregion
 
     #region Methods
-
-    // Update is called once per frame
-    void Update()
-    {
-        spawnCountTimer -= Time.deltaTime;
-
-        if (spawnCountTimer < 0)
-        {
-            int count = CountSpawns();
-            Debug.Log("New Rate of Fire: " + count);
-            (_weapon as Gun).rateOfFire = count;
-            spawnCountTimer = 5.0f;
-        }
-
-        base.Update();
-    }
 
     private void TargetAcquired(Destructible target)
     {
@@ -39,7 +23,6 @@ public class AlienNest : Entity
             Instructions.Push(CurrentInstruction);
         }
 
-        _navMeshAgent.SetDestination(this.transform.position);
         Instructions.Push(new Attack(target, this));
         CurrentInstruction = Instructions.Pop();
     }
@@ -70,51 +53,40 @@ public class AlienNest : Entity
         }
     }
 
-    private void Spawn()
-    {
-        /*if (playerSpotted && haveAllies)
-        {
-            //switch to atk mode
-        }
-        if (!playerSpotted)
-        {
-            if (spawnTimer < 0)
-            {
-                GameObject alienSClone = (GameObject)Instantiate(alienSmall, transform.position, Quaternion.identity);
-                spawnTimer = 3;
-            }
-        }
-        if (!queenDetected)
-        {
-            if (queenTimer < 0)
-            {
-                GameObject alienQClone = (GameObject)Instantiate(alienQueen, new Vector3(transform.position.x + 1.0f, transform.position.y, transform.position.z + 1.0f), Quaternion.identity);
-                queenTimer = 6;
-            }
-        }
-        */
-    }
-
     public int CountSpawns()
     {
-        float searchRadius = 5.0f;
+        int count = 0;
         Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, searchRadius, entityMask);
-        return hitColliders.Length;
+        foreach (Collider hit in hitColliders)
+        {
+            Debug.Log(hit);
+            // TODO: make approriate changes during merge regarding tag
+            if (hit.gameObject.tag == "AlienSmall")
+            {
+                count++;
+            }
+        }
+
+        Debug.Log("Number of spawns: " + count);
+        return count;
     }
 
     #endregion
 
-    #region Triggers
-    void OnTriggerEnter(Collider other)
+    #region Functions
+
+    void Update()
     {
-        /*if (other.gameObject.layer == 9)
+        spawnCountTimer -= Time.deltaTime;
+
+        if (spawnCountTimer < 0)
         {
-            playerSpotted = true;
+            int count = CountSpawns();
+            (_weapon as Gun).rateOfFire = count;
+            spawnCountTimer = 5.0f;
         }
-        if (other.gameObject.layer == 16)
-        {
-            haveAllies = true;
-        }*/
+
+        base.Update();
     }
 
     void OnTriggerStay(Collider other)
@@ -127,18 +99,6 @@ public class AlienNest : Entity
                 DetectionReaction(new GameObject[] { other.gameObject });
             }
         }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        /*if (other.gameObject.layer == 9)
-        {
-            playerSpotted = false;
-        }
-        if (other.gameObject.layer == 16)
-        {
-            haveAllies = false;
-        }*/
     }
     #endregion
 }

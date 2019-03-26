@@ -21,8 +21,7 @@ public class Nest : Order
         foreach (GameObject obj in routine)
         {
             // Spawn
-            // TODO: possibly randomize the spawn location
-            instructions.Add(new Spawn(obj.transform.position + obj.transform.forward, timer, entity));
+            instructions.Add(new Spawn(timer, entity));
         }
     }
 
