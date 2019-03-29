@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - AlienSmall
-  - AlienNest
+  - Alien/Queen
+  - Alien/Small
+  - Alien/Nest
   layers:
   - Default
   - TransparentFX

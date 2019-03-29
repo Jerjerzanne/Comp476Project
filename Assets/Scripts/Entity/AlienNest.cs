@@ -61,7 +61,7 @@ public class AlienNest : Entity
         {
             Debug.Log(hit);
             // TODO: make approriate changes during merge regarding tag
-            if (hit.gameObject.tag == "AlienSmall")
+            if (hit.gameObject.tag.Contains("Small"))
             {
                 count++;
             }

@@ -17,8 +17,8 @@ GameObject:
   - component: {fileID: 7586534057862867186}
   - component: {fileID: 7586534057862867188}
   m_Layer: 10
-  m_Name: Alien Nest
-  m_TagString: AlienNest
+  m_Name: AlienNest
+  m_TagString: Alien/Nest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
