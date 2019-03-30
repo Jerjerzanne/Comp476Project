@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class Spawn : Instruction
 {
-    public GameObject alienSmallPrefab;
+    private GameObject alienSmallPrefab;
+    private GameObject alienQueenPrefab;
     private float timerMax;
     private float timer;
     private int spawnMaxCount = 5;
 
     #region Methods
 
-    public Spawn(float timerMax, Entity entity) : base(entity)
+    public Spawn(GameObject alienSmallPrefab, GameObject alienQueenPrefab, float timerMax, Entity entity) : base(entity)
     {
         this.timerMax = timerMax;
         this.timer = 0;
-        // TODO: search for a more ideal way of loading the prefab
-        alienSmallPrefab = Resources.Load("Prefabs/Entities/AlienSmall", typeof(GameObject)) as GameObject;
+        this.alienSmallPrefab = alienSmallPrefab;
+        this.alienQueenPrefab = alienQueenPrefab;
     }
 
     private void SpawnAlienSmall()
     {
-        Object.Instantiate(alienSmallPrefab, instructionRunner.transform.position + instructionRunner.transform.forward, Quaternion.identity);
+        GameObject small = Object.Instantiate(alienSmallPrefab, instructionRunner.transform.position + instructionRunner.transform.forward, Quaternion.identity) as GameObject;
+        small.transform.parent = instructionRunner.transform.parent;
     }
 
     override public void Execute()
@@ -32,10 +34,9 @@ public class Spawn : Instruction
         {
             if ((instructionRunner as AlienNest).CountSpawns() >= spawnMaxCount)
             {
-                instructionRunner.instructionEvent.Invoke(new CreateQueen(60.0f, instructionRunner));
+                instructionRunner.instructionEvent.Invoke(new CreateQueen(alienQueenPrefab, 60.0f, instructionRunner));
             }
 
-            // TODO: limit number of spawns per nest
             SpawnAlienSmall();
             timer = timerMax;
         }

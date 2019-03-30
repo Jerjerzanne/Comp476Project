@@ -5,6 +5,8 @@ using UnityEngine;
 public class Nest : Order
 {
     private float timer = 15.0f;
+    public GameObject alienSmallPrefab;
+    public GameObject alienQueenPrefab;
 
     void Start()
     {
@@ -21,7 +23,7 @@ public class Nest : Order
         foreach (GameObject obj in routine)
         {
             // Spawn
-            instructions.Add(new Spawn(timer, entity));
+            instructions.Add(new Spawn(alienSmallPrefab, alienQueenPrefab, timer, entity));
         }
     }
 

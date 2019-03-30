@@ -60,14 +60,13 @@ public class AlienNest : Entity
         foreach (Collider hit in hitColliders)
         {
             Debug.Log(hit);
-            // TODO: make approriate changes during merge regarding tag
             if (hit.gameObject.tag.Contains("Small"))
             {
                 count++;
             }
         }
 
-        Debug.Log("Number of spawns: " + count);
+        //Debug.Log("Number of spawns: " + count);
         return count;
     }
 

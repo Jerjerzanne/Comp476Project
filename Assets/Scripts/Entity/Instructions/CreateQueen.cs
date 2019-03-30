@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class CreateQueen : Instruction
 {
-    public GameObject alienQueenPrefab;
+    private GameObject alienQueenPrefab;
     private float timerMax;
     private float timer;
 
     #region Methods
 
-    public CreateQueen(float timerMax, Entity entity) : base(entity)
+    public CreateQueen(GameObject alienQueenPrefab, float timerMax, Entity entity) : base(entity)
     {
         this.timerMax = timerMax;
         this.timer = 0;
-        // TODO: search for a more ideal way of loading the prefab
-        alienQueenPrefab = Resources.Load("Prefabs/Entities/AlienQueen", typeof(GameObject)) as GameObject;
+        this.alienQueenPrefab = alienQueenPrefab;
     }
 
     private void SpawnAlienQueen()
     {
-        Object.Instantiate(alienQueenPrefab, instructionRunner.transform.position + instructionRunner.transform.forward, Quaternion.identity);
+        GameObject queen = Object.Instantiate(alienQueenPrefab, instructionRunner.transform.position + instructionRunner.transform.forward, Quaternion.identity) as GameObject;
+        queen.transform.parent = instructionRunner.transform.parent;
     }
 
     override public void Execute()

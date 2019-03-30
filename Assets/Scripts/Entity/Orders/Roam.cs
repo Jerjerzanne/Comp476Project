@@ -6,8 +6,9 @@ using UnityEngine.AI;
 public class Roam : Order
 {
     NavMeshAgent agent;
-    private int roomNb = 0;
     private float timer = 1;
+    public GameObject alienNestPrefab;
+
     void Start()
     {
 
@@ -23,7 +24,7 @@ public class Roam : Order
         foreach (GameObject obj in routine)
         {
             instructions.Add(new Goto(obj.transform.position, timer, entity));
-            instructions.Add(new CreateNest(entity));
+            instructions.Add(new CreateNest(alienNestPrefab, entity));
         }
     }
 

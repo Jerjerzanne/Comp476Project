@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class CreateNest : Instruction
 {
-    public GameObject alienNestPrefab;
+    private GameObject alienNestPrefab;
 
     #region Methods
 
-    public CreateNest(Entity entity) : base(entity)
+    public CreateNest(GameObject alienNestPrefab, Entity entity) : base(entity)
     {
-        // TODO: search for a more ideal way of loading the prefab
-        alienNestPrefab = Resources.Load("Prefabs/Entities/AlienNest", typeof(GameObject)) as GameObject;
+        this.alienNestPrefab = alienNestPrefab;
     }
 
     override public void Execute()
     {
-        Object.Instantiate(alienNestPrefab, instructionRunner.transform.position + instructionRunner.transform.forward, Quaternion.identity);
+        GameObject nest = Object.Instantiate(alienNestPrefab, instructionRunner.transform.position + instructionRunner.transform.forward, Quaternion.identity) as GameObject;
+        nest.transform.parent = instructionRunner.transform.parent;
         instructionRunner.instructionEvent.Invoke(null);
     }
 
