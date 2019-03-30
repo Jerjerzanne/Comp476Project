@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -69,7 +69,7 @@ public class AlienNest : Entity
         //Debug.Log("Number of spawns: " + count);
         return count;
     }
-
+    
     #endregion
 
     #region Functions
