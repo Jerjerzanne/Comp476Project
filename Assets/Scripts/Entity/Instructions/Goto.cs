@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Goto : Instruction
 {
-    float acceptanceRadius = 0.1f;
+    float acceptanceRadius = 0.5f;
     public Vector3 location;
     //private float callForOrder;
     //private int roomNb = 0;

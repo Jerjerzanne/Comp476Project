@@ -21,15 +21,25 @@ public class Breaker : Interactable
     public override void PlayerInteract(Player player)
     {
         base.PlayerInteract(player);
-        InteractBreaker(player.gameObject);
+        InteractBreaker();
+    }
+
+    public override Instruction EntityInteract(Entity entity)
+    {
+        return new Repair(5.0f, this, entity);
+    }
+
+    public override void Repair()
+    {
+        InteractBreaker();
     }
 
     //class methods
 
     /// <summary>
-    /// Teleports entity to the exit vent
+    /// Toggles the lights:
     /// </summary>
-    private void InteractBreaker(GameObject entity)
+    private void InteractBreaker()
     {
         if (enabled)
         {
@@ -45,13 +55,28 @@ public class Breaker : Interactable
         }
     }
 
+    private void SetLights()
+    {
+        if (enabled)
+        {
+            foreach (Light light in lights)
+                light.enabled = true;
+        }
+        else
+        {
+            foreach (Light light in lights)
+                light.enabled = false;
+        }
+    }
+
     #endregion
 
     #region Functions
 
-    void Awake()
+    void Start()
     {
-
+        // Set the lights to the proper enabled value:
+        SetLights();
     }
 
     void OnTriggerEnter(Collider other)
@@ -77,8 +102,7 @@ public class Breaker : Interactable
         }
         if (other.gameObject.layer == 10)
         {
-            Debug.Log("Entity interacted with the breaker");
-            PlayerInteract(other.GetComponent<Player>());
+            // Debug.Log("Entity interacted with the breaker");
         }
     }
 
