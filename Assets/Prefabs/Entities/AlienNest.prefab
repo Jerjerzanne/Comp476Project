@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7586534057862867187}
   - component: {fileID: 7586534057862867186}
   - component: {fileID: 7586534057862867188}
+  - component: {fileID: 7223976780569173381}
   m_Layer: 10
   m_Name: AlienNest
   m_TagString: Alien/Nest
@@ -172,3 +173,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 14
   m_CollisionDetection: 0
+--- !u!114 &7223976780569173381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7586534057862867199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b8fb14c25eb13b4593eeabd4540d275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  routine: []
+  nest: {fileID: 7586534057862867199}
+  timer: 1
+  visionrange: 3
+  nestrange: 4

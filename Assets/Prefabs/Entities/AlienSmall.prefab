@@ -91,8 +91,8 @@ GameObject:
   - component: {fileID: 6704282665824685440}
   - component: {fileID: 5815161134003105643}
   - component: {fileID: 1790385152733186305}
-  - component: {fileID: 4787372760901598412}
   - component: {fileID: 6649013640602127357}
+  - component: {fileID: 4714931833630202965}
   m_Layer: 10
   m_Name: AlienSmall
   m_TagString: Alien/Small
@@ -219,30 +219,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4787372760901598412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8229433697892653722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f66aa690c8a0f3f419a8159c071e5ceb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 20
-  initialOrder: {fileID: 0}
-  instructionEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: MyInstructionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  reactionEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: MyReactionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!114 &6649013640602127357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,3 +236,27 @@ MonoBehaviour:
     type: 3}
   bulletSpeed: 10
   rateOfFire: 2
+--- !u!114 &4714931833630202965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8229433697892653722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b33c54d68911c64b86be64a422097c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  initialOrder: {fileID: 0}
+  instructionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MyInstructionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  reactionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MyReactionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
