@@ -41,11 +41,11 @@ public class SearchRoom : Instruction
         Debug.Log(points.Count);
         if (points.Count == 0)
         {
-            Debug.Log("You should reach here");
+            //Debug.Log("You should reach here");
             points = new List<Vector3>(room.waypoints);
         }
         int index = UnityEngine.Random.Range(0, points.Count -1);
-        Debug.Log(index + " and the count: " + points.Count);
+        //Debug.Log(index + " and the count: " + points.Count);
         currentPoint = points[index];
         points.Remove(currentPoint);
 
