@@ -5,6 +5,11 @@ using UnityEngine.AI;
 
 public class Soldier : Entity
 {
+    #region Variables
+
+    private Pods myPod;
+
+    #endregion
 
     #region Methods
 
@@ -52,6 +57,18 @@ public class Soldier : Entity
                     }
                 }
             }
+        }
+    }
+
+    protected override void RanOutOfInstructions()
+    {
+        if (CurrentOrder is Patrol)
+        {
+            CurrentOrder = CurrentOrder;
+        }
+        else
+        {
+            
         }
     }
 

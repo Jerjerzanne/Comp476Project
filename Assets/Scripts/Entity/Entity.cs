@@ -71,6 +71,7 @@ public class Entity : Destructible
     /// Instruction stack of the AI entity
     /// </summary>
     public Stack<Instruction> Instructions { get; set; }
+
     #endregion
 
     #region Methods
@@ -86,8 +87,7 @@ public class Entity : Destructible
         }
         else
         {
-            Debug.Log(this.name + " ran out of instructions.");
-            CurrentInstruction = null;
+            RanOutOfInstructions();
         }
     }
 
@@ -107,6 +107,16 @@ public class Entity : Destructible
             GetNextInstruction();
         }
     }
+
+    /// <summary>
+    /// Calls this method if the entity ever runs out of instructions
+    /// </summary>
+    protected virtual void RanOutOfInstructions()
+    {
+        Debug.Log(this.name + " ran out of instructions.");
+        CurrentInstruction = null;
+    }
+
 
     /// <summary>
     /// How the entity reacts to a detection event
@@ -156,6 +166,7 @@ public class Entity : Destructible
         {
             CurrentOrder = this.initialOrder;
         }
+
     }
 
     protected void Update()

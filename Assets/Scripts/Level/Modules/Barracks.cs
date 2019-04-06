@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Barracks : MonoBehaviour
 {
     #region Variables
 
-    [SerializeField, Header("Barracks")]
-    private int maxSoldiers;
-
+    [Header("Barracks")]
     public GameObject soldierPrefab;
     public float spawnTimer;
     
@@ -18,37 +17,33 @@ public class Barracks : MonoBehaviour
 
     #region Methods
 
-    IEnumerator SpawnSoldier()
+    IEnumerator SpawnSoldier(Pods newSoldier)
     {
-        Pods newSoldier = soldiers.Find(status => status.deployed == false && status.soldierRef == null);
-        newSoldier.soldierRef = Instantiate(soldierPrefab, this.transform.position + newSoldier.podPosition, Quaternion.identity).GetComponent<Soldier>();
+        newSoldier.soldierRef = Instantiate(soldierPrefab, this.transform.position + newSoldier.podPosition, Quaternion.identity, this.transform).GetComponent<Soldier>();
         yield return new WaitForSeconds(spawnTimer);
         spawning = false;
         yield return null;
     }
 
-    private void CheckForSpawn()
-    {
-        int soldierCount = soldiers.FindAll(soldier => soldier.soldierRef != null).Count;
-        if (!spawning && soldierCount < maxSoldiers && soldierCount < soldiers.Count && soldiers != null)
-        {
-            spawning = true;
-            StartCoroutine("SpawnSoldier");
-        }
-    }
 
-    public void RequestSoldier(Order order) //TODO: rework order
+    public Soldier RequestSoldier(Order order = null)
     {
         if (soldiers != null)
         {
-            Pods soldier = soldiers.Find(status => status.deployed == false && status.soldierRef != null);
-
-            if (soldier.soldierRef != null && soldier.deployed == false)
+            Pods soldier = soldiers.Find(status => status.soldierRef != null);
+            if (soldier != null)
             {
-                soldier.soldierRef.CurrentOrder = order;
+                if(order != null)
+                {
+                    soldier.soldierRef.CurrentOrder = order;
+                }
                 soldier.deployed = true;
+                return soldier.soldierRef;
             }
+
         }
+
+        return null;
     }
 
 
@@ -62,6 +57,11 @@ public class Barracks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    CheckForSpawn();
+        Pods newSoldier = soldiers.Find(soldier => soldier.soldierRef == null);
+        if (!spawning && newSoldier != null)
+        {
+            spawning = true;
+            StartCoroutine("SpawnSoldier", newSoldier);
+        }
     }
 }

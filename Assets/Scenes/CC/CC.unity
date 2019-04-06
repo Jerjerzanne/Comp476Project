@@ -1831,6 +1831,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showGUI: 1
+  lineLength: 20
+  lineWidth: 150
 --- !u!4 &976460665
 Transform:
   m_ObjectHideFlags: 0
@@ -2288,6 +2290,7 @@ GameObject:
   - component: {fileID: 1466270019}
   - component: {fileID: 1466270018}
   - component: {fileID: 1466270017}
+  - component: {fileID: 1466270023}
   m_Layer: 9
   m_Name: CommandCenter
   m_TagString: Untagged
@@ -2404,6 +2407,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1466270023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466270016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcde901d32d11ca489d6ecdc96b1412f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  reportEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: CommandCenter+ReportEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  powerStatusEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: CommandCenter+PowerStatusEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  barracks: {fileID: 2092834721}
+  searchTimer: 5
+  navigationTimer: 2
 --- !u!4 &1484418031 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7413606783245382372, guid: b7c56a3a5afa8bf429350b66088d4ffb,
@@ -4360,6 +4389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2092834722}
   - component: {fileID: 2092834721}
+  - component: {fileID: 2092834723}
   m_Layer: 0
   m_Name: Barracks
   m_TagString: Untagged
@@ -4379,10 +4409,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14c918e1581e97845958d577324a57f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSoldiers: 5
   soldierPrefab: {fileID: 6693485467719841446, guid: 7e615fd76dd03b64b89d7d2c6746d7ad,
     type: 3}
-  spawnTimer: 10
+  spawnTimer: 2
   soldiers:
   - soldierRef: {fileID: 0}
     deployed: 0
@@ -4398,12 +4427,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092834720}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 0.5, z: 10}
+  m_LocalPosition: {x: 10, y: 1, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2092834723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092834720}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81dee1267ecf2d945987a6e83bde476a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showGUI: 1
+  lineLength: 20
+  lineWidth: 150
 --- !u!1001 &2104040066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6100,10 +6144,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soldier
       objectReference: {fileID: 0}
+    - target: {fileID: 6693485467719841446, guid: 7e615fd76dd03b64b89d7d2c6746d7ad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6693485467719841442, guid: 7e615fd76dd03b64b89d7d2c6746d7ad,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6693485467719841442, guid: 7e615fd76dd03b64b89d7d2c6746d7ad,
         type: 3}
@@ -6113,7 +6162,7 @@ PrefabInstance:
     - target: {fileID: 6693485467719841442, guid: 7e615fd76dd03b64b89d7d2c6746d7ad,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6693485467719841442, guid: 7e615fd76dd03b64b89d7d2c6746d7ad,
         type: 3}

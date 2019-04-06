@@ -11,6 +11,8 @@ public class Breaker : Interactable
     public Instruction breakerInstruction;
     public List<Light> lights;
     public bool enabled;
+
+    private CommandCenter commandCenter;
     //Piece of the UI
 
     #endregion
@@ -21,6 +23,7 @@ public class Breaker : Interactable
     public override void PlayerInteract(Player player)
     {
         base.PlayerInteract(player);
+        commandCenter.powerStatusEvent.Invoke(this); //Activates the CC response
         InteractBreaker();
     }
 
@@ -75,6 +78,7 @@ public class Breaker : Interactable
 
     void Start()
     {
+        commandCenter = FindObjectOfType<CommandCenter>();
         // Set the lights to the proper enabled value:
         SetLights();
     }

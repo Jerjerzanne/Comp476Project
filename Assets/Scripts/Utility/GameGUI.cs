@@ -11,11 +11,12 @@ public class GameGUI : MonoBehaviour
 
     //public GameObject EntityParent;
     public bool showGUI;
-    private int lineLength = 20;
+    public int lineLength = 20;
+    public int lineWidth = 150;
 
     #endregion
 
-
+     
     #region Functions
 
     void Update()
@@ -51,7 +52,7 @@ public class GameGUI : MonoBehaviour
                     length += lineLength;
                 }
 
-                GUI.TextArea(new Rect(10, height, 100, length), text, 200);
+                GUI.TextArea(new Rect(10, height, lineWidth, length), text, 200);
                 height = height + length + 15;
             }
            

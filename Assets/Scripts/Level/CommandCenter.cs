@@ -18,22 +18,54 @@ public class CommandCenter : Destructible
 
     #region Variables
 
+    [Header("Command Center")]
     public ReportEvent reportEvent;
     public PowerStatusEvent powerStatusEvent;
+    public Barracks barracks;
 
+    [Header("Investigate Attributes")]
+
+    [Tooltip("Full time for the search")]
+    public float searchTimer;
+    [Tooltip("Time in between travel points")]
+    public float navigationTimer;
 
     #endregion
 
     #region Methods
 
+    /// <summary>
+    /// invoked function for report events
+    /// </summary>
+    /// <param name="position"></param>
     private void ReportReaction(Vector3 position)
     {
-
+        //TODO: Box on top of room, room as a collider, position index
+        
     }
 
-    private void DetectionReaction(Breaker breaker)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="breaker"></param>
+    private void PowerStatusReaction(Breaker breaker)
     {
+        Soldier soldier = barracks.RequestSoldier(null);
 
+        if (soldier != null)
+        {
+            // Get the position of the collider:
+            Vector3 colliderPos = breaker.GetComponent<Collider>().transform.position;
+
+            soldier.Instructions.Push(new SearchRoom(breaker.GetComponentInParent<Room>(), searchTimer, navigationTimer,
+                soldier));
+            soldier.Instructions.Push(new Interact(breaker, soldier));
+            soldier.CurrentInstruction = new Goto(colliderPos, 0, soldier);
+        }
+        else
+        {
+            Debug.Log("No soldier was available for a PowerStatusReaction");
+        }
     }
 
     #endregion
@@ -50,7 +82,7 @@ public class CommandCenter : Destructible
             powerStatusEvent = new PowerStatusEvent();
 
         reportEvent.AddListener(ReportReaction);
-        powerStatusEvent.AddListener(DetectionReaction);
+        powerStatusEvent.AddListener(PowerStatusReaction);
 
     }
 
