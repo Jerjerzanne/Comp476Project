@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +6,7 @@ using UnityEngine;
 /// Destructible game entity
 /// </summary>
 public class Destructible : MonoBehaviour
-{ 
+{
     #region Constants
 
     #endregion
@@ -15,8 +15,9 @@ public class Destructible : MonoBehaviour
 
     //Editor variables
     [SerializeField, Header("Destructible")]
+    public GameObject foodPrefab;
     public int maxHealth;
-
+    public bool Death;
     #endregion
 
     #region Properties
@@ -25,7 +26,7 @@ public class Destructible : MonoBehaviour
     /// Current health of the destructible
     /// </summary>
     public int CurrentHealth { get; private set; }
-
+    
     #endregion
 
     #region Methods
@@ -40,7 +41,18 @@ public class Destructible : MonoBehaviour
         CurrentHealth -= damage;
         if(CurrentHealth <= 0)
         {
+            Death = true;
             Die();
+            if(gameObject.layer == 9)
+            {
+
+            }
+            else
+            {
+            Destroy(gameObject);
+            Destructible food = Instantiate(foodPrefab, new Vector3(transform.position.x, transform.position.y - 0.75f, transform.position.z), Quaternion.Euler(new Vector3(180, 90, 90))).GetComponent<Destructible>();
+            }
+            
         }
     }
 
@@ -70,6 +82,7 @@ public class Destructible : MonoBehaviour
     protected void Awake()
     {
         CurrentHealth = maxHealth;
+        Death = false;
     }
     #endregion
 
