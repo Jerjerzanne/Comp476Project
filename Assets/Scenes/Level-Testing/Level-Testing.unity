@@ -4142,6 +4142,8 @@ MonoBehaviour:
   - soldierRef: {fileID: 0}
     deployed: 0
     podPosition: {x: 0, y: 0, z: -2}
+  testing: 1
+  testingPosition: {x: 40, y: 0, z: 30}
 --- !u!4 &940675175
 Transform:
   m_ObjectHideFlags: 0
