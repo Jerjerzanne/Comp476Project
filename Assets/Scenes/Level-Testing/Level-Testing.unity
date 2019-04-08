@@ -510,7 +510,7 @@ Transform:
   m_LocalScale: {x: 2, y: 5.714286, z: 0.50000024}
   m_Children: []
   m_Father: {fileID: 6730115468644742685}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &96969929
 PrefabInstance:
@@ -1884,7 +1884,7 @@ Transform:
   m_LocalScale: {x: 2, y: 5.714286, z: 0.50000024}
   m_Children: []
   m_Father: {fileID: 6730115468644742685}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &368903628
 PrefabInstance:
@@ -3739,7 +3739,7 @@ Transform:
   m_LocalScale: {x: 2, y: 5.714286, z: 0.50000024}
   m_Children: []
   m_Father: {fileID: 6730115468644742685}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &836088612
 PrefabInstance:
@@ -6278,7 +6278,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 245559
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -7162,7 +7162,7 @@ Transform:
   m_LocalScale: {x: 2, y: 5.714286, z: 0.50000024}
   m_Children: []
   m_Father: {fileID: 6730115468644742685}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2070980004
 GameObject:
@@ -7320,7 +7320,7 @@ Transform:
   m_LocalScale: {x: 2, y: 5.714286, z: 0.50000024}
   m_Children: []
   m_Father: {fileID: 6730115468644742685}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2124276445
 PrefabInstance:
@@ -7825,6 +7825,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 699367011667090408, guid: d77ed696d5e26ca43a4a3023b40132f3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d77ed696d5e26ca43a4a3023b40132f3, type: 3}
 --- !u!4 &6730115468644742685 stripped
@@ -8038,6 +8043,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6706405305854927085, guid: d06dc1e899622a644a070b34df4146df,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d06dc1e899622a644a070b34df4146df, type: 3}
