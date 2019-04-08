@@ -2089,7 +2089,7 @@ GameObject:
   - component: {fileID: 4779072166342375566}
   - component: {fileID: 5515426416546370545}
   - component: {fileID: 6569839572337675181}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: GiantRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}

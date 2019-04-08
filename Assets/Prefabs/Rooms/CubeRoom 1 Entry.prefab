@@ -1865,7 +1865,7 @@ GameObject:
   - component: {fileID: 7413606783245382372}
   - component: {fileID: 1629769254101401048}
   - component: {fileID: 5233493472733756973}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: CubeRoom 1 Entry
   m_TagString: Untagged
   m_Icon: {fileID: 0}

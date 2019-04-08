@@ -4030,7 +4030,7 @@ GameObject:
   - component: {fileID: 3565672583792309711}
   - component: {fileID: 6259466687073794461}
   - component: {fileID: 2701135782677279546}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: RectangleRoom 2 Entry
   m_TagString: Untagged
   m_Icon: {fileID: 0}

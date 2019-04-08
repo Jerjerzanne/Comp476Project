@@ -7156,7 +7156,7 @@ GameObject:
   - component: {fileID: 1957156464809828374}
   - component: {fileID: 4635260259813837473}
   - component: {fileID: 2059805220856334031}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: MiddleRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
