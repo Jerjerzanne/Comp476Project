@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 
-public class Barracks : MonoBehaviour
+public class Barracks : Interactable
 {
     #region Variables
 
     [Header("Barracks")]
     public GameObject soldierPrefab;
     public float spawnTimer;
-    
+    public CommandCenter commandCenter;
+
     public List<Pods> soldiers;
     private bool spawning;
+   
+
     #endregion
 
     #region Methods
@@ -20,6 +23,7 @@ public class Barracks : MonoBehaviour
     IEnumerator SpawnSoldier(Pods newSoldier)
     {
         newSoldier.soldierRef = Instantiate(soldierPrefab, this.transform.position + newSoldier.podPosition, Quaternion.identity, this.transform).GetComponent<Soldier>();
+        newSoldier.soldierRef.barracks = this;
         yield return new WaitForSeconds(spawnTimer);
         spawning = false;
         yield return null;
@@ -46,6 +50,18 @@ public class Barracks : MonoBehaviour
         return null;
     }
 
+    public override Instruction EntityInteract(Entity entity)
+    {
+        Pods pod = soldiers.Find(soldierPod => soldierPod.soldierRef == entity);
+        if (pod != null)
+        {
+            pod.deployed = false;
+            pod.soldierRef.Deployed = true;
+            commandCenter.reportEvent.Invoke(pod.soldierRef.ReportPosition);
+            return new Goto(pod.podPosition, 0, entity);
+        }
+        return null;
+    }
 
     #endregion
 

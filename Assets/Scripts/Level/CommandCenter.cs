@@ -40,8 +40,29 @@ public class CommandCenter : Destructible
     /// <param name="position"></param>
     private void ReportReaction(Vector3 position)
     {
-        //TODO: Box on top of room, room as a collider, position index
-        
+        RaycastHit ray;
+      if(Physics.Raycast(position + Vector3.up * 50, Vector3.down, out ray, 100, 1 << 18))
+        {
+            Room room = ray.collider.gameObject.GetComponent<Room>();
+            Debug.Log("Command center received a report to " + room.name);
+
+            //Requesting a new soldier from the barracks
+            Soldier soldier = barracks.RequestSoldier(null);
+
+            if (soldier != null)
+            {
+                ray.collider.gameObject.GetComponent<Room>();
+                soldier.Instructions.Push(new SearchRoom(ray.collider.gameObject.GetComponent<Room>(), searchTimer, navigationTimer,
+                    soldier));
+                soldier.CurrentInstruction = new Goto(position, 0, soldier);
+            }
+            else
+            {
+                Debug.Log("No soldier was available for a ReportReaction");
+            }
+            
+            
+        } 
     }
 
     /// <summary>
@@ -50,6 +71,8 @@ public class CommandCenter : Destructible
     /// <param name="breaker"></param>
     private void PowerStatusReaction(Breaker breaker)
     {
+
+        //Requesting a new soldier from the barracks
         Soldier soldier = barracks.RequestSoldier(null);
 
         if (soldier != null)
