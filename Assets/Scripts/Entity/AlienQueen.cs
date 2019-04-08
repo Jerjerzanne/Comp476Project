@@ -30,6 +30,7 @@ public class AlienQueen : Entity
             {
                 if (!enemy.IsDead())
                 {
+                    // TODO: properly detect if enemy is dead?
                     if (CurrentInstruction == null)
                     {
                         Debug.Log(enemy + " has a tag " + target[0].gameObject.layer);

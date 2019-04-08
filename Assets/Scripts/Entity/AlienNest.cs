@@ -32,6 +32,7 @@ public class AlienNest : Entity
         foreach (GameObject potentialEnemy in target)
         {
             Destructible enemy = potentialEnemy.GetComponent<Destructible>();
+
             if (enemy != null)
             {
                 if (!enemy.IsDead())
@@ -59,7 +60,6 @@ public class AlienNest : Entity
         Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, searchRadius, entityMask);
         foreach (Collider hit in hitColliders)
         {
-            Debug.Log(hit);
             if (hit.gameObject.tag.Contains("Small"))
             {
                 count++;
@@ -90,7 +90,7 @@ public class AlienNest : Entity
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.layer == 9)    //or soldier
+        if (other.gameObject.layer == 9 || other.gameObject.layer == 10)
         {
             RaycastHit hit;
             if (Physics.Raycast(this.transform.position, other.gameObject.transform.position - this.transform.position, out hit, Mathf.Infinity, wallMask))

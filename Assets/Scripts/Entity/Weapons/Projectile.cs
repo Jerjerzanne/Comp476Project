@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
 
     private const int wallLayer = 13;
     private const int playerLayer = 9;
+    private const int alienLayer = 16;
     #endregion
 
     #region Variables
@@ -41,7 +42,7 @@ public class Projectile : MonoBehaviour
             Debug.Log("Projectile hit a wall");
             Destroy(this.gameObject);
         }
-        else if(other.gameObject.layer == playerLayer)
+        else if(other.gameObject.layer == playerLayer || other.gameObject.layer == alienLayer)
         {
             other.gameObject.GetComponent<Destructible>().TakeDamage(this._damage);
             Destroy(this.gameObject);
