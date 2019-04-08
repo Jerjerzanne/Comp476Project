@@ -57,7 +57,7 @@ public class Doors : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer ==  9 || other.gameObject.layer == 10)
+        if (other.gameObject.layer ==  9 || other.gameObject.layer == 10 || other.gameObject.layer == 16)
         {
             Debug.Log(other.gameObject.name + " entered the door range");
             _count++;
@@ -72,7 +72,7 @@ public class Doors : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == 9 || other.gameObject.layer == 10)
+        if (other.gameObject.layer == 9 || other.gameObject.layer == 10 || other.gameObject.layer == 16)
         {
             Debug.Log( other.gameObject.name+ " left the door range");
             _count--;

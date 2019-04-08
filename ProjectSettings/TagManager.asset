@@ -7,6 +7,7 @@ TagManager:
   - Alien/Queen
   - Alien/Small
   - Alien/Nest
+  - Soldier
   layers:
   - Default
   - TransparentFX
@@ -18,14 +19,16 @@ TagManager:
   - 
   - PostProcessing
   - Player
-  - Entity
+  - Soldier
   - Interactable
   - Door
   - Wall
   - Waypoint
   - Projectile
+  - Alien
   - Obstacle
   - Room
+  - 
   - 
   - 
   - 
