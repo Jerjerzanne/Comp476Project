@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
-  bulletPrefab: {fileID: 1077086788633318468, guid: 728acd0ff01974b4fa9581d292af553a,
+  bulletPrefab: {fileID: 2761997537463405416, guid: b7445cac869f00c4a9aaa952e3f5d8ab,
     type: 3}
   bulletSpeed: 10
   rateOfFire: 2

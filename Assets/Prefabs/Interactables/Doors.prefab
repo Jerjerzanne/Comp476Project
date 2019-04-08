@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6412444442956855221}
   - component: {fileID: 6412444442956855222}
   - component: {fileID: 6412444442956855223}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: RightDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3931da44fb864e84c851aa104d65a3fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 6412444443302554268}
   - component: {fileID: 6412444443302554269}
   - component: {fileID: 6412444443302554270}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: LeftDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3931da44fb864e84c851aa104d65a3fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

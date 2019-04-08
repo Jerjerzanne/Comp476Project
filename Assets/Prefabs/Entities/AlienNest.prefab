@@ -105,7 +105,7 @@ Transform:
   m_GameObject: {fileID: 4416766168921499211}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0.0625}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 8026199565887475678}
   m_Father: {fileID: 7586534057862867196}
@@ -168,12 +168,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7586534057862867196}
-  - component: {fileID: 7586534057862867185}
   - component: {fileID: 7586534057862867197}
   - component: {fileID: 7586534057862867187}
   - component: {fileID: 7586534057862867186}
   - component: {fileID: 7586534057862867188}
   - component: {fileID: 7223976780569173381}
+  - component: {fileID: 3282799544569659151}
   m_Layer: 16
   m_Name: AlienNest
   m_TagString: Alien/Nest
@@ -196,20 +196,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &7586534057862867185
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7586534057862867199}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.75
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &7586534057862867197
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -236,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
-  bulletPrefab: {fileID: 1077086788633318468, guid: 728acd0ff01974b4fa9581d292af553a,
+  bulletPrefab: {fileID: 2761997537463405416, guid: b7445cac869f00c4a9aaa952e3f5d8ab,
     type: 3}
   bulletSpeed: 10
   rateOfFire: 2
@@ -303,3 +289,16 @@ MonoBehaviour:
   timer: 1
   visionrange: 3
   nestrange: 4
+--- !u!65 &3282799544569659151
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7586534057862867199}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 1, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}
