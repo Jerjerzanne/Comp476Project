@@ -38,7 +38,7 @@ public class SearchRoom : Instruction
 
     private void GetWaypoint()
     {
-        Debug.Log(points.Count);
+        //Debug.Log(points.Count);
         if (points.Count == 0)
         {
             //Debug.Log("You should reach here");

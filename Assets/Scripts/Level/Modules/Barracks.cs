@@ -14,7 +14,11 @@ public class Barracks : Interactable
 
     public List<Pods> soldiers;
     private bool spawning;
-   
+
+    //TODO: remove once done with testing
+    [Header("Testing Parameters")]
+    public bool testing;
+    public Vector3 testingPosition;
 
     #endregion
 
@@ -42,6 +46,7 @@ public class Barracks : Interactable
                     soldier.soldierRef.CurrentOrder = order;
                 }
                 soldier.deployed = true;
+                soldier.soldierRef.Deployed = true;
                 return soldier.soldierRef;
             }
 
@@ -56,9 +61,13 @@ public class Barracks : Interactable
         if (pod != null)
         {
             pod.deployed = false;
-            pod.soldierRef.Deployed = true;
+            pod.soldierRef.Deployed = false;
+            if (pod.soldierRef.ReportPosition != Vector3.zero)
+            {
             commandCenter.reportEvent.Invoke(pod.soldierRef.ReportPosition);
-            return new Goto(pod.podPosition, 0, entity);
+            pod.soldierRef.ReportPosition = Vector3.zero;
+            }
+            return new Goto(this.transform.position + pod.podPosition, 0, entity);
         }
         return null;
     }
@@ -78,6 +87,13 @@ public class Barracks : Interactable
         {
             spawning = true;
             StartCoroutine("SpawnSoldier", newSoldier);
+        }
+
+        //TODO: remove once done with testing
+        if (testing == true && testingPosition != Vector3.zero && soldiers.Find(soldier => soldier.soldierRef != null) != null)
+        {
+            commandCenter.reportEvent.Invoke(testingPosition);
+            testingPosition = Vector3.zero;
         }
     }
 }
