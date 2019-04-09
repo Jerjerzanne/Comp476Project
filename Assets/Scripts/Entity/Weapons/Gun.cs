@@ -11,17 +11,13 @@ public class Gun : Weapon
     public float bulletSpeed;
     public float rateOfFire;
     public float offset;
-    private bool locked;
+    protected bool locked;
 
     [Header("Burst fire")]
     public int burstSize;
 
-    [Header("shotgun fire")]
-    public int angleDeviation;
-    public int bulletCount;
-
-    private float timer;
-    private float timeSinceFired;
+    protected float timer;
+    protected float timeSinceFired;
     // Gun sound
 
     #endregion
@@ -38,7 +34,7 @@ public class Gun : Weapon
 
         if (timer >  1/rateOfFire)
         {
-            Projectile bullet = Instantiate(bulletPrefab, this.transform.position + this.transform.forward * offset, this.transform.localRotation).GetComponent<Projectile>();
+            Projectile bullet = Instantiate(bulletPrefab, this.transform.position + this.transform.forward * offset, this.transform.rotation).GetComponent<Projectile>();
             bullet.SetSpeed(bulletSpeed, damage);
             timer = 0;
             timeSinceFired = Time.time;

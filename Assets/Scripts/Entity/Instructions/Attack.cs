@@ -11,7 +11,7 @@ public class Attack : Instruction
     private const int interactalbeLayer = 1 << 11;
     private const int doorLayer = 1 << 12;
     private const int projectileLayer = 1 << 15;
-    private const int finalMask = entityLayer | interactalbeLayer | doorLayer | projectileLayer;
+    private const int finalMask = entityLayer | doorLayer | projectileLayer;
 
     #endregion
 

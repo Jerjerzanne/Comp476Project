@@ -23,6 +23,7 @@ public class Player : Destructible
     public int maxGrowth;
 
     [SerializeField, Header("Gun")]
+    public List<Gun> playerGuns;
     public Gun playerGun;
     public GameObject bulletPrefab;
     public float rateOfFire;
@@ -108,40 +109,53 @@ public class Player : Destructible
     }
     protected void UpdateGrowth()
     {
-
-        if (maxGrowth < 4)
+        if (maxGrowth < 15)
         {
             //For testing, simply change the code below to maxGrowth += 1
 
             //growthMeter += 1;
             maxGrowth += 1;
 
-            if (growthMeter >= 10)
+            if (true) //(growthMeter >= 10)
             {
-                maxGrowth += 1;
+                //maxGrowth += 1;
                 growthMeter = 0;
-            }
 
-            if (maxGrowth == 1)
-            {
-                transform.localScale += new Vector3(0.5F, 0, 0.5F);
-                //maxHealth += 10;
-                //damage += 2;
-                //bulletSpeed += 5;
-                TopdownController moveScript = gameObject.GetComponent<TopdownController>();
-                moveScript.speed += 2;
-            }
-            else if (maxGrowth == 2)
-            {
-                playerGun.burstSize++;
-                //maxHealth += 10;
-                //bulletSpeed += 5;
-            }
-            else if (maxGrowth == 3)
-            {
-                playerGun.burstSize++;
-                //maxHealth += 10;
-                //bulletSpeed += 5;
+
+                if (maxGrowth % 5 == 0)
+                {
+                    // Grows in size after 5 growths
+                    transform.localScale += new Vector3(0.5F, 0, 0.5F);
+
+                    int gunIndex = (int)maxGrowth / 5;
+                    if (gunIndex < 3)
+                    {
+                        playerGun = playerGuns[gunIndex];
+                    }
+
+                }
+                else if (maxGrowth % 5 == 1)
+                {
+                    maxHealth += 10;
+
+                }
+                else if (maxGrowth % 5 == 2)
+                {
+                    TopdownController moveScript = gameObject.GetComponent<TopdownController>();
+                    moveScript.speed += 2;
+                }
+                else if (maxGrowth % 5 == 3)
+                {
+                    int oldDamage = playerGun.damage;
+
+                    playerGun.damage += 1;
+                    Debug.Log("Increase health from " + oldDamage + " to " + playerGun.damage);
+
+                }
+                else if (maxGrowth % 5 == 4)
+                {
+                    playerGun.burstSize++;
+                }
             }
         }
     }
