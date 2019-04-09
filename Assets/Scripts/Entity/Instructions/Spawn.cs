@@ -23,6 +23,9 @@ public class Spawn : Instruction
     private void SpawnAlienSmall()
     {
         GameObject small = Object.Instantiate(alienSmallPrefab, instructionRunner.transform.position + instructionRunner.transform.forward, Quaternion.identity) as GameObject;
+        //  small.GetComponent<Entity>(Spiders).
+        small.GetComponent<Spiders>().nestPosition = instructionRunner.transform.position;
+        
         small.transform.parent = instructionRunner.transform.parent;
     }
 

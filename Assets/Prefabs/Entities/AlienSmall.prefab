@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 1790385152733186305}
   - component: {fileID: 6649013640602127357}
   - component: {fileID: 4714931833630202965}
-  - component: {fileID: 6163769373477912691}
+  - component: {fileID: 260200086768625044}
   m_Layer: 16
   m_Name: AlienSmall
   m_TagString: Alien/Small
@@ -269,7 +269,7 @@ Transform:
   m_LocalScale: {x: 0.75, y: 1, z: 0.75}
   m_Children:
   - {fileID: 4498346662221548422}
-  - {fileID: 6449135893878182020}
+  - {fileID: 6080467971132023378}
   - {fileID: 3498910219649852254}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -332,10 +332,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
-  bulletPrefab: {fileID: 2761997537463405416, guid: b7445cac869f00c4a9aaa952e3f5d8ab,
+  bulletPrefab: {fileID: 1077086788633318468, guid: cc81385622a048d4faa69267bd925153,
     type: 3}
   bulletSpeed: 10
   rateOfFire: 2
+  offset: 0
+  burstSize: 0
+  angleDeviation: 0
+  bulletCount: 0
 --- !u!114 &4714931833630202965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,6 +367,23 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: MyReactionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  nestPosition: {x: 0, y: 0, z: 0}
+  timer: 2
+  visionRange: 5
+  nestRange: 8
+--- !u!65 &260200086768625044
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8229433697892653722}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1077636184514125265
 PrefabInstance:
   m_ObjectHideFlags: 0

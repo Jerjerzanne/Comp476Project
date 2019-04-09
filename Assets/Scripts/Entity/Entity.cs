@@ -175,6 +175,10 @@ public class Entity : Destructible
         {
             CurrentInstruction.Execute();
         }
+        else
+        {
+            GetNextInstruction();
+        }
     }
     #endregion
 
