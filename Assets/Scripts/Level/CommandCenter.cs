@@ -78,8 +78,8 @@ public class CommandCenter : Destructible
         if (soldier != null)
         {
             // Get the position of the collider:
-            Vector3 colliderPos = breaker.GetComponent<Collider>().transform.position;
-
+            Vector3 colliderPos = breaker.GetComponent<BoxCollider>().transform.position + -breaker.transform.forward * 1;
+            Debug.Log(colliderPos);
             soldier.Instructions.Push(new SearchRoom(breaker.GetComponentInParent<Room>(), searchTimer, navigationTimer,
                 soldier));
             soldier.Instructions.Push(new Interact(breaker, soldier));
