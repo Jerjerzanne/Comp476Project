@@ -19,6 +19,7 @@ public class Projectile : MonoBehaviour
 
     private float _speed;
     private int _damage;
+    public LayerMask maskOfObstacle;
 
     #endregion
 
@@ -44,7 +45,7 @@ public class Projectile : MonoBehaviour
         int otherLayer = other.gameObject.layer;
 
         //TODO: create a layer mask for elseif
-        if (otherLayer == wallLayer || otherLayer == obstacleLayer || otherLayer == doorLayer)
+        if (maskOfObstacle == (maskOfObstacle | (1 << otherLayer)))
         {
             //Debug.Log("Projectile hit a wall");
             Destroy(this.gameObject);
