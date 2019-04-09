@@ -24,13 +24,13 @@ public class Player : Destructible
 
     [SerializeField, Header("Gun")]
     public GameObject bulletPrefab;
-    public float bulletSpeed;
     public float rateOfFire;
     public float offset = 0.5f;
     public int burstSize = 1;
 
     [SerializeField, Header("Weapon")]
     public int damage = 2;
+    public float bulletSpeed = 2;
 
 
     #endregion
@@ -53,12 +53,13 @@ public class Player : Destructible
         CurrentGrowth = initialGrowth;
     }
 
-    protected void Update() {
+    protected void Update()
+    {
 
         if (Input.GetKey(KeyCode.Mouse0))
         {
             Fire();
-            
+
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
@@ -82,9 +83,12 @@ public class Player : Destructible
         for (int i = 0; i < burstSize; i++)
         {
             Vector3 spawnPos = this.transform.position + this.transform.forward * offset;
-            Projectile playerBullet = Instantiate(bulletPrefab, spawnPos, transform.localRotation).GetComponent<Projectile>();
-            playerBullet.SetSpeed(bulletSpeed, damage);
-            yield return new WaitForSeconds(bulletDelay); 
+            GameObject playerBullet = Instantiate(bulletPrefab, spawnPos, transform.localRotation);
+            Projectile pScript = playerBullet.GetComponent<Projectile>();
+            pScript._speed = bulletSpeed;
+            pScript._damage = damage;
+            //playerBullet.SetSpeed(bulletSpeed, damage);
+            yield return new WaitForSeconds(bulletDelay);
         }
     }
 
@@ -98,11 +102,13 @@ public class Player : Destructible
     }
     protected void UpdateGrowth()
     {
-       
+
         if (maxGrowth < 4)
         {
             //For testing, simply change the code below to maxGrowth += 1
-            growthMeter += 1;
+
+            //growthMeter += 1;
+            maxGrowth += 1;
 
             if (growthMeter >= 10)
             {
