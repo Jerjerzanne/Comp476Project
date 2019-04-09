@@ -26,6 +26,8 @@ TagManager:
   - Waypoint
   - Projectile
   - Alien
+  - Obstacle
+  - Room
   - 
   - 
   - 

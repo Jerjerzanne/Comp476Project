@@ -15,8 +15,8 @@ public class Room : MonoBehaviour
 
     private void Awake()
     {
-        
-        foreach (Transform childTransform in this.GetComponentsInChildren<Transform>())
+        Transform listOfPointObjects = transform.Find("Waypoints");
+        foreach (Transform childTransform in listOfPointObjects)
         {
             if (childTransform.gameObject.name.Contains("Point")) // TODO: Find a more stable way to detect Point objects only in the list of transforms.
                 waypoints.Add(childTransform.position);

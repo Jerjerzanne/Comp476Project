@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class Investigate : Order
 {
-    NavMeshAgent agent;
     //private int roomNb = 0;
     public float searchTimer;
     public float navigationTimer;

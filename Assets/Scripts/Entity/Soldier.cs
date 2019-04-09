@@ -5,6 +5,31 @@ using UnityEngine.AI;
 
 public class Soldier : Entity
 {
+    #region Variables
+
+    private Pods myPod;
+    private bool deployed;
+    private Vector3 reportPosition;
+
+    [HideInInspector]
+    public Barracks barracks;
+
+    #endregion
+
+    #region Properties
+
+    public bool Deployed
+    {
+        set { deployed = value; }
+        get { return deployed; }
+    }
+    public Vector3 ReportPosition
+    {
+        set { reportPosition = value; }
+        get { return reportPosition; }
+    }
+
+    #endregion
 
     #region Methods
 
@@ -52,6 +77,24 @@ public class Soldier : Entity
                     }
                 }
             }
+        }
+    }
+
+    protected override void RanOutOfInstructions()
+    {
+        if (CurrentOrder is Patrol)
+        {
+            CurrentOrder = CurrentOrder;
+        }
+        else if(Deployed)
+        {
+            Instructions.Push(new Interact(barracks, this));
+            CurrentInstruction = new Goto(barracks.transform.position, 0, this);
+            Debug.Log("The soldier should return to the barracks");
+        }
+        else
+        {
+            base.RanOutOfInstructions();
         }
     }
 

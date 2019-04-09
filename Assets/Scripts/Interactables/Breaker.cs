@@ -11,6 +11,8 @@ public class Breaker : Interactable
     public Instruction breakerInstruction;
     public List<Light> lights;
     public bool enabled;
+    protected CommandCenter commandCenter;
+
     //Piece of the UI
 
     #endregion
@@ -21,15 +23,26 @@ public class Breaker : Interactable
     public override void PlayerInteract(Player player)
     {
         base.PlayerInteract(player);
-        InteractBreaker(player.gameObject);
+        InteractBreaker();
+    }
+
+    public override Instruction EntityInteract(Entity entity)
+    {
+        return new Repair(5.0f, this, entity);
+    }
+
+    public override void Repair()
+    {
+        CurrentHealth = maxHealth;
+        InteractBreaker();
     }
 
     //class methods
 
     /// <summary>
-    /// Teleports entity to the exit vent
+    /// Toggles the lights:
     /// </summary>
-    private void InteractBreaker(GameObject entity)
+    private void InteractBreaker()
     {
         if (enabled)
         {
@@ -45,13 +58,37 @@ public class Breaker : Interactable
         }
     }
 
+    private void SetLights()
+    {
+        if (enabled)
+        {
+            foreach (Light light in lights)
+                light.enabled = true;
+        }
+        else
+        {
+            foreach (Light light in lights)
+                light.enabled = false;
+        }
+    }
+
+    protected override void Die()
+    {
+       base.Die();
+       enabled = false;
+       InteractBreaker();
+       commandCenter.powerStatusEvent.Invoke(this); //Activates the CC response
+    }
+
     #endregion
 
     #region Functions
 
-    void Awake()
+    void Start()
     {
-
+        commandCenter = FindObjectOfType<CommandCenter>();
+        // Set the lights to the proper enabled value:
+        SetLights();
     }
 
     void OnTriggerEnter(Collider other)
@@ -67,16 +104,17 @@ public class Breaker : Interactable
     {
         if (other.gameObject.layer == 9)
         {
-            if (Input.GetButtonDown("Interact"))
+            if (Input.GetButtonDown("Interact") && Time.time - lastInteractionTime > cooldownTime)
             {
                 Debug.Log("Player interacted with the breaker");
                 PlayerInteract(other.GetComponent<Player>());
+                // Interact cooldown set:
+                lastInteractionTime = Time.time;
             }
         }
         if (other.gameObject.layer == 10)
         {
-            Debug.Log("Entity interacted with the breaker");
-            PlayerInteract(other.GetComponent<Player>());
+            // Debug.Log("Entity interacted with the breaker");
         }
     }
 
@@ -88,5 +126,6 @@ public class Breaker : Interactable
             //Stop showing the UI
         }
     }
+
     #endregion
 }

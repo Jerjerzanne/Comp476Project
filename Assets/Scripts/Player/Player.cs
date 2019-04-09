@@ -23,6 +23,7 @@ public class Player : Destructible
     public int maxGrowth;
 
     [SerializeField, Header("Gun")]
+    public Gun playerGun;
     public GameObject bulletPrefab;
     public float rateOfFire;
     public float offset = 0.5f;
@@ -58,17 +59,21 @@ public class Player : Destructible
 
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            Fire();
-
+            Debug.Log("Do you reach FireSingle()");
+            playerGun.FireSingle();
+            //FireSingle();
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            StartCoroutine(BurstFire(bulletPrefab, burstSize, rateOfFire));
+            Debug.Log("Do you reach Burst()");
+            playerGun.FireBurst();
+            //StartCoroutine(BurstFire(bulletPrefab, burstSize, rateOfFire));
         }
     }
 
     protected void Fire()
     {
+       
         Vector3 spawnPos = this.transform.position + this.transform.forward * offset;
         Projectile bullet = Instantiate(bulletPrefab, spawnPos, this.transform.localRotation).GetComponent<Projectile>();
 
@@ -85,8 +90,7 @@ public class Player : Destructible
             Vector3 spawnPos = this.transform.position + this.transform.forward * offset;
             GameObject playerBullet = Instantiate(bulletPrefab, spawnPos, transform.localRotation);
             Projectile pScript = playerBullet.GetComponent<Projectile>();
-            pScript._speed = bulletSpeed;
-            pScript._damage = damage;
+            pScript.SetSpeed(bulletSpeed, damage);
             //playerBullet.SetSpeed(bulletSpeed, damage);
             yield return new WaitForSeconds(bulletDelay);
         }

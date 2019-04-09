@@ -2774,7 +2774,7 @@ GameObject:
   - component: {fileID: 897660506825252750}
   - component: {fileID: 760563564822608720}
   - component: {fileID: 8322834681303620826}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2970,7 +2970,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2544146946794501645}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.9999995, z: 0}
+  m_LocalPosition: {x: 0, y: 7, z: 0}
   m_LocalScale: {x: 1, y: 2.8571427, z: 1}
   m_Children: []
   m_Father: {fileID: 3565672583792309711}
@@ -3194,7 +3194,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2933803767700438587}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.9999995, z: 0}
+  m_LocalPosition: {x: 0, y: 7, z: 0}
   m_LocalScale: {x: 1, y: 2.8571427, z: 1}
   m_Children: []
   m_Father: {fileID: 3290360556282523271}
@@ -3341,7 +3341,7 @@ GameObject:
   - component: {fileID: 3200907144811525088}
   - component: {fileID: 1063706099945173871}
   - component: {fileID: 1980912265690264201}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Point (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3476,7 +3476,7 @@ GameObject:
   - component: {fileID: 3642746970748266611}
   - component: {fileID: 5158433556356825763}
   - component: {fileID: 8345232893500215331}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3784,7 +3784,7 @@ GameObject:
   - component: {fileID: 4911251629439252780}
   - component: {fileID: 2670677072827978020}
   - component: {fileID: 6716553631324499682}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4028,8 +4028,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3565672583792309711}
-  m_Layer: 0
-  m_Name: OpenRoom 1 Entry 2
+  - component: {fileID: 6259466687073794461}
+  - component: {fileID: 2701135782677279546}
+  m_Layer: 18
+  m_Name: RectangleRoom 2 Entry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4062,6 +4064,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6259466687073794461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6662908194599383382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3656d89cb40eac4479e2fa6c2f62b27e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints: []
+--- !u!65 &2701135782677279546
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6662908194599383382}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20, y: 1, z: 10}
+  m_Center: {x: 5, y: 10, z: 0}
 --- !u!1 &6803221647333347155
 GameObject:
   m_ObjectHideFlags: 0
@@ -4074,7 +4102,7 @@ GameObject:
   - component: {fileID: 6664833190784533874}
   - component: {fileID: 1934139728405841781}
   - component: {fileID: 5492598009929135529}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Point (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4608,7 +4636,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9094080971152675189}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4423722549218960314}
