@@ -28,6 +28,7 @@ public class Gun : Weapon
 
     #region Methods
 
+    override
     public void FireSingle()
     {
         if (!locked)
