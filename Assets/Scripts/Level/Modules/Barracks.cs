@@ -67,6 +67,7 @@ public class Barracks : Interactable
             commandCenter.reportEvent.Invoke(pod.soldierRef.ReportPosition);
             pod.soldierRef.ReportPosition = Vector3.zero;
             }
+            Debug.Log(this.transform.position + pod.podPosition);
             return new Goto(this.transform.position + pod.podPosition, 0, entity);
         }
         return null;

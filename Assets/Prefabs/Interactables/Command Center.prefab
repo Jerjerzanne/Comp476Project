@@ -117,6 +117,6 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   barracks: {fileID: 0}
   patrolRoutes: []
-  checkTimer: 0
+  checkTimer: 10
   searchTimer: 5
   navigationTimer: 10

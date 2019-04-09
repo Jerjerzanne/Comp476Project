@@ -92,6 +92,10 @@ public class Soldier : Entity
             CurrentInstruction = new Goto(barracks.transform.position, 0, this);
             Debug.Log("The soldier should return to the barracks");
         }
+        else
+        {
+            base.RanOutOfInstructions();
+        }
     }
 
     #endregion
