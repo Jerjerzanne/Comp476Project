@@ -38,7 +38,7 @@ public class Barracks : Interactable
     {
         if (soldiers != null)
         {
-            Pods soldier = soldiers.Find(status => status.soldierRef != null);
+            Pods soldier = soldiers.Find(status => status.soldierRef != null && status.deployed == false);
             if (soldier != null)
             {
                 if(order != null)

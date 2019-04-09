@@ -23,6 +23,10 @@ public class CommandCenter : Destructible
     public PowerStatusEvent powerStatusEvent;
     public Barracks barracks;
 
+    [Header("Patrols")]
+    public List<Patrol> patrolRoutes;
+    public float checkTimer;
+
     [Header("Investigate Attributes")]
 
     [Tooltip("Full time for the search")]
@@ -91,6 +95,21 @@ public class CommandCenter : Destructible
         }
     }
 
+    IEnumerator CheckRoutes()
+    {
+        for (; ; )
+        {
+            foreach (var route in patrolRoutes)
+            {
+                if (route.agent == null)
+                {
+                    route.agent = barracks.RequestSoldier(route);
+                }
+            }
+            yield return new WaitForSeconds(checkTimer);
+        }
+    }
+
     #endregion
 
     #region Functions
@@ -107,6 +126,11 @@ public class CommandCenter : Destructible
         reportEvent.AddListener(ReportReaction);
         powerStatusEvent.AddListener(PowerStatusReaction);
 
+    }
+
+    void Start()
+    {
+        StartCoroutine("CheckRoutes");
     }
 
     // Update is called once per frame

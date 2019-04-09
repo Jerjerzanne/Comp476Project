@@ -5,12 +5,19 @@ using UnityEngine.AI;
 
 public class Patrol : Order
 {
-    NavMeshAgent agent;
+
+    #region Variables
+
+    [HideInInspector]
+    public Entity agent;
     private int roomNb = 0;
     private float timer = 1;
+    
+
+    #endregion
+        
     void Start()
     {
-        
     }
 
     private void Awake()
@@ -28,8 +35,6 @@ public class Patrol : Order
 
     // Update is called once per frame
     void Update()
-    {
-      //  Instruction.CurrentInstruction(agent, routine, roomNb, timer);
-      
+    { 
     }
 }
