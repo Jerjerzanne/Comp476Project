@@ -131,7 +131,7 @@ public class Entity : Destructible
     {
         if (_weapon != null)
         {
-            _weapon.Fire();
+            _weapon.FireSingle();
         }
     }
 
@@ -147,7 +147,7 @@ public class Entity : Destructible
 
     private void Awake()
     {
-
+        base.Awake();
         if (instructionEvent == null)
             instructionEvent = new MyInstructionEvent();
 

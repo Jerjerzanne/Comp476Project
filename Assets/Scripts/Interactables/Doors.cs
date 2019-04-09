@@ -59,11 +59,11 @@ public class Doors : MonoBehaviour
     {
         if (other.gameObject.layer ==  9 || other.gameObject.layer == 10 || other.gameObject.layer == 16)
         {
-            Debug.Log(other.gameObject.name + " entered the door range");
+            //Debug.Log(other.gameObject.name + " entered the door range");
             _count++;
             if(CurrentState == doorState.CLOSED && !lockedStatus)
             {
-                Debug.Log("Opening the doors");
+                //Debug.Log("Opening the doors");
                 this.CurrentState = doorState.OPEN;
                 this._animator.SetBool("Open", true);
             }
@@ -74,11 +74,11 @@ public class Doors : MonoBehaviour
     {
         if (other.gameObject.layer == 9 || other.gameObject.layer == 10 || other.gameObject.layer == 16)
         {
-            Debug.Log( other.gameObject.name+ " left the door range");
+            //Debug.Log( other.gameObject.name+ " left the door range");
             _count--;
             if (_count == 0)
             {
-                Debug.Log("Closing the doors");
+                //Debug.Log("Closing the doors");
                 this.CurrentState = doorState.CLOSED;
                 this._animator.SetBool("Open", false);
             }

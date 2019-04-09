@@ -46,16 +46,16 @@ public class Destructible : MonoBehaviour
         Debug.Log(this.name + " took " + damage);
         Debug.Log(this.name + " has " + CurrentHealth);
         Debug.Log(this.name + " has max " + maxHealth);
-        healthBar.fillAmount = CurrentHealth / maxHealth;
-        Debug.Log(this.name + " has " + healthBar.fillAmount);
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = CurrentHealth / maxHealth;
+            Debug.Log(this.name + " has " + healthBar.fillAmount);
+        }
+        
         if (CurrentHealth <= 0)
         {
             Die();
-            if (gameObject.layer == 9)
-            {
-
-            }
-            else
+            if (gameObject.layer != 9 && gameObject.layer != 11)
             {
                 Destroy(gameObject);
                 Destructible food = Instantiate(foodPrefab, new Vector3(transform.position.x, transform.position.y + 0.50f, transform.position.z), Quaternion.Euler(new Vector3(180, 90, 90))).GetComponent<Destructible>();

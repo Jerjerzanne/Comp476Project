@@ -43,7 +43,7 @@ public class Projectile : MonoBehaviour
 
         if (otherLayer == wallLayer)
         {
-            Debug.Log("Projectile hit a wall");
+            //Debug.Log("Projectile hit a wall");
             Destroy(this.gameObject);
         }
         else if ((otherLayer == playerLayer || otherLayer == soldierLayer || otherLayer == interactableLayer) && gameObject.name == "AlienBullet(Clone)")
