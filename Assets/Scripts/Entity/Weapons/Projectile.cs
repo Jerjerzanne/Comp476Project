@@ -19,6 +19,7 @@ public class Projectile : MonoBehaviour
 
     private float _speed;
     private int _damage;
+    private Vector3 pointOrigin;
 
     #endregion
 
@@ -32,7 +33,14 @@ public class Projectile : MonoBehaviour
 
     #endregion
 
+
+
     #region Functions
+
+    void Start()
+    {
+        pointOrigin = this.transform.position;
+    }
 
     void Update()
     {
@@ -51,19 +59,19 @@ public class Projectile : MonoBehaviour
         }
         else if ((otherLayer == playerLayer || otherLayer == soldierLayer || otherLayer == interactableLayer) && gameObject.name == "AlienBullet(Clone)")
         {
-            other.gameObject.GetComponent<Destructible>().TakeDamage(this._damage);
+            other.gameObject.GetComponent<Destructible>().TakeDamage(this._damage, pointOrigin);
             Destroy(this.gameObject);
             //Debug.Log("Projectile hit " + other.gameObject.name);
         }
         else if ((otherLayer == playerLayer || otherLayer == alienLayer) && gameObject.name == "Bullet(Clone)")
         {
-            other.gameObject.GetComponent<Destructible>().TakeDamage(this._damage);
+            other.gameObject.GetComponent<Destructible>().TakeDamage(this._damage, pointOrigin);
             Destroy(this.gameObject);
             //Debug.Log("Projectile hit " + other.gameObject.name);
         }
         else if ((otherLayer == soldierLayer || otherLayer == alienLayer || otherLayer == interactableLayer) && gameObject.name == "PlayerBullet(Clone)")
         {
-            other.gameObject.GetComponent<Destructible>().TakeDamage(this._damage);
+            other.gameObject.GetComponent<Destructible>().TakeDamage(this._damage, pointOrigin);
             Destroy(this.gameObject);
         }
 

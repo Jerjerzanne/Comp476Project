@@ -39,7 +39,7 @@ public class Destructible : MonoBehaviour
     /// reduce the damage from the destructible
     /// </summary>
     /// <param name="damage"></param>
-    public virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage, Vector3 origin = default(Vector3))
     {
        
         CurrentHealth -= damage;
