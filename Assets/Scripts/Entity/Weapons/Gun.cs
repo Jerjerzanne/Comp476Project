@@ -16,6 +16,10 @@ public class Gun : Weapon
     [Header("Burst fire")]
     public int burstSize;
 
+    [Header("shotgun fire")]
+    public int angleDeviation;
+    public int bulletCount;
+
     private float timer;
     private float timeSinceFired;
     // Gun sound
@@ -24,29 +28,40 @@ public class Gun : Weapon
 
     #region Methods
 
-    public override  void FireSingle()
+    public void FireSingle()
     {
-        timer += Time.time - timeSinceFired; 
-        if (timer >  1/rateOfFire && !locked)
+        if (!locked)
+        {
+            timer = Time.time - timeSinceFired;
+        }
+
+        if (timer >  1/rateOfFire)
         {
             Projectile bullet = Instantiate(bulletPrefab, this.transform.position + this.transform.forward * offset, this.transform.localRotation).GetComponent<Projectile>();
             bullet.SetSpeed(bulletSpeed, damage);
             timer = 0;
+            timeSinceFired = Time.time;
         }
 
-        timeSinceFired = Time.time;
+        
     }
 
-    public override void FireBurst()
+    public void FireBurst()
     {
         if (!locked)
         {
+        timer = Time.time - timeSinceFired;
+        }
+
+        if (timer > 1 / rateOfFire)
+        {
+            timer = 0;
             locked = true;
             StartCoroutine("Burst");
         }
     }
 
-    public override IEnumerator Burst()
+    public IEnumerator Burst()
     {
         float bulletDelay = 1 / rateOfFire;
 
@@ -57,9 +72,18 @@ public class Gun : Weapon
             Projectile pScript = playerBullet.GetComponent<Projectile>();
             pScript.SetSpeed(bulletSpeed, damage);
             //playerBullet.SetSpeed(bulletSpeed, damage);
-            yield return new WaitForSeconds(bulletDelay);
+            yield return new WaitForSeconds(bulletDelay / burstSize);
+
         }
+        timeSinceFired = Time.time;
         locked = false;
+
+
+    }
+
+    public void FireSpray()
+    {
+
     }
     #endregion
 }

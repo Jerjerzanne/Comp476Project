@@ -93,6 +93,7 @@ public class Barracks : Interactable
         Pods newSoldier = soldiers.Find(soldier => soldier.soldierRef == null);
         if (!spawning && newSoldier != null)
         {
+            newSoldier.deployed = false;
             spawning = true;
             StartCoroutine("SpawnSoldier", newSoldier);
         }

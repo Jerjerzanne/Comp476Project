@@ -97,10 +97,12 @@ public class CommandCenter : Destructible
 
     IEnumerator CheckRoutes()
     {
-        for (; ; )
+        while(true)
         {
+            Debug.Log(Time.time);
             foreach (var route in patrolRoutes)
             {
+                Debug.Log(route.agent);
                 if (route.agent == null)
                 {
                     route.agent = barracks.RequestSoldier(route);

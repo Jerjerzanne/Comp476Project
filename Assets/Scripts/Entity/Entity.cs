@@ -54,8 +54,8 @@ public class Entity : Destructible
             // Insert all instructions to the entity's instruction stack
             for (int i = 0; i < CurrentOrder.instructions.Count; i++)
             {
-                Debug.Log(CurrentOrder.instructions[i]);
-                Debug.Log(Instructions);
+                //Debug.Log(CurrentOrder.instructions[i]);
+                //Debug.Log(Instructions);
                 Instructions.Push(CurrentOrder.instructions[i]);
             }
             GetNextInstruction();

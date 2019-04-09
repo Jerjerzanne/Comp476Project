@@ -105,10 +105,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6a593faa362f24fb536dd9c2a2daa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodPrefab: {fileID: 0}
   maxHealth: 5
+  healthBar: {fileID: 0}
   lights:
   - {fileID: 0}
-  enabled: 0
+  enabled: 1
 --- !u!54 &360419627
 Rigidbody:
   m_ObjectHideFlags: 0

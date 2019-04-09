@@ -43,13 +43,13 @@ public class Destructible : MonoBehaviour
     {
        
         CurrentHealth -= damage;
-        Debug.Log(this.name + " took " + damage);
-        Debug.Log(this.name + " has " + CurrentHealth);
-        Debug.Log(this.name + " has max " + maxHealth);
+        //Debug.Log(this.name + " took " + damage);
+        //Debug.Log(this.name + " has " + CurrentHealth);
+        //Debug.Log(this.name + " has max " + maxHealth);
         if (healthBar != null)
         {
-            healthBar.fillAmount = CurrentHealth / maxHealth;
-            Debug.Log(this.name + " has " + healthBar.fillAmount);
+            healthBar.fillAmount = (float) CurrentHealth / maxHealth;
+            //Debug.Log(this.name + " has " + healthBar.fillAmount);
         }
         
         if (CurrentHealth <= 0)

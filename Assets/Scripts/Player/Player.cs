@@ -59,42 +59,44 @@ public class Player : Destructible
 
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            Debug.Log("Do you reach FireSingle()");
+            //Debug.Log("Do you reach FireSingle()");
             playerGun.FireSingle();
             //FireSingle();
         }
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKey(KeyCode.Mouse1))
         {
-            Debug.Log("Do you reach Burst()");
+            //Debug.Log("Do you reach Burst()");
             playerGun.FireBurst();
             //StartCoroutine(BurstFire(bulletPrefab, burstSize, rateOfFire));
         }
     }
 
-    protected void Fire()
-    {
+    // Renny, I moved that code logic up to Gun. 
+
+    //protected void Fire()
+    //{
        
-        Vector3 spawnPos = this.transform.position + this.transform.forward * offset;
-        Projectile bullet = Instantiate(bulletPrefab, spawnPos, this.transform.localRotation).GetComponent<Projectile>();
+    //    Vector3 spawnPos = this.transform.position + this.transform.forward * offset;
+    //    Projectile bullet = Instantiate(bulletPrefab, spawnPos, this.transform.localRotation).GetComponent<Projectile>();
 
-        bullet.SetSpeed(bulletSpeed, damage);
-    }
+    //    bullet.SetSpeed(bulletSpeed, damage);
+    //}
 
-    protected IEnumerator BurstFire(GameObject bulletPrefab, int burstSize, float rateOfFire)
-    {
+    //protected IEnumerator BurstFire(GameObject bulletPrefab, int burstSize, float rateOfFire)
+    //{
 
-        float bulletDelay = 1 / rateOfFire;
+    //    float bulletDelay = 1 / rateOfFire;
 
-        for (int i = 0; i < burstSize; i++)
-        {
-            Vector3 spawnPos = this.transform.position + this.transform.forward * offset;
-            GameObject playerBullet = Instantiate(bulletPrefab, spawnPos, transform.localRotation);
-            Projectile pScript = playerBullet.GetComponent<Projectile>();
-            pScript.SetSpeed(bulletSpeed, damage);
-            //playerBullet.SetSpeed(bulletSpeed, damage);
-            yield return new WaitForSeconds(bulletDelay);
-        }
-    }
+    //    for (int i = 0; i < burstSize; i++)
+    //    {
+    //        Vector3 spawnPos = this.transform.position + this.transform.forward * offset;
+    //        GameObject playerBullet = Instantiate(bulletPrefab, spawnPos, transform.localRotation);
+    //        Projectile pScript = playerBullet.GetComponent<Projectile>();
+    //        pScript.SetSpeed(bulletSpeed, damage);
+    //        //playerBullet.SetSpeed(bulletSpeed, damage);
+    //        yield return new WaitForSeconds(bulletDelay);
+    //    }
+    //}
 
     void OnTriggerEnter(Collider other)
     {
@@ -131,13 +133,13 @@ public class Player : Destructible
             }
             else if (maxGrowth == 2)
             {
-                burstSize = 2;
+                playerGun.burstSize++;
                 //maxHealth += 10;
                 //bulletSpeed += 5;
             }
             else if (maxGrowth == 3)
             {
-                burstSize = 3;
+                playerGun.burstSize++;
                 //maxHealth += 10;
                 //bulletSpeed += 5;
             }

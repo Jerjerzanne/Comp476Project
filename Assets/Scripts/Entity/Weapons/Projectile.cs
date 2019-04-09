@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
     private const int soldierLayer = 10;
     private const int interactableLayer = 11;
     private const int wallLayer = 13;
+    private const int obstacleLayer = 17;
     private const int alienLayer = 16;
     #endregion
 
@@ -41,7 +42,8 @@ public class Projectile : MonoBehaviour
     {
         int otherLayer = other.gameObject.layer;
 
-        if (otherLayer == wallLayer)
+        //TODO: create a layer mask for elseif
+        if (otherLayer == wallLayer || otherLayer == obstacleLayer)
         {
             //Debug.Log("Projectile hit a wall");
             Destroy(this.gameObject);
