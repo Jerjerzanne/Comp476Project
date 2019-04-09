@@ -5,12 +5,12 @@ using UnityEngine;
 /// <summary>
 /// Interactable game entity
 /// </summary>
-public class Interactable : MonoBehaviour
+public class Interactable : Destructible
 {
     #region Variables
 
-    public Instruction nextInstruction;
 
+    public Instruction nextInstruction;
 
     protected float cooldownTime = 0.3f;
     // When checking for cooldown, we want to do it as such:
@@ -36,6 +36,11 @@ public class Interactable : MonoBehaviour
     public virtual void PlayerInteract(Player player)
     {
 
+    }
+
+    protected override void Die() 
+    {
+        Debug.Log(this.name + " is now broken.");
     }
 
     /// <summary>

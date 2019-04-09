@@ -77,6 +77,13 @@ public class Barracks : Interactable
     // Start is called before the first frame update
     void Start()
     {
+        foreach (Pods soldier in soldiers.FindAll(soldier => soldier.soldierRef != null))
+        {
+            if (soldier.soldierRef.barracks == null)
+            {
+                soldier.soldierRef.barracks = this;
+            }
+        }
     }
 
     // Update is called once per frame

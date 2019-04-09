@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcde901d32d11ca489d6ecdc96b1412f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 50
   reportEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -117,5 +117,6 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   barracks: {fileID: 0}
   patrolRoutes: []
+  checkTimer: 0
   searchTimer: 5
   navigationTimer: 10

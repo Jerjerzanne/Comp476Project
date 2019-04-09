@@ -24,7 +24,7 @@ public class Destructible : MonoBehaviour
     /// <summary>
     /// Current health of the destructible
     /// </summary>
-    public int CurrentHealth { get; private set; }
+    public int CurrentHealth { get; protected set; }
 
     #endregion
 

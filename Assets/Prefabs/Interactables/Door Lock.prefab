@@ -104,3 +104,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230187352197db64580a173ad3da9352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 5
+  controlledDoor: {fileID: 0}
