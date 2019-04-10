@@ -25,6 +25,10 @@ public class AlienNest : Entity
 
     #region Methods
 
+    /// <summary>
+    /// Call all aliens to the target
+    /// </summary>
+    /// <param name="targetPosition"></param>
     private void callSmallAliens(Vector3 targetPosition)
     {
         Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, searchRadius, entityMask);
@@ -39,7 +43,6 @@ public class AlienNest : Entity
                 {
                     small.Instructions.Push(small.CurrentInstruction);
                     small.Instructions.Push(new Goto(small.transform.position, 0, small));
-
                     small.CurrentInstruction = new Chase(targetPosition, small);
                 }
             }
