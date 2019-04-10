@@ -34,7 +34,8 @@ public class Destructible : MonoBehaviour
     /// <summary>
     /// Current growth level of the player or AI entity
     /// </summary>
-    public int CurrentGrowth { get; set; }
+    //public int CurrentGrowth { get; set; }
+    public bool damaged { get; set; }
 
     #endregion
 
@@ -46,15 +47,15 @@ public class Destructible : MonoBehaviour
     /// <param name="damage"></param>
     public virtual void TakeDamage(int damage)
     {
-       
+        damaged = true;
         CurrentHealth -= damage;
-        //Debug.Log(this.name + " took " + damage);
+        Debug.Log(this.name + " took " + damage);
         //Debug.Log(this.name + " has " + CurrentHealth);
         //Debug.Log(this.name + " has max " + maxHealth);
         if (healthBar != null)
         {
             healthBar.fillAmount = (float) CurrentHealth / maxHealth;
-            //Debug.Log(this.name + " has " + healthBar.fillAmount);
+            Debug.Log(this.name + " has " + healthBar.fillAmount);
         }
         
         if (CurrentHealth <= 0)
@@ -95,6 +96,7 @@ public class Destructible : MonoBehaviour
     protected void Awake()
     {
         CurrentHealth = maxHealth;
+        damaged = false;
         Debug.Log(this.name + " has " + CurrentHealth);
     }
     #endregion

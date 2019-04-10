@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Manages the player information
@@ -35,31 +36,66 @@ public class Player : Destructible
     public int damage = 2;
     public float bulletSpeed = 2;
 
+    [Header("Ammo")]
+    public Text ammoText;
+    public int ammoCount;
+    public int refreshAmmoRate = 2;
+    protected bool cooldown;
+
+    [Header("UI")]
+    public Image damageImage;
+    #endregion
+
+    #region Properties
+
+    /// <summary>
+    /// Current growth level of the player
+    /// </summary>
+    public int CurrentGrowth { get; set; }
+    public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
+    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     //The colour the damageImage is set to, to flash.
 
     #endregion
 
     #region Functions
 
+    void UpdateMaxAmmo()
+    {
+        ammoCount = playerGun.maxAmmo;
+
+        ammoText.text = "Ammo: " + ammoCount.ToString();
+    }
+
     protected void Awake()
     {
         base.Awake();
         CurrentGrowth = initialGrowth;
+        UpdateMaxAmmo();
     }
 
     protected void Update()
     {
-
-        if (Input.GetKey(KeyCode.Mouse0))
+        ammoText.text = "Ammo: " + ammoCount.ToString();
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             //Debug.Log("Do you reach FireSingle()");
-            playerGun.FireSingle();
+            if (ammoCount > 0)
+            {
+                playerGun.FireSingle();
+                ammoCount --;
+                
+            }
             //FireSingle();
         }
-        if (Input.GetKey(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             //Debug.Log("Do you reach Burst()");
-            playerGun.FireBurst();
-            //StartCoroutine(BurstFire(bulletPrefab, burstSize, rateOfFire));
+            if (ammoCount > 0 && ammoCount >= playerGun.burstSize)
+            {
+                playerGun.FireBurst();
+                Debug.Log("Burst size is" + playerGun.burstSize);
+                ammoCount -= playerGun.burstSize;
+            }
         }
         if (Input.GetKey(KeyCode.Alpha1) || Input.GetKey(KeyCode.Keypad1))
         {
@@ -79,34 +115,39 @@ public class Player : Destructible
                 playerGun = playerGuns[2];
             }
         }
+        
+        damagedUI();
+        AutoReload();
+    }
+    public void damagedUI()
+    {
+        if (damaged)
+        {
+            damageImage.color = flashColour;
+        }
+        else
+        {
+        damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+        }
+        damaged = false;
+    }
+    public void AutoReload()
+    {
+
+        if (ammoCount < playerGun.maxAmmo && cooldown == false)
+        {
+            cooldown = true;
+            StartCoroutine(ReloadAmmo());
+        }
+
     }
 
-    // Renny, I moved that code logic up to Gun. 
-
-    //protected void Fire()
-    //{
-       
-    //    Vector3 spawnPos = this.transform.position + this.transform.forward * offset;
-    //    Projectile bullet = Instantiate(bulletPrefab, spawnPos, this.transform.localRotation).GetComponent<Projectile>();
-
-    //    bullet.SetSpeed(bulletSpeed, damage);
-    //}
-
-    //protected IEnumerator BurstFire(GameObject bulletPrefab, int burstSize, float rateOfFire)
-    //{
-
-    //    float bulletDelay = 1 / rateOfFire;
-
-    //    for (int i = 0; i < burstSize; i++)
-    //    {
-    //        Vector3 spawnPos = this.transform.position + this.transform.forward * offset;
-    //        GameObject playerBullet = Instantiate(bulletPrefab, spawnPos, transform.localRotation);
-    //        Projectile pScript = playerBullet.GetComponent<Projectile>();
-    //        pScript.SetSpeed(bulletSpeed, damage);
-    //        //playerBullet.SetSpeed(bulletSpeed, damage);
-    //        yield return new WaitForSeconds(bulletDelay);
-    //    }
-    //}
+    public IEnumerator ReloadAmmo()
+    {
+        ammoCount ++;
+        yield return new WaitForSeconds(refreshAmmoRate);
+        cooldown = false;
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -135,11 +176,11 @@ public class Player : Destructible
                     // Grows in size after 5 growths
                     transform.localScale += new Vector3(0.5F, 0, 0.5F);
 
+
                     int growthIndex = (int)maxGrowth / thresholdInterval;
                     if (growthIndex < 3)
                     {
-                        CurrentGrowth = initialGrowth;
-                        playerGun = playerGuns[growthIndex];
+                        playerGun = playerGuns[gunIndex];
                     }
 
                 }
