@@ -301,7 +301,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: MyReactionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  searchRadius: 5
+  searchRadius: 8
   spawnCountTimer: 5
   entityMask:
     serializedVersion: 2
@@ -310,11 +310,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   spawnedQueen: 0
+  nestInstance:
+    occupied: 0
+    nestPosition: {x: 0, y: 0, z: 0}
   spiderPrefab: {fileID: 8229433697892653722, guid: bdb39bbb941b7b040ba5cc01b576501d,
     type: 3}
   queenPrefab: {fileID: 7651501314730931065, guid: fd646f4fa4b015946a32ba84e9d764fd,
     type: 3}
-  spawnTimer: 15
+  spawnTimer: 2
   spawnMaxCount: 5
 --- !u!54 &7586534057862867188
 Rigidbody:
@@ -343,6 +346,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4e02ab7bff1769447a4ab6ae81d0bc66,
+        type: 3}
+    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
+        type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
+        type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
+        type: 3}
+      propertyPath: m_FillOrigin
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4501954933802991247, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
         type: 3}
@@ -448,27 +472,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 4e02ab7bff1769447a4ab6ae81d0bc66,
-        type: 3}
-    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
-        type: 3}
-      propertyPath: m_Type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
-        type: 3}
-      propertyPath: m_FillMethod
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
-        type: 3}
-      propertyPath: m_FillOrigin
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4590593333490784376, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
         type: 3}

@@ -7,7 +7,14 @@ public class AlienQueen : Entity
 {
     #region Variables
 
+    [HideInInspector]
     public AlienNest homeNest;
+    [HideInInspector]
+    public NestManager nestManager;
+
+    [Header("Create room attributes")]
+    public float protectionTimer;
+    public GameObject nestPrefab;
 
     #endregion
 
@@ -61,9 +68,39 @@ public class AlienQueen : Entity
         }
     }
 
+    protected override void RanOutOfInstructions()
+    {
+        NestInstance potentialNest = nestManager.RandomNest();
+        if (potentialNest != null)
+        {
+            Instructions.Push(new CreateNest(nestPrefab, potentialNest, protectionTimer, this));
+            CurrentInstruction = new Goto(potentialNest.nestPosition + Vector3.forward, 0, this);
+            
+        }
+        else
+        {
+            CurrentInstruction = new Goto(homeNest.transform.position + Vector3.forward, 0, this);
+            Instructions.Push(new Goto(nestManager.OccupiedNests().nestPosition, protectionTimer, this));
+        }
+    }
+
     #endregion
 
     #region Functions
+
+    protected void Start()
+    {
+        nestManager = GameObject.FindObjectOfType<NestManager>();
+        if (CurrentOrder == null)
+        {
+            NestInstance potentialNest = nestManager.RandomNest();
+            if (potentialNest != null)
+            {
+                CurrentInstruction = new Goto(potentialNest.nestPosition + Vector3.forward, 0, this);
+                Instructions.Push(new CreateNest(nestPrefab, potentialNest, protectionTimer, this));
+            }
+        }
+    }
 
     protected void Update()
     {

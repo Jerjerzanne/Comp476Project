@@ -90,7 +90,7 @@ public class Destructible : MonoBehaviour
     protected void Awake()
     {
         CurrentHealth = maxHealth;
-        Debug.Log(this.name + " has " + CurrentHealth);
+        //Debug.Log(this.name + " has " + CurrentHealth);
     }
     #endregion
 
