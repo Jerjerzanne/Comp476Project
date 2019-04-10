@@ -13,6 +13,7 @@ public class Player : Destructible
     private const int wallLayer = 13;
     private const int playerLayer = 9;
     private const int entityLayer = 10;
+    private const int thresholdInterval = 5;
     #endregion
 
     #region Variables
@@ -96,6 +97,25 @@ public class Player : Destructible
                 ammoCount -= playerGun.burstSize;
             }
         }
+        if (Input.GetKey(KeyCode.Alpha1) || Input.GetKey(KeyCode.Keypad1))
+        {
+            playerGun = playerGuns[0];
+        }
+        if (Input.GetKey(KeyCode.Alpha2) || Input.GetKey(KeyCode.Keypad2))
+        {
+            if (maxGrowth >= thresholdInterval * 1)
+            {
+                playerGun = playerGuns[1];
+            }
+        }
+        if (Input.GetKey(KeyCode.Alpha3) || Input.GetKey(KeyCode.Keypad3))
+        {
+            if (maxGrowth >= thresholdInterval * 2)
+            {
+                playerGun = playerGuns[2];
+            }
+        }
+        
         damagedUI();
         AutoReload();
     }
@@ -139,7 +159,7 @@ public class Player : Destructible
     }
     protected void UpdateGrowth()
     {
-        if (maxGrowth < 15)
+        if (maxGrowth <= 15)
         {
             //For testing, simply change the code below to maxGrowth += 1
 
@@ -151,44 +171,41 @@ public class Player : Destructible
                 //maxGrowth += 1;
                 growthMeter = 0;
 
-
-                if (maxGrowth % 5 == 0)
+                if (maxGrowth % thresholdInterval == 0)
                 {
                     // Grows in size after 5 growths
                     transform.localScale += new Vector3(0.5F, 0, 0.5F);
 
-                    int gunIndex = (int)maxGrowth / 5;
-                    if (gunIndex < 3)
+
+                    int growthIndex = (int)maxGrowth / thresholdInterval;
+                    if (growthIndex < 3)
                     {
                         playerGun = playerGuns[gunIndex];
                     }
 
                 }
-                else if (maxGrowth % 5 == 1)
+                else if (maxGrowth % thresholdInterval == 1)
                 {
                     maxHealth += 10;
 
                 }
-                else if (maxGrowth % 5 == 2)
+                else if (maxGrowth % thresholdInterval == 2)
                 {
                     TopdownController moveScript = gameObject.GetComponent<TopdownController>();
                     moveScript.speed += 2;
                 }
-                else if (maxGrowth % 5 == 3)
+                else if (maxGrowth % thresholdInterval == 3)
                 {
-                    int oldDamage = playerGun.damage;
-
                     playerGun.damage += 1;
-                    Debug.Log("Increase health from " + oldDamage + " to " + playerGun.damage);
 
                 }
-                else if (maxGrowth % 5 == 4)
+                else if (maxGrowth % thresholdInterval == 4)
                 {
                     playerGun.burstSize++;
                 }
             }
         }
     }
-    #endregion
 
+    #endregion
 }

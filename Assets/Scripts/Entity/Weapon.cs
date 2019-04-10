@@ -12,8 +12,8 @@ public class Weapon : MonoBehaviour
     #endregion
 
     #region Methods
-
     public virtual void FireSingle() { }
+    public virtual void FireBurst() { }
 
     #endregion
 }
