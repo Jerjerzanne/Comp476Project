@@ -23,6 +23,7 @@ public class Player : Destructible
     //Editor variables
     [SerializeField, Header("Player")]
     private int initialGrowth;
+    private const int maxGrowMeter = 5;
     public int growthMeter;
     public int maxGrowth;
     public List<Sprite> playerSprites;
@@ -47,12 +48,15 @@ public class Player : Destructible
 
     [Header("UI")]
     public Image damageImage;
+    public Text growthText;
+    public Image growthBar;
+    public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
+    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     //The colour the damageImage is set to, to flash.
     #endregion
 
     #region Properties
 
-    public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
-    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     //The colour the damageImage is set to, to flash.
+
 
     #endregion
 
@@ -158,17 +162,18 @@ public class Player : Destructible
     }
     protected void UpdateGrowth()
     {
+
         if (maxGrowth <= 15)
         {
             //For testing, simply change the code below to maxGrowth += 1
 
-            //growthMeter += 1;
+            growthMeter += 1;
             maxGrowth += 1;
 
             if (true) //(growthMeter >= 10)
             {
                 //maxGrowth += 1;
-                growthMeter = 0;
+                //growthMeter = 0;
 
                 if (maxGrowth % thresholdInterval == 0)
                 {
@@ -207,6 +212,14 @@ public class Player : Destructible
                 }
             }
         }
+
+        if (growthBar != null)
+        {
+            Debug.Log(this.name + " has fill amount" + growthMeter + " " + maxGrowMeter);
+            growthBar.fillAmount = (float)growthMeter / maxGrowMeter;
+            Debug.Log(this.name + " has fill amount" + growthBar.fillAmount);
+        }
+        growthText.text = "Growth Level: " + maxGrowth.ToString();
     }
 
     #endregion
