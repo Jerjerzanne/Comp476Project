@@ -6832,6 +6832,11 @@ PrefabInstance:
       propertyPath: initialOrder
       value: 
       objectReference: {fileID: 1495253453}
+    - target: {fileID: 7586534057862867186, guid: 4fc5d11bf7821dd4db020a4363cd5cc7,
+        type: 3}
+      propertyPath: searchRadius
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7586534057862867188, guid: 4fc5d11bf7821dd4db020a4363cd5cc7,
         type: 3}
       propertyPath: m_Constraints

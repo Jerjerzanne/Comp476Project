@@ -86,6 +86,12 @@ public class Wander : Instruction
 
     override public void Execute()
     {
+        if ((instructionRunner.transform.position - nestPosition).magnitude > nestRange)
+        {
+            instructionRunner.instructionEvent.Invoke(new Goto(nestPosition + Vector3.forward, 0, instructionRunner));
+        }
+        else
+        {
             //Find a point infront
             Vector3 point = RandomPointInCircle();
 
@@ -103,7 +109,10 @@ public class Wander : Instruction
 
             //Debug.Log((point - nestPosition).magnitude);
 
+        }
+
     }
+
     private void SetWander()
     {
         instructionRunner.Instructions.Push(instructionRunner.CurrentInstruction);

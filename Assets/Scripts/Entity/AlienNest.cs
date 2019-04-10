@@ -28,6 +28,25 @@ public class AlienNest : Entity
 
         Instructions.Push(new Attack(target, "Alien", this));
         CurrentInstruction = Instructions.Pop();
+
+
+        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, searchRadius, entityMask);
+        foreach (Collider hit in hitColliders)
+        {
+            if (hit.gameObject.tag.Contains("Small"))
+            {
+                Entity small = hit.GetComponent<Entity>();
+
+                if (small.CurrentInstruction.GetType() != typeof(Attack) &&
+                    small.CurrentInstruction.GetType() != typeof(Chase))
+                {
+                    small.Instructions.Push(small.CurrentInstruction);
+                    small.Instructions.Push( new Goto(small.transform.position, 0, small));
+                    small.CurrentInstruction = new Chase(target.transform.position, small);
+                }
+            }
+        }
+
     }
 
     protected override void DetectionReaction(GameObject[] target)
