@@ -38,10 +38,13 @@ public class Spawn : Instruction
             if ((instructionRunner as AlienNest).CountSpawns() >= spawnMaxCount && !(instructionRunner as AlienNest).spawnedQueen)
             {
                 instructionRunner.Instructions.Push(instructionRunner.CurrentInstruction);
-                instructionRunner.instructionEvent.Invoke(new CreateQueen(alienQueenPrefab, 60.0f, instructionRunner));
+                instructionRunner.instructionEvent.Invoke(new CreateQueen(alienQueenPrefab, timerMax * 2, instructionRunner));
             }
 
+            if ((instructionRunner as AlienNest).CountSpawns() < spawnMaxCount)
+            {
             SpawnAlienSmall();
+            }
             timer = timerMax;
         }
     }

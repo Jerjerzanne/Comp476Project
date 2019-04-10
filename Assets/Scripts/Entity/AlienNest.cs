@@ -25,17 +25,8 @@ public class AlienNest : Entity
 
     #region Methods
 
-    private void TargetAcquired(Destructible target)
+    private void callSmallAliens(Vector3 targetPosition)
     {
-        if (CurrentInstruction != null)
-        {
-            Instructions.Push(CurrentInstruction);
-        }
-
-        Instructions.Push(new Attack(target, "Alien", this));
-        CurrentInstruction = Instructions.Pop();
-
-
         Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, searchRadius, entityMask);
         foreach (Collider hit in hitColliders)
         {
@@ -47,11 +38,30 @@ public class AlienNest : Entity
                     small.CurrentInstruction.GetType() != typeof(Chase))
                 {
                     small.Instructions.Push(small.CurrentInstruction);
-                    small.Instructions.Push( new Goto(small.transform.position, 0, small));
+                    small.Instructions.Push(new Goto(small.transform.position, 0, small));
+<<<<<<< HEAD
+<<<<<<< HEAD
+                    small.CurrentInstruction = new Chase(targetPosition, small);
+=======
+=======
+>>>>>>> dbd66943f1b7205b88681bd0f3ddbb5ddb51195f
                     small.CurrentInstruction = new Chase(target.transform.position, small);
+>>>>>>> dbd66943f1b7205b88681bd0f3ddbb5ddb51195f
                 }
             }
         }
+    }
+    private void TargetAcquired(Destructible target)
+    {
+        if (CurrentInstruction != null)
+        {
+            Instructions.Push(CurrentInstruction);
+        }
+
+        Instructions.Push(new Attack(target, "Alien", this));
+        CurrentInstruction = Instructions.Pop();
+
+        callSmallAliens(target.transform.position);
 
     }
 
@@ -106,20 +116,25 @@ public class AlienNest : Entity
             yield return new WaitForSeconds(spawnCountTimer);
         }
     }
+    public override void TakeDamage(int damage, Vector3 origin = default(Vector3))
+    {
+        base.TakeDamage(damage);
+
+        if (!IsDead() && origin != default && (CurrentInstruction.GetType() != typeof(Attack) && CurrentInstruction.GetType() != typeof(Chase)))
+        {
+            callSmallAliens(origin);
+        }
+    }
     #endregion
 
     #region Functions
 
     void Start()
     {
-        void Start()
+        if (CurrentOrder == null)
         {
-            if (CurrentInstruction == null)
-            {
-                CurrentInstruction = new Spawn(spiderPrefab, queenPrefab, spawnTimer, spawnMaxCount, this);
-            }
+            CurrentInstruction = new Spawn(spiderPrefab, queenPrefab, spawnTimer, spawnMaxCount, this);
         }
-
         StartCoroutine("CheckFireRate");
     }
 
