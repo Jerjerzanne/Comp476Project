@@ -21,7 +21,7 @@ public class CreateQueen : Instruction
     {
         AlienQueen queen = Object.Instantiate(alienQueenPrefab, instructionRunner.transform.position + instructionRunner.transform.forward, Quaternion.identity).GetComponent<AlienQueen>();
         queen.homeNest = instructionRunner.GetComponent<AlienNest>();
-        (instructionRunner as AlienNest).spawnedQueen = true;
+        instructionRunner.GetComponent<AlienNest>().spawnedQueen = true;
         if (instructionRunner.GetComponent<Roam>() != null)
         {
             queen.CurrentOrder = instructionRunner.GetComponent<Roam>();

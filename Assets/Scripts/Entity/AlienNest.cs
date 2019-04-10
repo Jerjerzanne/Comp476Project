@@ -15,6 +15,9 @@ public class AlienNest : Entity
     [HideInInspector]
     public bool spawnedQueen;
 
+    [HideInInspector]
+    public NestInstance nestInstance;
+
     [Header("Spawn parameters")]
     public GameObject spiderPrefab;
     public GameObject queenPrefab;
@@ -120,6 +123,15 @@ public class AlienNest : Entity
         if (!IsDead() && origin != default && (CurrentInstruction.GetType() != typeof(Attack) && CurrentInstruction.GetType() != typeof(Chase)))
         {
             callSmallAliens(origin);
+        }
+    }
+
+    protected override void Die()
+    {
+        base.Die();
+        if (nestInstance != null)
+        {
+        nestInstance.occupied = false;
         }
     }
     #endregion

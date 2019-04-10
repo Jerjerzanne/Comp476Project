@@ -106,15 +106,6 @@ public class Soldier : Entity
     public override void TakeDamage(int damage, Vector3 origin = default(Vector3))
     {
         base.TakeDamage(damage);
-        CurrentHealth -= damage;
-        //Debug.Log(this.name + " took " + damage);
-        //Debug.Log(this.name + " has " + CurrentHealth);
-        //Debug.Log(this.name + " has max " + maxHealth);
-        if (healthBar != null)
-        {
-            healthBar.fillAmount = (float)CurrentHealth / maxHealth;
-            //Debug.Log(this.name + " has " + healthBar.fillAmount);
-        }
 
         if (!IsDead() && origin != default && (CurrentInstruction.GetType() != typeof(Attack) && CurrentInstruction.GetType() != typeof(Chase)))
         {

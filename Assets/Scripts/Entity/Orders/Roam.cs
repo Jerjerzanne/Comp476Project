@@ -8,6 +8,7 @@ public class Roam : Order
     NavMeshAgent agent;
     private float timer = 1;
     public GameObject alienNestPrefab;
+    public float protectionTimer;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class Roam : Order
         foreach (GameObject obj in routine)
         {
             instructions.Add(new Goto(obj.transform.position, timer, entity));
-            instructions.Add(new CreateNest(alienNestPrefab, entity));
+            instructions.Add(new CreateNest(alienNestPrefab, protectionTimer, entity));
         }
     }
 

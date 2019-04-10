@@ -120,10 +120,10 @@ public class CommandCenter : Destructible
     {
         while(true)
         {
-            Debug.Log(Time.time);
+            //Debug.Log(Time.time);
             foreach (var route in patrolRoutes)
             {
-                Debug.Log(route.agent);
+                //Debug.Log(route.agent);
                 if (route.agent == null)
                 {
                     route.agent = barracks.RequestSoldier(route);

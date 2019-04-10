@@ -281,6 +281,10 @@ MonoBehaviour:
     m_TypeName: MyReactionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   homeNest: {fileID: 0}
+  nestManager: {fileID: 0}
+  protectionTimer: 20
+  nestPrefab: {fileID: 7586534057862867199, guid: 4fc5d11bf7821dd4db020a4363cd5cc7,
+    type: 3}
 --- !u!114 &3159833201399544295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,9 +303,9 @@ MonoBehaviour:
   bulletSpeed: 10
   rateOfFire: 2
   offset: 0
-  burstSize: 0
-  angleDeviation: 0
+  maxAmmo: 0
   bulletCount: 0
+  burstSize: 0
 --- !u!1 &8383115547367429940
 GameObject:
   m_ObjectHideFlags: 0
