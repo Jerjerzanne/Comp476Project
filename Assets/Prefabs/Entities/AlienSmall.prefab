@@ -293,7 +293,7 @@ MonoBehaviour:
     m_Bits: 1536
   maskOfObstacle:
     serializedVersion: 2
-    m_Bits: 145408
+    m_Bits: 141312
   meshes: 1
   meshFilter: {fileID: 8967388177241347317}
   listOfTargets: []
@@ -306,16 +306,16 @@ NavMeshAgent:
   m_GameObject: {fileID: 8229433697892653722}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 0.5
+  m_Height: 0.1
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
