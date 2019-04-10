@@ -26,7 +26,7 @@ public class Spiders : Entity
         }
 
         _navMeshAgent.SetDestination(this.transform.position);
-        Instructions.Push(new Attack(target, this));
+        Instructions.Push(new Attack(target, "Alien", this));
         CurrentInstruction = Instructions.Pop();
     }
 

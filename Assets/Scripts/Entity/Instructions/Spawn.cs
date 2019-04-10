@@ -34,8 +34,9 @@ public class Spawn : Instruction
 
         if (timer < 0)
         {
-            if ((instructionRunner as AlienNest).CountSpawns() >= spawnMaxCount)
+            if ((instructionRunner as AlienNest).CountSpawns() >= spawnMaxCount && !(instructionRunner as AlienNest).spawnedQueen)
             {
+                instructionRunner.Instructions.Push(instructionRunner.CurrentInstruction);
                 instructionRunner.instructionEvent.Invoke(new CreateQueen(alienQueenPrefab, 60.0f, instructionRunner));
             }
 

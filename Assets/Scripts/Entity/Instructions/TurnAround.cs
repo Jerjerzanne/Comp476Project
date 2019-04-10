@@ -26,11 +26,6 @@ public class TurnAround : Instruction
 
     public override void Execute()
     {
-
-        Debug.Log("target angle: ");
-        Debug.Log(instructionRunner.transform.rotation);
-        Debug.Log(targetQuaternion);
-        Debug.Log(Quaternion.Angle(instructionRunner.transform.rotation, targetQuaternion));
         if (Quaternion.Angle(instructionRunner.transform.rotation, targetQuaternion) < acceptanceRadius)
         {
             instructionRunner.instructionEvent.Invoke(null);

@@ -101,7 +101,7 @@ public class Wander : Instruction
                 SetRotate(Random.Range(45, 315), 60);
             }
 
-            Debug.Log((point - nestPosition).magnitude);
+            //Debug.Log((point - nestPosition).magnitude);
 
     }
     private void SetWander()

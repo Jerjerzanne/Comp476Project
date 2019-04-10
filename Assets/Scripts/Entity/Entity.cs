@@ -113,7 +113,7 @@ public class Entity : Destructible
     /// </summary>
     protected virtual void RanOutOfInstructions()
     {
-        Debug.Log(this.name + " ran out of instructions.");
+        //Debug.Log(this.name + " ran out of instructions.");
         CurrentInstruction = null;
     }
 

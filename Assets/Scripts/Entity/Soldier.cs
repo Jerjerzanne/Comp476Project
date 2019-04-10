@@ -41,7 +41,7 @@ public class Soldier : Entity
         }
 
         _navMeshAgent.SetDestination(this.transform.position);
-        Instructions.Push(new Attack(target, this));
+        Instructions.Push(new Attack(target, "Soldier", this));
         CurrentInstruction = Instructions.Pop();
     }
 

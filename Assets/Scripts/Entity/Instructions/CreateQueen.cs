@@ -20,8 +20,8 @@ public class CreateQueen : Instruction
     private void SpawnAlienQueen()
     {
         GameObject queen = Object.Instantiate(alienQueenPrefab, instructionRunner.transform.position + instructionRunner.transform.forward, Quaternion.identity) as GameObject;
-        queen.GetComponent<AlienQueen>().homeNest = instructionRunner.GetComponent<Nest>();
-
+        queen.GetComponent<AlienQueen>().homeNest = instructionRunner.GetComponent<AlienNest>();
+        (instructionRunner as AlienNest).spawnedQueen = true;
         queen.transform.parent = instructionRunner.transform.parent;
     }
 
@@ -32,7 +32,8 @@ public class CreateQueen : Instruction
         {
             // TODO: possibly limit number of queen spawns per nest to 1
             SpawnAlienQueen();
-            timer = timerMax;
+            instructionRunner.instructionEvent.Invoke(null);
+            //timer = timerMax;
         }
     }
 

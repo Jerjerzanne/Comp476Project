@@ -7,7 +7,7 @@ public class AlienQueen : Entity
 {
     #region Variables
 
-    public Nest homeNest;
+    public AlienNest homeNest;
 
     #endregion
 
@@ -21,7 +21,7 @@ public class AlienQueen : Entity
         }
 
         _navMeshAgent.SetDestination(this.transform.position);
-        Instructions.Push(new Attack(target, this));
+        Instructions.Push(new Attack(target, "Alien", this));
         CurrentInstruction = Instructions.Pop();
     }
 

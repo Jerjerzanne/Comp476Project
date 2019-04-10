@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,24 +8,28 @@ public class Attack : Instruction
 
     #region Constants
 
-    private const int entityLayer = 1 << 10;
+    private const int defaultLayer = 1 << 0;
+    //private const int entityLayer = 1 << 10;
     private const int interactalbeLayer = 1 << 11;
     private const int doorLayer = 1 << 12;
     private const int projectileLayer = 1 << 15;
-    private const int finalMask = entityLayer | interactalbeLayer | doorLayer | projectileLayer;
+    private int finalMask;
 
     #endregion
 
+    private int ignoreLayer;
     private Destructible target;
 
     private Vector3 lastPosition;
 
     #region Methods
 
-    public Attack(Destructible target, Entity entity) : base(entity)
+    public Attack(Destructible target, string layer, Entity entity) : base(entity)
     {
         this.target = target;
         lastPosition = target.transform.position;
+        ignoreLayer = LayerMask.GetMask(layer);
+        finalMask = interactalbeLayer | doorLayer | projectileLayer | defaultLayer | ignoreLayer;
     }
 
     public override void Execute()

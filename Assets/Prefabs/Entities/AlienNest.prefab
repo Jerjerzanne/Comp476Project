@@ -302,12 +302,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: MyReactionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  searchRadius: 5
+  spawnCountTimer: 5
   entityMask:
     serializedVersion: 2
     m_Bits: 65536
   wallMask:
     serializedVersion: 2
     m_Bits: 8192
+  spawnedQueen: 0
 --- !u!54 &7586534057862867188
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -341,6 +344,7 @@ MonoBehaviour:
   timer: 1
   visionrange: 3
   nestrange: 4
+  minRange: 6
 --- !u!1001 &4813578959689809731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -348,27 +352,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7586534057862867196}
     m_Modifications:
-    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 4e02ab7bff1769447a4ab6ae81d0bc66,
-        type: 3}
-    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
-        type: 3}
-      propertyPath: m_Type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
-        type: 3}
-      propertyPath: m_FillMethod
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
-        type: 3}
-      propertyPath: m_FillOrigin
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2759010850980869958, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
         type: 3}
       propertyPath: m_Name
@@ -478,6 +461,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4e02ab7bff1769447a4ab6ae81d0bc66,
+        type: 3}
+    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
+        type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
+        type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
+        type: 3}
+      propertyPath: m_FillOrigin
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4590593333490784376, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
         type: 3}

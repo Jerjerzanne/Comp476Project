@@ -12,6 +12,9 @@ public class AlienNest : Entity
     public LayerMask entityMask;
     public LayerMask wallMask;
 
+    [HideInInspector]
+    public bool spawnedQueen;
+
     #endregion
 
     #region Methods
@@ -23,7 +26,7 @@ public class AlienNest : Entity
             Instructions.Push(CurrentInstruction);
         }
 
-        Instructions.Push(new Attack(target, this));
+        Instructions.Push(new Attack(target, "Alien", this));
         CurrentInstruction = Instructions.Pop();
     }
 
@@ -65,7 +68,6 @@ public class AlienNest : Entity
                 count++;
             }
         }
-
         //Debug.Log("Number of spawns: " + count);
         return count;
     }
