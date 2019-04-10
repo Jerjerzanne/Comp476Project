@@ -34,6 +34,7 @@ public class Breaker : Interactable
     public override void Repair()
     {
         CurrentHealth = maxHealth;
+        enabled = true;
         InteractBreaker();
     }
 
@@ -47,14 +48,18 @@ public class Breaker : Interactable
         if (enabled)
         {
             foreach (Light light in lights)
-                light.enabled = false;
-            enabled = false;
+            {
+                light.enabled = true;
+            }
+            enabled = true;
         }
         else
         {
             foreach (Light light in lights)
-                light.enabled = true;
-            enabled = true;
+            {
+                light.enabled = false;
+            }
+            enabled = false;
         }
     }
 
@@ -74,10 +79,10 @@ public class Breaker : Interactable
 
     protected override void Die()
     {
-       base.Die();
-       enabled = false;
-       InteractBreaker();
-       commandCenter.powerStatusEvent.Invoke(this); //Activates the CC response
+        base.Die();
+        enabled = false;
+        InteractBreaker();
+        commandCenter.powerStatusEvent.Invoke(this); //Activates the CC response
     }
 
     #endregion
@@ -87,6 +92,7 @@ public class Breaker : Interactable
     void Start()
     {
         commandCenter = FindObjectOfType<CommandCenter>();
+        enabled = true;
         // Set the lights to the proper enabled value:
         SetLights();
     }

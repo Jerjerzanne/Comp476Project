@@ -52,7 +52,7 @@ public class Projectile : MonoBehaviour
         int otherLayer = other.gameObject.layer;
 
         //TODO: create a layer mask for elseif
-        if (otherLayer == wallLayer || otherLayer == obstacleLayer || otherLayer == doorLayer)
+        if (otherLayer == wallLayer || otherLayer == obstacleLayer)
         {
             //Debug.Log("Projectile hit a wall");
             Destroy(this.gameObject);

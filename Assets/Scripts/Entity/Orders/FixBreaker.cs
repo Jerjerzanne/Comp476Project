@@ -7,6 +7,7 @@ public class FixBreaker : Order
     public float searchTimer;
     public float navigationTimer;
 
+
     override public void ExtractInstructions(Entity entity)
     {
         instructions = new List<Instruction>();

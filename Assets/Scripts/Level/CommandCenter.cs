@@ -34,6 +34,8 @@ public class CommandCenter : Destructible
     [Tooltip("Time in between travel points")]
     public float navigationTimer;
 
+    private List<Breaker> listOfBrokenBreaker = new List<Breaker>();
+
     #endregion
 
     #region Methods
@@ -64,8 +66,6 @@ public class CommandCenter : Destructible
             {
                 Debug.Log("No soldier was available for a ReportReaction");
             }
-            
-            
         } 
     }
 
@@ -81,6 +81,20 @@ public class CommandCenter : Destructible
 
         if (soldier != null)
         {
+            if (listOfBrokenBreaker.Count == 0)
+            {
+                listOfBrokenBreaker.Add(breaker);
+            }
+            else
+            {
+                foreach (Breaker breakers in listOfBrokenBreaker)
+                {
+                    if (breakers != breaker)
+                    {
+                        listOfBrokenBreaker.Add(breaker);
+                    }
+                }
+            }
             // Get the position of the collider:
             Vector3 colliderPos = breaker.GetComponent<BoxCollider>().transform.position + -breaker.transform.forward * 1;
             Debug.Log(colliderPos);
@@ -94,7 +108,14 @@ public class CommandCenter : Destructible
             Debug.Log("No soldier was available for a PowerStatusReaction");
         }
     }
-
+    IEnumerator CheckBrokenBreaker()
+    {
+        foreach (Breaker breakers in listOfBrokenBreaker)
+        {
+            PowerStatusReaction(breakers);
+        }
+        yield return new WaitForSeconds(checkTimer);
+    }
     IEnumerator CheckRoutes()
     {
         while(true)
@@ -133,6 +154,7 @@ public class CommandCenter : Destructible
     void Start()
     {
         StartCoroutine("CheckRoutes");
+        StartCoroutine("CheckBrokenBreaker");
     }
 
     // Update is called once per frame
