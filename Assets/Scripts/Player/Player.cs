@@ -100,7 +100,7 @@ public class Player : Destructible
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == entityLayer && other.gameObject.name == "Food(Clone)")
+        if (other.gameObject.name == "Food(Clone)")
         {
             UpdateGrowth();
             Destroy(other.gameObject);

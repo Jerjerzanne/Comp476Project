@@ -58,7 +58,7 @@ public class Destructible : MonoBehaviour
             if (gameObject.layer != 9 && gameObject.layer != 11)
             {
                 Destroy(gameObject);
-                Destructible food = Instantiate(foodPrefab, new Vector3(transform.position.x, transform.position.y + 0.50f, transform.position.z), Quaternion.Euler(new Vector3(180, 90, 90))).GetComponent<Destructible>();
+                Destructible food = Instantiate(foodPrefab, new Vector3(transform.position.x,0.50f, transform.position.z), Quaternion.Euler(new Vector3(180, 90, 90))).GetComponent<Destructible>();
             }
 
         }
