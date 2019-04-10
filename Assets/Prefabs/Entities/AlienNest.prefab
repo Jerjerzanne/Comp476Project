@@ -216,7 +216,6 @@ GameObject:
   - component: {fileID: 7586534057862867187}
   - component: {fileID: 7586534057862867186}
   - component: {fileID: 7586534057862867188}
-  - component: {fileID: 7223976780569173381}
   m_Layer: 16
   m_Name: AlienNest
   m_TagString: Alien/Nest
@@ -311,6 +310,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   spawnedQueen: 0
+  spiderPrefab: {fileID: 8229433697892653722, guid: bdb39bbb941b7b040ba5cc01b576501d,
+    type: 3}
+  queenPrefab: {fileID: 7651501314730931065, guid: fd646f4fa4b015946a32ba84e9d764fd,
+    type: 3}
+  spawnTimer: 15
+  spawnMaxCount: 5
 --- !u!54 &7586534057862867188
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -323,28 +328,10 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 14
   m_CollisionDetection: 0
---- !u!114 &7223976780569173381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7586534057862867199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b8fb14c25eb13b4593eeabd4540d275, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  routine: []
-  nest: {fileID: 7586534057862867199}
-  timer: 1
-  visionrange: 3
-  nestrange: 4
-  minRange: 6
 --- !u!1001 &4813578959689809731
 PrefabInstance:
   m_ObjectHideFlags: 0

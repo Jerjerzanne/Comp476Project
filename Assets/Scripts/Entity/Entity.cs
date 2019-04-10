@@ -140,12 +140,6 @@ public class Entity : Destructible
 
     #region Functions
 
-    void Start()
-    {
-       
-       
-    }
-
     private void Awake()
     {
         base.Awake();

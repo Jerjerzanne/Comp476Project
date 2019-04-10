@@ -23,7 +23,7 @@ public class Nest : Order
         foreach (GameObject obj in routine)
         {
             // Spawn
-            instructions.Add(new Spawn(alienSmallPrefab, alienQueenPrefab, timer, entity));
+            instructions.Add(new Spawn(alienSmallPrefab, alienQueenPrefab, timer, 5, entity));
         }
     }
 
