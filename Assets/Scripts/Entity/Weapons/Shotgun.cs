@@ -8,7 +8,6 @@ public class Shotgun : Gun
 
     [Header("Shotgun Fire")]
     public float spreadAngle;
-    public int bulletCount;
     // Gun sound
 
     #endregion
@@ -18,7 +17,6 @@ public class Shotgun : Gun
     override
     public void FireSingle()
     {
-
         if (!locked)
         {
             timer = Time.time - timeSinceFired;

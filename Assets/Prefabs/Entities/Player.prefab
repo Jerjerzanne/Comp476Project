@@ -283,9 +283,9 @@ MonoBehaviour:
   rateOfFire: 1
   offset: 0.75
   maxAmmo: 4
+  bulletCount: 4
   burstSize: 1
   spreadAngle: 90
-  bulletCount: 4
 --- !u!1 &2470245397180556940
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,6 +336,7 @@ MonoBehaviour:
   rateOfFire: 10
   offset: 0.75
   maxAmmo: 60
+  bulletCount: 1
   burstSize: 0
 --- !u!1 &2711881014395402121
 GameObject:
@@ -420,6 +421,7 @@ MonoBehaviour:
   rateOfFire: 2
   offset: 0.75
   maxAmmo: 30
+  bulletCount: 1
   burstSize: 2
 --- !u!1 &7612817677053469155
 GameObject:
@@ -517,7 +519,7 @@ MonoBehaviour:
   bulletSpeed: 2
   ammoText: {fileID: 1886235552415527799}
   ammoCount: 0
-  refreshAmmoRate: 2
+  refreshAmmoRate: 1
   damageImage: {fileID: 153567602}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
@@ -554,6 +556,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7612817677053469157}
     m_Modifications:
+    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
+        type: 3}
+      propertyPath: m_FillOrigin
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2759010850980869958, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
         type: 3}
       propertyPath: m_Name
@@ -679,11 +686,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
-        type: 3}
-      propertyPath: m_FillOrigin
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8675459972807255331, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -731,6 +733,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 287725409589857757}
     m_Modifications:
+    - target: {fileID: 8678946343217545137, guid: 630933703f9914f46b158075893ab1a1,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Ammo: 29'
+      objectReference: {fileID: 0}
     - target: {fileID: 5048331293514066690, guid: 630933703f9914f46b158075893ab1a1,
         type: 3}
       propertyPath: m_Name
@@ -840,11 +847,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8678946343217545137, guid: 630933703f9914f46b158075893ab1a1,
-        type: 3}
-      propertyPath: m_Text
-      value: 'Ammo: 29'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 630933703f9914f46b158075893ab1a1, type: 3}

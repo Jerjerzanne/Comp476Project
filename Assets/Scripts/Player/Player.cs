@@ -78,10 +78,10 @@ public class Player : Destructible
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             //Debug.Log("Do you reach FireSingle()");
-            if (ammoCount > 0)
+            if (ammoCount > 0 && ammoCount >= playerGun.bulletCount)
             {
                 playerGun.FireSingle();
-                ammoCount --;
+                ammoCount -= playerGun.bulletCount;
                 
             }
             //FireSingle();

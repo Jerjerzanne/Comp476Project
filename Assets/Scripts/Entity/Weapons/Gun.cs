@@ -13,6 +13,7 @@ public class Gun : Weapon
     public float offset;
     protected bool locked;
     public int maxAmmo;
+    public int bulletCount;
 
     [Header("Burst fire")]
     public int burstSize;

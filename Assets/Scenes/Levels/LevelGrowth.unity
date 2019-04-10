@@ -595,6 +595,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room5
       objectReference: {fileID: 0}
+    - target: {fileID: 8170233669599653719, guid: b7c56a3a5afa8bf429350b66088d4ffb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7413606783245382372, guid: b7c56a3a5afa8bf429350b66088d4ffb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -679,11 +684,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 178487
-      objectReference: {fileID: 0}
-    - target: {fileID: 8170233669599653719, guid: b7c56a3a5afa8bf429350b66088d4ffb,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7c56a3a5afa8bf429350b66088d4ffb, type: 3}
@@ -4001,6 +4001,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room7
       objectReference: {fileID: 0}
+    - target: {fileID: 8170233669599653719, guid: b7c56a3a5afa8bf429350b66088d4ffb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 7413606783245382372, guid: b7c56a3a5afa8bf429350b66088d4ffb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4091,11 +4096,11 @@ PrefabInstance:
       propertyPath: m_CullingMask.m_Bits
       value: 178487
       objectReference: {fileID: 0}
-    - target: {fileID: 8170233669599653719, guid: b7c56a3a5afa8bf429350b66088d4ffb,
+    - target: {fileID: 2123105149913814832, guid: b7c56a3a5afa8bf429350b66088d4ffb,
         type: 3}
-      propertyPath: m_RootOrder
-      value: 19
-      objectReference: {fileID: 0}
+      propertyPath: lights.Array.data[0]
+      value: 
+      objectReference: {fileID: 1419498125}
     - target: {fileID: 2967811966140892853, guid: b7c56a3a5afa8bf429350b66088d4ffb,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -4106,11 +4111,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 2123105149913814832, guid: b7c56a3a5afa8bf429350b66088d4ffb,
-        type: 3}
-      propertyPath: lights.Array.data[0]
-      value: 
-      objectReference: {fileID: 1419498125}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7c56a3a5afa8bf429350b66088d4ffb, type: 3}
 --- !u!4 &1255384859 stripped
@@ -5500,6 +5500,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room2
       objectReference: {fileID: 0}
+    - target: {fileID: 8170233669599653719, guid: b7c56a3a5afa8bf429350b66088d4ffb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7413606783245382372, guid: b7c56a3a5afa8bf429350b66088d4ffb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5559,11 +5564,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 178487
-      objectReference: {fileID: 0}
-    - target: {fileID: 8170233669599653719, guid: b7c56a3a5afa8bf429350b66088d4ffb,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7c56a3a5afa8bf429350b66088d4ffb, type: 3}
@@ -6339,11 +6339,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4122471501425672611, guid: aa443e7204065714ebd2cd7df2e8bbc3,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6312181815656435178, guid: aa443e7204065714ebd2cd7df2e8bbc3,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -6373,6 +6368,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 178487
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122471501425672611, guid: aa443e7204065714ebd2cd7df2e8bbc3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa443e7204065714ebd2cd7df2e8bbc3, type: 3}
@@ -6902,12 +6902,12 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 17
       objectReference: {fileID: 0}
-    - target: {fileID: 4263267466077488794, guid: 77df016eea5084643b901dcc81f73fab,
+    - target: {fileID: 3828290272119543552, guid: 77df016eea5084643b901dcc81f73fab,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 178487
       objectReference: {fileID: 0}
-    - target: {fileID: 3828290272119543552, guid: 77df016eea5084643b901dcc81f73fab,
+    - target: {fileID: 4263267466077488794, guid: 77df016eea5084643b901dcc81f73fab,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 178487

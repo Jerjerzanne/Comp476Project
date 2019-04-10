@@ -14,6 +14,8 @@ public class Destructible : MonoBehaviour
 
     #region Variables
 
+    private GameObject droppedFood;
+
     //Editor variables
     [SerializeField, Header("Destructible")]
     public GameObject foodPrefab;
@@ -58,15 +60,9 @@ public class Destructible : MonoBehaviour
             Debug.Log(this.name + " has " + healthBar.fillAmount);
         }
         
-        if (CurrentHealth <= 0)
+        if (IsDead())
         {
             Die();
-            if (gameObject.layer != 9 && gameObject.layer != 11)
-            {
-                Destroy(gameObject);
-                Destructible food = Instantiate(foodPrefab, new Vector3(transform.position.x, transform.position.y + 0.50f, transform.position.z), Quaternion.Euler(new Vector3(180, 90, 90))).GetComponent<Destructible>();
-            }
-
         }
     }
 
@@ -76,6 +72,13 @@ public class Destructible : MonoBehaviour
     protected virtual void Die()
     {
         Debug.Log(this.name + " died.");
+        if (gameObject.layer != 9 && gameObject.layer != 11)
+        {
+            if(droppedFood == null)
+                droppedFood = Instantiate(foodPrefab, new Vector3(transform.position.x, transform.position.y + 0.50f, transform.position.z), Quaternion.Euler(new Vector3(180, 90, 90)));
+
+            Destroy(gameObject);
+        }
     }
 
     public bool IsDead()
