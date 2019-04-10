@@ -361,6 +361,8 @@ MonoBehaviour:
     m_TypeName: MyReactionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   barracks: {fileID: 0}
+  walking: {fileID: 8300000, guid: 202101c2347eb3a4fb1021d88a9dbc8b, type: 3}
+  walkingVol: 0.01
 --- !u!114 &7126475692247932849
 MonoBehaviour:
   m_ObjectHideFlags: 0

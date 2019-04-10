@@ -18,6 +18,7 @@ public class Gun : Weapon
 
     protected float timer;
     protected float timeSinceFired;
+    public int maxAmmo;
     // Gun sound
 
     #endregion

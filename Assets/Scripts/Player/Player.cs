@@ -37,11 +37,12 @@ public class Player : Destructible
 
     [Header("Ammo")]
     public Text ammoText;
-    public int maxAmmo = 30;
     public int ammoCount;
-    public int refreshAmmoRate = 3;
+    public int refreshAmmoRate = 2;
     protected bool cooldown;
 
+    [Header("UI")]
+    public Image damageImage;
     #endregion
 
     #region Properties
@@ -50,18 +51,25 @@ public class Player : Destructible
     /// Current growth level of the player
     /// </summary>
     public int CurrentGrowth { get; set; }
-
+    public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
+    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     //The colour the damageImage is set to, to flash.
 
     #endregion
 
     #region Functions
 
+    void UpdateMaxAmmo()
+    {
+        ammoCount = playerGun.maxAmmo;
+
+        ammoText.text = "Ammo: " + ammoCount.ToString();
+    }
+
     protected void Awake()
     {
         base.Awake();
         CurrentGrowth = initialGrowth;
-        ammoCount = maxAmmo;
-        ammoText.text = "Ammo: " + ammoCount.ToString();
+        UpdateMaxAmmo();
     }
 
     protected void Update()
@@ -81,23 +89,35 @@ public class Player : Destructible
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             //Debug.Log("Do you reach Burst()");
-            if (ammoCount > 0 || ammoCount >= burstSize)
+            if (ammoCount > 0 && ammoCount >= playerGun.burstSize)
             {
                 playerGun.FireBurst();
+                Debug.Log("Burst size is" + playerGun.burstSize);
                 ammoCount -= playerGun.burstSize;
             }
         }
+        damagedUI();
         AutoReload();
     }
-
+    public void damagedUI()
+    {
+        if (damaged)
+        {
+            damageImage.color = flashColour;
+        }
+        else
+        {
+        damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+        }
+        damaged = false;
+    }
     public void AutoReload()
     {
 
-        if (ammoCount < maxAmmo && cooldown == false)
+        if (ammoCount < playerGun.maxAmmo && cooldown == false)
         {
             cooldown = true;
             StartCoroutine(ReloadAmmo());
-
         }
 
     }
