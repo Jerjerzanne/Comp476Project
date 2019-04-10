@@ -1572,11 +1572,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7612817677053469153, guid: 0e88fd07dda18e34a86540e413d3a0a4,
-        type: 3}
-      propertyPath: maxHealth
-      value: 2000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e88fd07dda18e34a86540e413d3a0a4, type: 3}
 --- !u!1 &372577597
@@ -4091,11 +4086,6 @@ PrefabInstance:
       propertyPath: m_CullingMask.m_Bits
       value: 178487
       objectReference: {fileID: 0}
-    - target: {fileID: 8170233669599653719, guid: b7c56a3a5afa8bf429350b66088d4ffb,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 19
-      objectReference: {fileID: 0}
     - target: {fileID: 2967811966140892853, guid: b7c56a3a5afa8bf429350b66088d4ffb,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -4105,6 +4095,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170233669599653719, guid: b7c56a3a5afa8bf429350b66088d4ffb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 2123105149913814832, guid: b7c56a3a5afa8bf429350b66088d4ffb,
         type: 3}
@@ -7013,21 +7008,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: L-Shaped Room
       objectReference: {fileID: 0}
-    - target: {fileID: 7095426305545540885, guid: d77ed696d5e26ca43a4a3023b40132f3,
-        type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 178487
-      objectReference: {fileID: 0}
-    - target: {fileID: 2777134447928436485, guid: d77ed696d5e26ca43a4a3023b40132f3,
-        type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 178487
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810078089511046999, guid: d77ed696d5e26ca43a4a3023b40132f3,
-        type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 178487
-      objectReference: {fileID: 0}
     - target: {fileID: 4285832642321132872, guid: d77ed696d5e26ca43a4a3023b40132f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7087,6 +7067,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810078089511046999, guid: d77ed696d5e26ca43a4a3023b40132f3,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 178487
+      objectReference: {fileID: 0}
+    - target: {fileID: 2777134447928436485, guid: d77ed696d5e26ca43a4a3023b40132f3,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 178487
+      objectReference: {fileID: 0}
+    - target: {fileID: 7095426305545540885, guid: d77ed696d5e26ca43a4a3023b40132f3,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 178487
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d77ed696d5e26ca43a4a3023b40132f3, type: 3}
