@@ -15,6 +15,12 @@ public class AlienNest : Entity
     [HideInInspector]
     public bool spawnedQueen;
 
+    [Header("Spawn parameters")]
+    public GameObject spiderPrefab;
+    public GameObject queenPrefab;
+    public float spawnTimer;
+    public int spawnMaxCount;
+
     #endregion
 
     #region Methods
@@ -106,6 +112,14 @@ public class AlienNest : Entity
 
     void Start()
     {
+        void Start()
+        {
+            if (CurrentInstruction == null)
+            {
+                CurrentInstruction = new Spawn(spiderPrefab, queenPrefab, spawnTimer, spawnMaxCount, this);
+            }
+        }
+
         StartCoroutine("CheckFireRate");
     }
 

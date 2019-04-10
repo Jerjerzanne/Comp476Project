@@ -12,12 +12,13 @@ public class Spawn : Instruction
 
     #region Methods
 
-    public Spawn(GameObject alienSmallPrefab, GameObject alienQueenPrefab, float timerMax, Entity entity) : base(entity)
+    public Spawn(GameObject alienSmallPrefab, GameObject alienQueenPrefab, float timerMax, int spawnMaxCount, Entity entity) : base(entity)
     {
         this.timerMax = timerMax;
         this.timer = 0;
         this.alienSmallPrefab = alienSmallPrefab;
         this.alienQueenPrefab = alienQueenPrefab;
+        this.spawnMaxCount = spawnMaxCount;
     }
 
     private void SpawnAlienSmall()
