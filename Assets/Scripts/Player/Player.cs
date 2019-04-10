@@ -14,6 +14,8 @@ public class Player : Destructible
     private const int playerLayer = 9;
     private const int entityLayer = 10;
     private const int thresholdInterval = 5;
+    private const float defaultColliderRadius = 0.375f;
+
     #endregion
 
     #region Variables
@@ -23,6 +25,7 @@ public class Player : Destructible
     private int initialGrowth;
     public int growthMeter;
     public int maxGrowth;
+    public List<Sprite> playerSprites;
 
     [SerializeField, Header("Gun")]
     public List<Gun> playerGuns;
@@ -39,7 +42,7 @@ public class Player : Destructible
     [Header("Ammo")]
     public Text ammoText;
     public int ammoCount;
-    public int refreshAmmoRate = 2;
+    public int refreshAmmoRate = 1;
     protected bool cooldown;
 
     [Header("UI")]
@@ -48,10 +51,6 @@ public class Player : Destructible
 
     #region Properties
 
-    /// <summary>
-    /// Current growth level of the player
-    /// </summary>
-    public int CurrentGrowth { get; set; }
     public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     //The colour the damageImage is set to, to flash.
 
@@ -173,17 +172,19 @@ public class Player : Destructible
 
                 if (maxGrowth % thresholdInterval == 0)
                 {
-                    // Grows in size after 5 growths
-                    transform.localScale += new Vector3(0.5F, 0, 0.5F);
-
-
                     int growthIndex = (int)maxGrowth / thresholdInterval;
                     if (growthIndex < 3)
                     {
                         CurrentGrowth = growthIndex;
+                        SpriteRenderer[] renderers = gameObject.GetComponentsInChildren<SpriteRenderer>();
+                        gameObject.GetComponent<SphereCollider>().radius = defaultColliderRadius + growthIndex * 0.25f;
+
+                        foreach (SpriteRenderer r in renderers)
+                        {
+                            r.sprite = playerSprites[growthIndex];
+                        }
                         playerGun = playerGuns[growthIndex];
                     }
-
                 }
                 else if (maxGrowth % thresholdInterval == 1)
                 {
