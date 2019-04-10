@@ -38,7 +38,7 @@ public class Gun : Weapon
 
         if (timer >  1/rateOfFire)
         {
-            Projectile bullet = Instantiate(bulletPrefab, this.transform.position + this.transform.forward * offset, this.transform.localRotation).GetComponent<Projectile>();
+            Projectile bullet = Instantiate(bulletPrefab, this.transform.position + this.transform.forward * offset, this.transform.rotation).GetComponent<Projectile>();
             bullet.SetSpeed(bulletSpeed, damage);
             timer = 0;
             timeSinceFired = Time.time;
