@@ -19,7 +19,7 @@ public class Chase : Instruction
 
     public override void Execute()
     {
-        Debug.Log("Beginning chase instruction.");
+        //Debug.Log("Beginning chase instruction.");
 
         if (instructionRunner.transform.position.x != targetLocation.x && instructionRunner.transform.position.z != targetLocation.z)
         {
