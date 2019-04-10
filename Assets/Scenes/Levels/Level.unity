@@ -2749,6 +2749,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96d46e2115a61b3478f3786e67e2405b, type: 3}
+--- !u!1 &634255998 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2098282291988396819, guid: f6c2d2530c9499b48a381734f332ff8b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1833035197}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &641822096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4872,9 +4878,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   routine:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1309748115}
+  - {fileID: 634255998}
+  - {fileID: 1750307116}
   alienNestPrefab: {fileID: 7586534057862867199, guid: 4fc5d11bf7821dd4db020a4363cd5cc7,
     type: 3}
 --- !u!4 &1202020844 stripped
@@ -5178,6 +5184,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66aa690c8a0f3f419a8159c071e5ceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1309748115 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2098282291988396819, guid: f6c2d2530c9499b48a381734f332ff8b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1644703812}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1376822620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6671,6 +6683,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1750307116 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2098282291988396819, guid: f6c2d2530c9499b48a381734f332ff8b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1113129422}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1768739920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7875,11 +7893,16 @@ PrefabInstance:
         type: 3}
       propertyPath: initialOrder
       value: 
-      objectReference: {fileID: 1495253453}
+      objectReference: {fileID: 0}
     - target: {fileID: 7586534057862867186, guid: 4fc5d11bf7821dd4db020a4363cd5cc7,
         type: 3}
       propertyPath: searchRadius
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586534057862867186, guid: 4fc5d11bf7821dd4db020a4363cd5cc7,
+        type: 3}
+      propertyPath: spawnTimer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7586534057862867188, guid: 4fc5d11bf7821dd4db020a4363cd5cc7,
         type: 3}

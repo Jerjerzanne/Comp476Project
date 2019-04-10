@@ -13,7 +13,7 @@ public class CreateQueen : Instruction
     public CreateQueen(GameObject alienQueenPrefab, float timerMax, Entity entity) : base(entity)
     {
         this.timerMax = timerMax;
-        this.timer = 0;
+        this.timer = timerMax;
         this.alienQueenPrefab = alienQueenPrefab;
     }
 
@@ -22,9 +22,9 @@ public class CreateQueen : Instruction
         AlienQueen queen = Object.Instantiate(alienQueenPrefab, instructionRunner.transform.position + instructionRunner.transform.forward, Quaternion.identity).GetComponent<AlienQueen>();
         queen.homeNest = instructionRunner.GetComponent<AlienNest>();
         (instructionRunner as AlienNest).spawnedQueen = true;
-        if ((instructionRunner as AlienNest).GetComponent<Roam>() != null)
+        if (instructionRunner.GetComponent<Roam>() != null)
         {
-            (instructionRunner as AlienNest).GetComponent<Roam>().ExtractInstructions(queen);
+            queen.CurrentOrder = instructionRunner.GetComponent<Roam>();
         }
         queen.transform.parent = instructionRunner.transform.parent;
     }

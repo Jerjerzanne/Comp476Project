@@ -47,7 +47,7 @@ public class AlienNest : Entity
                     small.CurrentInstruction.GetType() != typeof(Chase))
                 {
                     small.Instructions.Push(small.CurrentInstruction);
-                    small.Instructions.Push( new Goto(small.transform.position, 0, small));
+                    small.Instructions.Push(new Goto(small.transform.position, 0, small));
                     small.CurrentInstruction = new Chase(target.transform.position, small);
                 }
             }
@@ -112,14 +112,10 @@ public class AlienNest : Entity
 
     void Start()
     {
-        void Start()
+        if (CurrentOrder == null)
         {
-            if (CurrentInstruction == null)
-            {
-                CurrentInstruction = new Spawn(spiderPrefab, queenPrefab, spawnTimer, spawnMaxCount, this);
-            }
+            CurrentInstruction = new Spawn(spiderPrefab, queenPrefab, spawnTimer, spawnMaxCount, this);
         }
-
         StartCoroutine("CheckFireRate");
     }
 
