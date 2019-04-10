@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e2c9bcdb6283e44ae0152870990cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionRadius: 5
+  visionRadius: 7
   visionAngle: 64
   maskOfTarget:
     serializedVersion: 2
