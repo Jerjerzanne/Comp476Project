@@ -39,14 +39,8 @@ public class AlienNest : Entity
                 {
                     small.Instructions.Push(small.CurrentInstruction);
                     small.Instructions.Push(new Goto(small.transform.position, 0, small));
-<<<<<<< HEAD
-<<<<<<< HEAD
+
                     small.CurrentInstruction = new Chase(targetPosition, small);
-=======
-=======
->>>>>>> dbd66943f1b7205b88681bd0f3ddbb5ddb51195f
-                    small.CurrentInstruction = new Chase(target.transform.position, small);
->>>>>>> dbd66943f1b7205b88681bd0f3ddbb5ddb51195f
                 }
             }
         }
