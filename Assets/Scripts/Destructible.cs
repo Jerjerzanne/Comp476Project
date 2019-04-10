@@ -14,6 +14,8 @@ public class Destructible : MonoBehaviour
 
     #region Variables
 
+    private GameObject droppedFood;
+
     //Editor variables
     [SerializeField, Header("Destructible")]
     public GameObject foodPrefab;
@@ -31,6 +33,12 @@ public class Destructible : MonoBehaviour
     /// </summary>
     public int CurrentHealth { get; protected set; }
 
+    /// <summary>
+    /// Current growth level of the player or AI entity
+    /// </summary>
+    public int CurrentGrowth { get; set; }
+    public bool damaged { get; set; }
+
     #endregion
 
     #region Methods
@@ -41,18 +49,18 @@ public class Destructible : MonoBehaviour
     /// <param name="damage"></param>
     public virtual void TakeDamage(int damage, Vector3 origin = default(Vector3))
     {
-       
+        damaged = true;
         CurrentHealth -= damage;
-        //Debug.Log(this.name + " took " + damage);
+        Debug.Log(this.name + " took " + damage);
         //Debug.Log(this.name + " has " + CurrentHealth);
         //Debug.Log(this.name + " has max " + maxHealth);
         if (healthBar != null)
         {
             healthBar.fillAmount = (float) CurrentHealth / maxHealth;
-            //Debug.Log(this.name + " has " + healthBar.fillAmount);
+            Debug.Log(this.name + " has " + healthBar.fillAmount);
         }
         
-        if (CurrentHealth <= 0)
+        if (IsDead())
         {
             Die();
             if (gameObject.layer != 9 && gameObject.layer != 11)
@@ -71,6 +79,13 @@ public class Destructible : MonoBehaviour
     protected virtual void Die()
     {
         Debug.Log(this.name + " died.");
+        if (gameObject.layer != 9 && gameObject.layer != 11)
+        {
+            if(droppedFood == null)
+                droppedFood = Instantiate(foodPrefab, new Vector3(transform.position.x, transform.position.y + 0.50f, transform.position.z), Quaternion.Euler(new Vector3(180, 90, 90)));
+
+            Destroy(gameObject);
+        }
     }
 
     public bool IsDead()

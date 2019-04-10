@@ -22,6 +22,8 @@ public class Entity : Destructible
 {
     #region Variables
 
+    public enum Sizes { Small, Medium, Large };
+
     //Editor fields
     [SerializeField, Header("Entity")]
     private Order initialOrder;
@@ -34,7 +36,7 @@ public class Entity : Destructible
     public MyReactionEvent reactionEvent;
 
     #endregion
-    
+
     #region Properties
 
     /// <summary>

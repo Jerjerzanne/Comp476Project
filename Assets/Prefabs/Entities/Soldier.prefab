@@ -361,6 +361,8 @@ MonoBehaviour:
     m_TypeName: MyReactionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   barracks: {fileID: 0}
+  walking: {fileID: 8300000, guid: 202101c2347eb3a4fb1021d88a9dbc8b, type: 3}
+  walkingVol: 0.01
 --- !u!114 &7126475692247932849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,11 +391,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7126475692247932813}
     m_Modifications:
-    - target: {fileID: 2759010850980869958, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas
-      objectReference: {fileID: 0}
     - target: {fileID: 4501954933802991247, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -513,6 +510,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.015000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759010850980869958, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2aa0e6d3c1652ee47b9380e912e9fae3, type: 3}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Manages the player information
@@ -12,6 +13,9 @@ public class Player : Destructible
     private const int wallLayer = 13;
     private const int playerLayer = 9;
     private const int entityLayer = 10;
+    private const int thresholdInterval = 5;
+    private const float defaultColliderRadius = 0.375f;
+
     #endregion
 
     #region Variables
@@ -21,8 +25,10 @@ public class Player : Destructible
     private int initialGrowth;
     public int growthMeter;
     public int maxGrowth;
+    public List<Sprite> playerSprites;
 
     [SerializeField, Header("Gun")]
+    public List<Gun> playerGuns;
     public Gun playerGun;
     public GameObject bulletPrefab;
     public float rateOfFire;
@@ -33,70 +39,114 @@ public class Player : Destructible
     public int damage = 2;
     public float bulletSpeed = 2;
 
+    [Header("Ammo")]
+    public Text ammoText;
+    public int ammoCount;
+    public int refreshAmmoRate = 1;
+    protected bool cooldown;
 
+    [Header("UI")]
+    public Image damageImage;
     #endregion
 
     #region Properties
 
-    /// <summary>
-    /// Current growth level of the player
-    /// </summary>
-    public int CurrentGrowth { get; set; }
-
+    public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
+    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     //The colour the damageImage is set to, to flash.
 
     #endregion
 
     #region Functions
 
+    void UpdateMaxAmmo()
+    {
+        ammoCount = playerGun.maxAmmo;
+
+        ammoText.text = "Ammo: " + ammoCount.ToString();
+    }
+
     protected void Awake()
     {
         base.Awake();
         CurrentGrowth = initialGrowth;
+        UpdateMaxAmmo();
     }
 
     protected void Update()
     {
-
-        if (Input.GetKey(KeyCode.Mouse0))
+        ammoText.text = "Ammo: " + ammoCount.ToString();
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             //Debug.Log("Do you reach FireSingle()");
-            playerGun.FireSingle();
+            if (ammoCount > 0 && ammoCount >= playerGun.bulletCount)
+            {
+                playerGun.FireSingle();
+                ammoCount -= playerGun.bulletCount;
+                
+            }
             //FireSingle();
         }
-        if (Input.GetKey(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             //Debug.Log("Do you reach Burst()");
-            playerGun.FireBurst();
-            //StartCoroutine(BurstFire(bulletPrefab, burstSize, rateOfFire));
+            if (ammoCount > 0 && ammoCount >= playerGun.burstSize)
+            {
+                playerGun.FireBurst();
+                Debug.Log("Burst size is" + playerGun.burstSize);
+                ammoCount -= playerGun.burstSize;
+            }
         }
+        if (Input.GetKey(KeyCode.Alpha1) || Input.GetKey(KeyCode.Keypad1))
+        {
+            playerGun = playerGuns[0];
+        }
+        if (Input.GetKey(KeyCode.Alpha2) || Input.GetKey(KeyCode.Keypad2))
+        {
+            if (maxGrowth >= thresholdInterval * 1)
+            {
+                playerGun = playerGuns[1];
+            }
+        }
+        if (Input.GetKey(KeyCode.Alpha3) || Input.GetKey(KeyCode.Keypad3))
+        {
+            if (maxGrowth >= thresholdInterval * 2)
+            {
+                playerGun = playerGuns[2];
+            }
+        }
+        
+        damagedUI();
+        AutoReload();
+    }
+    public void damagedUI()
+    {
+        if (damaged)
+        {
+            damageImage.color = flashColour;
+        }
+        else
+        {
+        damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+        }
+        damaged = false;
+    }
+    public void AutoReload()
+    {
+
+        if (ammoCount < playerGun.maxAmmo && cooldown == false)
+        {
+            cooldown = true;
+            StartCoroutine(ReloadAmmo());
+        }
+
     }
 
-    // Renny, I moved that code logic up to Gun. 
-
-    //protected void Fire()
-    //{
-       
-    //    Vector3 spawnPos = this.transform.position + this.transform.forward * offset;
-    //    Projectile bullet = Instantiate(bulletPrefab, spawnPos, this.transform.localRotation).GetComponent<Projectile>();
-
-    //    bullet.SetSpeed(bulletSpeed, damage);
-    //}
-
-    //protected IEnumerator BurstFire(GameObject bulletPrefab, int burstSize, float rateOfFire)
-    //{
-
-    //    float bulletDelay = 1 / rateOfFire;
-
-    //    for (int i = 0; i < burstSize; i++)
-    //    {
-    //        Vector3 spawnPos = this.transform.position + this.transform.forward * offset;
-    //        GameObject playerBullet = Instantiate(bulletPrefab, spawnPos, transform.localRotation);
-    //        Projectile pScript = playerBullet.GetComponent<Projectile>();
-    //        pScript.SetSpeed(bulletSpeed, damage);
-    //        //playerBullet.SetSpeed(bulletSpeed, damage);
-    //        yield return new WaitForSeconds(bulletDelay);
-    //    }
-    //}
+    public IEnumerator ReloadAmmo()
+    {
+        ammoCount ++;
+        yield return new WaitForSeconds(refreshAmmoRate);
+        cooldown = false;
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -108,43 +158,56 @@ public class Player : Destructible
     }
     protected void UpdateGrowth()
     {
-
-        if (maxGrowth < 4)
+        if (maxGrowth <= 15)
         {
             //For testing, simply change the code below to maxGrowth += 1
 
             //growthMeter += 1;
             maxGrowth += 1;
 
-            if (growthMeter >= 10)
+            if (true) //(growthMeter >= 10)
             {
-                maxGrowth += 1;
+                //maxGrowth += 1;
                 growthMeter = 0;
-            }
 
-            if (maxGrowth == 1)
-            {
-                transform.localScale += new Vector3(0.5F, 0, 0.5F);
-                //maxHealth += 10;
-                //damage += 2;
-                //bulletSpeed += 5;
-                TopdownController moveScript = gameObject.GetComponent<TopdownController>();
-                moveScript.speed += 2;
-            }
-            else if (maxGrowth == 2)
-            {
-                playerGun.burstSize++;
-                //maxHealth += 10;
-                //bulletSpeed += 5;
-            }
-            else if (maxGrowth == 3)
-            {
-                playerGun.burstSize++;
-                //maxHealth += 10;
-                //bulletSpeed += 5;
+                if (maxGrowth % thresholdInterval == 0)
+                {
+                    int growthIndex = (int)maxGrowth / thresholdInterval;
+                    if (growthIndex < 3)
+                    {
+                        CurrentGrowth = growthIndex;
+                        SpriteRenderer[] renderers = gameObject.GetComponentsInChildren<SpriteRenderer>();
+                        gameObject.GetComponent<SphereCollider>().radius = defaultColliderRadius + growthIndex * 0.25f;
+
+                        foreach (SpriteRenderer r in renderers)
+                        {
+                            r.sprite = playerSprites[growthIndex];
+                        }
+                        playerGun = playerGuns[growthIndex];
+                    }
+                }
+                else if (maxGrowth % thresholdInterval == 1)
+                {
+                    maxHealth += 10;
+
+                }
+                else if (maxGrowth % thresholdInterval == 2)
+                {
+                    TopdownController moveScript = gameObject.GetComponent<TopdownController>();
+                    moveScript.speed += 2;
+                }
+                else if (maxGrowth % thresholdInterval == 3)
+                {
+                    playerGun.damage += 1;
+
+                }
+                else if (maxGrowth % thresholdInterval == 4)
+                {
+                    playerGun.burstSize++;
+                }
             }
         }
     }
-    #endregion
 
+    #endregion
 }

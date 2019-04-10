@@ -10,9 +10,14 @@ public class Soldier : Entity
     private Pods myPod;
     private bool deployed;
     private Vector3 reportPosition;
+    private bool isWalking = true;
 
     [HideInInspector]
     public Barracks barracks;
+
+    [Header("UI")]
+    public AudioClip walking;
+    [Range(0, 1)] public float walkingVol = 0.25f;
 
     #endregion
 
@@ -127,9 +132,20 @@ public class Soldier : Entity
 
     protected void Update()
     {
+        if((CurrentInstruction == null || CurrentInstruction.GetType() != typeof(Attack) && CurrentInstruction.GetType() != typeof(FixBreaker)) && isWalking == true )
+        {
+            isWalking = false;
+            StartCoroutine(walkingLoop());
+        }
         base.Update();
     }
 
+    public IEnumerator walkingLoop() {
+
+        AudioSource.PlayClipAtPoint(walking, Camera.main.transform.position, walkingVol);
+        yield return new WaitForSeconds(1);
+        isWalking = true;
+    }
     #endregion
 
 }

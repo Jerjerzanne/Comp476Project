@@ -11,17 +11,15 @@ public class Gun : Weapon
     public float bulletSpeed;
     public float rateOfFire;
     public float offset;
-    private bool locked;
+    protected bool locked;
+    public int maxAmmo;
+    public int bulletCount;
 
     [Header("Burst fire")]
     public int burstSize;
 
-    [Header("shotgun fire")]
-    public int angleDeviation;
-    public int bulletCount;
-
-    private float timer;
-    private float timeSinceFired;
+    protected float timer;
+    protected float timeSinceFired;
     // Gun sound
 
     #endregion
@@ -47,6 +45,7 @@ public class Gun : Weapon
         
     }
 
+    override
     public void FireBurst()
     {
         if (!locked)
@@ -69,22 +68,14 @@ public class Gun : Weapon
         for (int i = 0; i < burstSize; i++)
         {
             Vector3 spawnPos = this.transform.position + this.transform.forward * offset;
-            GameObject playerBullet = Instantiate(bulletPrefab, spawnPos, transform.localRotation);
+            GameObject playerBullet = Instantiate(bulletPrefab, spawnPos, transform.rotation);
             Projectile pScript = playerBullet.GetComponent<Projectile>();
             pScript.SetSpeed(bulletSpeed, damage);
             //playerBullet.SetSpeed(bulletSpeed, damage);
             yield return new WaitForSeconds(bulletDelay / burstSize);
-
         }
         timeSinceFired = Time.time;
         locked = false;
-
-
-    }
-
-    public void FireSpray()
-    {
-
     }
     #endregion
 }
