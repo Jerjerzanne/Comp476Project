@@ -1653,17 +1653,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7612817677053469153, guid: 0e88fd07dda18e34a86540e413d3a0a4,
         type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 1077086788633318468, guid: c0f3cd02324d7424abadf982f68224ba,
-        type: 3}
-    - target: {fileID: 7612817677053469153, guid: 0e88fd07dda18e34a86540e413d3a0a4,
-        type: 3}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 2135455904}
-    - target: {fileID: 7612817677053469153, guid: 0e88fd07dda18e34a86540e413d3a0a4,
-        type: 3}
       propertyPath: offset
       value: 0.75
       objectReference: {fileID: 0}
@@ -1677,16 +1666,6 @@ PrefabInstance:
       propertyPath: rateOfFire
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7612817677053469153, guid: 0e88fd07dda18e34a86540e413d3a0a4,
-        type: 3}
-      propertyPath: bulletSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612817677053469153, guid: 0e88fd07dda18e34a86540e413d3a0a4,
-        type: 3}
-      propertyPath: playerGun
-      value: 
-      objectReference: {fileID: 529241197}
     - target: {fileID: 4659775885045128629, guid: 0e88fd07dda18e34a86540e413d3a0a4,
         type: 3}
       propertyPath: m_FillAmount
@@ -6223,18 +6202,6 @@ Transform:
   m_Father: {fileID: 6730115468644742685}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2135455904 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8304330500551348845, guid: e70cbeb3b414fc848922f3dd4441e5e2,
-    type: 3}
-  m_PrefabInstance: {fileID: 150170464}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &72499942127284214
 PrefabInstance:
   m_ObjectHideFlags: 0

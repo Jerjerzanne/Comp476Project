@@ -31,6 +31,11 @@ public class Destructible : MonoBehaviour
     /// </summary>
     public int CurrentHealth { get; protected set; }
 
+    /// <summary>
+    /// Current growth level of the player or AI entity
+    /// </summary>
+    public int CurrentGrowth { get; set; }
+
     #endregion
 
     #region Methods

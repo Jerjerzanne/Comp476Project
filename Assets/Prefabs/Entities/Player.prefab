@@ -446,7 +446,7 @@ MonoBehaviour:
   offset: 0.5
   burstSize: 1
   damage: 2
-  bulletSpeed: 2
+  bulletSpeed: 10
 --- !u!114 &7612817677053469162
 MonoBehaviour:
   m_ObjectHideFlags: 0

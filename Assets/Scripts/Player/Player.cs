@@ -37,16 +37,6 @@ public class Player : Destructible
 
     #endregion
 
-    #region Properties
-
-    /// <summary>
-    /// Current growth level of the player
-    /// </summary>
-    public int CurrentGrowth { get; set; }
-
-
-    #endregion
-
     #region Functions
 
     protected void Awake()
@@ -127,10 +117,11 @@ public class Player : Destructible
                     // Grows in size after 5 growths
                     transform.localScale += new Vector3(0.5F, 0, 0.5F);
 
-                    int gunIndex = (int)maxGrowth / 5;
-                    if (gunIndex < 3)
+                    int growthIndex = (int)maxGrowth / 5;
+                    if (growthIndex < 3)
                     {
-                        playerGun = playerGuns[gunIndex];
+                        CurrentGrowth = initialGrowth;
+                        playerGun = playerGuns[growthIndex];
                     }
 
                 }
