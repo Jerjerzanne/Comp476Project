@@ -206,10 +206,11 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1077086788633318468, guid: c0f3cd02324d7424abadf982f68224ba,
     type: 3}
   bulletSpeed: 10
-  rateOfFire: 0.25
+  rateOfFire: 1
   offset: 0.75
+  maxAmmo: 0
   burstSize: 1
-  angleDeviation: 15
+  spreadAngle: 90
   bulletCount: 4
 --- !u!1 &2470245397180556940
 GameObject:
@@ -258,8 +259,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1077086788633318468, guid: c0f3cd02324d7424abadf982f68224ba,
     type: 3}
   bulletSpeed: 12
-  rateOfFire: 4
+  rateOfFire: 10
   offset: 0.75
+  maxAmmo: 0
   burstSize: 0
 --- !u!1 &2711881014395402121
 GameObject:
@@ -337,12 +339,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f90ead81e6cb2644588e22c016363a8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 3
   bulletPrefab: {fileID: 1077086788633318468, guid: c0f3cd02324d7424abadf982f68224ba,
     type: 3}
-  bulletSpeed: 10
+  bulletSpeed: 8
   rateOfFire: 2
   offset: 0.75
+  maxAmmo: 0
   burstSize: 2
 --- !u!1 &7612817677053469155
 GameObject:
@@ -467,6 +470,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7612817677053469157}
     m_Modifications:
+    - target: {fileID: 2759010850980869958, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
     - target: {fileID: 4501954933802991247, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -571,11 +579,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2759010850980869958, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2aa0e6d3c1652ee47b9380e912e9fae3, type: 3}

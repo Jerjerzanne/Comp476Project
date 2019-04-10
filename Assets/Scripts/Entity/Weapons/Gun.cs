@@ -44,6 +44,7 @@ public class Gun : Weapon
         
     }
 
+    override
     public void FireBurst()
     {
         if (!locked)
@@ -71,17 +72,9 @@ public class Gun : Weapon
             pScript.SetSpeed(bulletSpeed, damage);
             //playerBullet.SetSpeed(bulletSpeed, damage);
             yield return new WaitForSeconds(bulletDelay / burstSize);
-
         }
         timeSinceFired = Time.time;
         locked = false;
-
-
-    }
-
-    public void FireSpray()
-    {
-
     }
     #endregion
 }
