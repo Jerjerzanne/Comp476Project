@@ -12,6 +12,7 @@ public class Gun : Weapon
     public float rateOfFire;
     public float offset;
     protected bool locked;
+    public int maxAmmo;
 
     [Header("Burst fire")]
     public int burstSize;
@@ -65,7 +66,7 @@ public class Gun : Weapon
         for (int i = 0; i < burstSize; i++)
         {
             Vector3 spawnPos = this.transform.position + this.transform.forward * offset;
-            GameObject playerBullet = Instantiate(bulletPrefab, spawnPos, transform.localRotation);
+            GameObject playerBullet = Instantiate(bulletPrefab, spawnPos, transform.rotation);
             Projectile pScript = playerBullet.GetComponent<Projectile>();
             pScript.SetSpeed(bulletSpeed, damage);
             //playerBullet.SetSpeed(bulletSpeed, damage);

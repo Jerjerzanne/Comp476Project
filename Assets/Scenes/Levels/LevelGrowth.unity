@@ -2079,6 +2079,7 @@ MonoBehaviour:
   bulletSpeed: 10
   rateOfFire: 5
   offset: 0.75
+  maxAmmo: 0
   burstSize: 5
 --- !u!1001 &554210364
 PrefabInstance:
