@@ -69,11 +69,13 @@ public class Wander : Instruction
                                                                                                        radius);
         Vector3 position;
         Vector2 pointCircle = Random.insideUnitCircle * radius;
-        position.x = center.x + radius + pointCircle.x;
+        position.x = center.x + radius * pointCircle.x;
         position.y = center.y;
         position.z = center.z + radius * pointCircle.y;
-        if (!Physics.SphereCast(instructionRunner.transform.position, 1, position - instructionRunner.transform.position, out hit, minRange + radius, 1 << 13))
+        Vector3 toPosition = (position - instructionRunner.transform.position);
+        if (!Physics.SphereCast(instructionRunner.transform.position, 1, toPosition.normalized, out hit, toPosition.magnitude, 1 << 13 | 1 << 17))
         {
+            
             if ((position - nestPosition).magnitude < nestRange)
             {
                 return position;
@@ -96,7 +98,7 @@ public class Wander : Instruction
             else
             {
                 //float randomAngle = instructionRunner.transform.eulerAngles.y + Random.Range(45, 315);
-                SetRotate(Random.Range(45, 315), 40);
+                SetRotate(Random.Range(45, 315), 60);
             }
 
             Debug.Log((point - nestPosition).magnitude);

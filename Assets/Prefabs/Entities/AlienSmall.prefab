@@ -369,8 +369,8 @@ MonoBehaviour:
       PublicKeyToken=null
   nestPosition: {x: 0, y: 0, z: 0}
   timer: 0.5
-  minRange: 2
-  visionRange: 5
+  minRange: 1
+  visionRange: 4
   nestRange: 8
 --- !u!65 &260200086768625044
 BoxCollider:
