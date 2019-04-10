@@ -5,14 +5,17 @@ using UnityEngine.AI;
 
 public class Spiders : Entity
 {
+
     #region Variables
     [Header("Wander Setting")]
     public Vector3 nestPosition;
     public float timer;
+    public float minRange;
     public float visionRange;
     public float nestRange;
 
     #endregion
+
     #region Methods
 
     private void TargetAcquired(Destructible target)
@@ -63,7 +66,7 @@ public class Spiders : Entity
 
     protected override void RanOutOfInstructions()
     {
-        Instructions.Push(new Wander(nestPosition,timer,visionRange,nestRange,this));
+        Instructions.Push(new Wander(nestPosition,timer, minRange, visionRange, nestRange,this));
     }
     #endregion
 

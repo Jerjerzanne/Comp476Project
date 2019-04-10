@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.AI;
 
 public class Wander : Instruction
 {
+
+    #region Variables
+
     NavMeshAgent agent;
     float speed = 1.0f;
     float rotationspeed = 100.0f;
@@ -13,60 +17,103 @@ public class Wander : Instruction
     bool rotLeft = false;
     bool rotRight = false;
     bool isWalking = false;
-    Vector3 nestPosition;
-    float timer;
-    float visionRange;
-    float nestRange;
-    Vector3 randomPoint;
-    
-    public Wander(Vector3 nest,float t,float visionRange, float nestRange,Entity entity) : base(entity)
+
+
+    private Vector3 nestPosition;
+    private float timer;
+    private float visionRange;
+    private float nestRange;
+    private Vector3 randomPoint;
+    private float minRange;
+
+    private float radius;
+    private float angleOffsetMax = 20;
+    private float angleOffsetSteps = 2;
+    private float angleOffset;
+
+    #endregion
+
+
+    #region Methods
+
+    /// <summary>
+    /// Small alien constructor
+    /// </summary>
+    /// <param name="nest"></param>
+    /// <param name="t"></param>
+    /// <param name="visionRange"></param>
+    /// <param name="nestRange"></param>
+    /// <param name="entity"></param>
+    public Wander(Vector3 nest, float t, float minRange, float visionRange, float nestRange, Entity entity) : base(entity)
     {
         nestPosition = nest;
         timer = t;
         this.visionRange = visionRange;
         this.nestRange = nestRange;
+        this.minRange = minRange;
     }
-    Vector3 RandomPointInCircle(Vector3 center, float radius, float angle)
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="center"></param>
+    /// <param name="radius"></param>
+    /// <param name="angle"></param>
+    /// <returns></returns>
+    Vector3 RandomPointInCircle()
     {    //Draws circle of radius, with center center, and locates a point on that circle within angle angle   
-        float newAngle = Random.Range(0,180);
-        Vector3 position;
-        position.x = center.x + radius * Mathf.Sin(angle * Mathf.Deg2Rad);
-        position.y = center.y;
-        position.z = center.z + radius * Mathf.Cos(angle * Mathf.Deg2Rad);
-        instructionRunner.transform.eulerAngles = new Vector3(0,newAngle,0);
-        return position;
-    }
-    override public void Execute()
-    {
-        //Find a point infront
-        Vector3 point = RandomPointInCircle(instructionRunner.transform.position, 1 ,instructionRunner.transform.eulerAngles.y);
+        float radius = (visionRange - minRange) / 2;
         RaycastHit hit;
-        if (Physics.Raycast(instructionRunner.transform.position, point, out hit, 1, 13))
+
+        Vector3 center = instructionRunner.transform.position + instructionRunner.transform.forward * (minRange +
+                                                                                                       radius);
+        Vector3 position;
+        Vector2 pointCircle = Random.insideUnitCircle * radius;
+        position.x = center.x + radius + pointCircle.x;
+        position.y = center.y;
+        position.z = center.z + radius * pointCircle.y;
+        if (!Physics.SphereCast(instructionRunner.transform.position, 1, position - instructionRunner.transform.position, out hit, minRange + radius, 1 << 13))
         {
-            instructionRunner.transform.Rotate(0, 0, 180);
-        }
-        
-        else if ((point - nestPosition).magnitude < nestRange)
-        {
-            randomPoint = point;
-        }
-        else
-        {
-            float newAngle = Random.Range(180, 360);
-            while(instructionRunner.transform.eulerAngles.y < newAngle)
+            if ((position - nestPosition).magnitude < nestRange)
             {
-                instructionRunner.transform.Rotate(instructionRunner.transform.up, Time.deltaTime);
+                return position;
             }
         }
-        //randomPoint = point;
-        SetWander();
-        Debug.Log((point - nestPosition).magnitude);
-        
+        return default;
+    }
+
+    override public void Execute()
+    {
+            //Find a point infront
+            Vector3 point = RandomPointInCircle();
+
+            if (point != default)
+            {
+                randomPoint = point;
+                angleOffset = 0;
+                SetWander();
+            }
+            else
+            {
+                //float randomAngle = instructionRunner.transform.eulerAngles.y + Random.Range(45, 315);
+                SetRotate(Random.Range(45, 315), 40);
+            }
+
+            Debug.Log((point - nestPosition).magnitude);
+
     }
     private void SetWander()
     {
         instructionRunner.Instructions.Push(instructionRunner.CurrentInstruction);
         instructionRunner.instructionEvent.Invoke(new Goto(randomPoint, timer, instructionRunner));
     }
-    
+    private void SetRotate(float targetAngle, float step)
+    {
+        instructionRunner.Instructions.Push(instructionRunner.CurrentInstruction);
+        instructionRunner.instructionEvent.Invoke(new TurnAround(targetAngle, step, instructionRunner));
+    }
+
+
+    #endregion
+
 }

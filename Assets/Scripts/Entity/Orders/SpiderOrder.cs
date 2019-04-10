@@ -8,11 +8,12 @@ public class SpiderOrder : Order
     public float timer = 1;
     public float visionrange = 3;
     public float nestrange = 8;
+    public float minRange = 6;
 
     override public void ExtractInstructions(Entity entity)
     {
         instructions = new List<Instruction>();
         
-        instructions.Add(new Wander(nest.transform.position, timer,visionrange,nestrange, entity));
+        instructions.Add(new Wander(nest.transform.position, timer, minRange, visionrange, nestrange, entity));
     }
 }
