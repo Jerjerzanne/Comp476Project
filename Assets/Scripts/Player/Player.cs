@@ -180,7 +180,8 @@ public class Player : Destructible
                     int growthIndex = (int)maxGrowth / thresholdInterval;
                     if (growthIndex < 3)
                     {
-                        playerGun = playerGuns[gunIndex];
+                        CurrentGrowth = growthIndex;
+                        playerGun = playerGuns[growthIndex];
                     }
 
                 }

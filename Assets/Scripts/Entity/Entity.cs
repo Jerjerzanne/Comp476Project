@@ -22,7 +22,7 @@ public class Entity : Destructible
 {
     #region Variables
 
-    enum Sizes { Small, Medium, Large };
+    public enum Sizes { Small, Medium, Large };
 
     //Editor fields
     [SerializeField, Header("Entity")]
