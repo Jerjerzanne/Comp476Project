@@ -6,8 +6,8 @@ public class AlienNest : Entity
 {
     #region Variables
 
-    private float searchRadius = 5.0f;
-    private float spawnCountTimer = 5.0f;
+    public float searchRadius = 5.0f;
+    public float spawnCountTimer = 5.0f;
 
     public LayerMask entityMask;
     public LayerMask wallMask;
@@ -69,22 +69,27 @@ public class AlienNest : Entity
         //Debug.Log("Number of spawns: " + count);
         return count;
     }
-    
+
+    IEnumerator CheckFireRate()
+    {
+        while (true)
+        {
+            int count = CountSpawns();
+            (_weapon as Gun).rateOfFire = count;
+            yield return new WaitForSeconds(spawnCountTimer);
+        }
+    }
     #endregion
 
     #region Functions
 
+    void Start()
+    {
+        StartCoroutine("CheckFireRate");
+    }
+
     void Update()
     {
-        spawnCountTimer -= Time.deltaTime;
-
-        if (spawnCountTimer < 0)
-        {
-            int count = CountSpawns();
-            (_weapon as Gun).rateOfFire = count;
-            spawnCountTimer = 5.0f;
-        }
-
         base.Update();
     }
 

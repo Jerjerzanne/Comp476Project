@@ -5,6 +5,11 @@ using UnityEngine.AI;
 
 public class AlienQueen : Entity
 {
+    #region Variables
+
+    public Nest homeNest;
+
+    #endregion
 
     #region Methods
 
