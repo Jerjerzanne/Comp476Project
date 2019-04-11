@@ -13,10 +13,11 @@ public class GameGUI : MonoBehaviour
     public bool showGUI;
     public int lineLength = 20;
     public int lineWidth = 150;
+    public bool soldier;
 
     #endregion
 
-     
+
     #region Functions
 
     void Update()
@@ -33,11 +34,17 @@ public class GameGUI : MonoBehaviour
         if (showGUI)
         {
             Entity[] entities = this.GetComponentsInChildren<Entity>();
+
             int height = 10;
             foreach (var entity in entities)
             {
-               
                 string text = entity.name + ": \n";
+                if (soldier)
+                {
+                    text += (entity as Soldier).SpookLevel + "\n";
+                    
+
+                }
                 int length = lineLength;
 
                 if (entity.CurrentInstruction != null)
@@ -51,6 +58,9 @@ public class GameGUI : MonoBehaviour
                     text += stackInt + "\n";
                     length += lineLength;
                 }
+
+                
+
 
                 GUI.TextArea(new Rect(10, height, lineWidth, length), text, 200);
                 height = height + length + 15;

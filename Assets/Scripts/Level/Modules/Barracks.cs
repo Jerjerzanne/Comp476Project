@@ -64,11 +64,14 @@ public class Barracks : Interactable
             pod.soldierRef.setCanAttack(true);
             pod.deployed = false;
             pod.soldierRef.Deployed = false;
+            pod.soldierRef.SpookLevel = Soldier.ReportState.Patrolling;
+
             if (pod.soldierRef.ReportPosition != Vector3.zero)
             {
-            commandCenter.reportEvent.Invoke(pod.soldierRef.ReportPosition);
+            commandCenter.reportEvent.Invoke(pod.soldierRef.ReportPosition, pod.soldierRef.NumberOfSoldiersToSend);
                 Debug.Log("Last position saw:"+pod.soldierRef.ReportPosition);
-            pod.soldierRef.ReportPosition = Vector3.zero;
+                pod.soldierRef.ReportPosition = Vector3.zero;
+                pod.soldierRef.NumberOfSoldiersToSend = 0;
             }
             //Debug.Log(this.transform.position + pod.podPosition);
             return new Goto(this.transform.position + pod.podPosition, 0, entity);
@@ -104,7 +107,7 @@ public class Barracks : Interactable
         //TODO: remove once done with testing
         if (testing == true && testingPosition != Vector3.zero && soldiers.Find(soldier => soldier.soldierRef != null) != null)
         {
-            commandCenter.reportEvent.Invoke(testingPosition);
+            commandCenter.reportEvent.Invoke(testingPosition, 2);
             testingPosition = Vector3.zero;
         }
     }

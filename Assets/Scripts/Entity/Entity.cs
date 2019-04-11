@@ -22,8 +22,6 @@ public class Entity : Destructible
 {
     #region Variables
 
-    public enum Sizes { Small, Medium, Large };
-
     //Editor fields
     [SerializeField, Header("Entity")]
     private Order initialOrder;

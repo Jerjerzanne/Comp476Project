@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Soldier : Entity
 {
     #region Variables
+    public enum ReportState { Patrolling, Investigating, Attacking };
 
     private Pods myPod;
     private bool deployed;
@@ -35,6 +36,16 @@ public class Soldier : Entity
         get { return reportPosition; }
     }
 
+    public ReportState SpookLevel
+    {
+        get; set;
+    }
+
+    public int NumberOfSoldiersToSend
+    {
+        get; set;
+    }
+
     #endregion
 
     #region Methods
@@ -43,14 +54,36 @@ public class Soldier : Entity
     {
         if (canAttack)
         {
-            if (CurrentInstruction != null)
+            if (SpookLevel == ReportState.Attacking || target.CurrentGrowth == (int)Sizes.Small)
             {
-                Instructions.Push(CurrentInstruction);
+                if (CurrentInstruction != null)
+                {
+                    Instructions.Push(CurrentInstruction);
+                }
+
+                _navMeshAgent.SetDestination(this.transform.position);
+                Instructions.Push(new Attack(target, "Soldier", this));
+                CurrentInstruction = Instructions.Pop();
+            }
+            else if (target.CurrentGrowth == (int)Sizes.Medium)
+            {
+                canAttack = false;
+                NumberOfSoldiersToSend = 2;
+                Instructions.Clear();
+                Instructions.Push(new Interact(barracks, this));
+                CurrentInstruction = new Goto(barracks.transform.position, 0, this);
+                reportPosition = target.transform.position;
+            }
+            else if (target.CurrentGrowth == (int)Sizes.Large)
+            {
+                canAttack = false;
+                NumberOfSoldiersToSend = 4;
+                Instructions.Clear();
+                Instructions.Push(new Interact(barracks, this));
+                CurrentInstruction = new Goto(barracks.transform.position, 0, this);
+                reportPosition = target.transform.position;
             }
 
-            _navMeshAgent.SetDestination(this.transform.position);
-            Instructions.Push(new Attack(target, "Soldier", this));
-            CurrentInstruction = Instructions.Pop();
         }
     }
 

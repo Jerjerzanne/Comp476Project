@@ -14,6 +14,8 @@ public class Destructible : MonoBehaviour
 
     #region Variables
 
+    public enum Sizes { Small, Medium, Large };
+
     private GameObject droppedFood;
 
     //Editor variables
