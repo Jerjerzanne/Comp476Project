@@ -49,17 +49,17 @@ public class Breaker : Interactable
         {
             foreach (Light light in lights)
             {
-                light.enabled = true;
+                light.enabled = false;
             }
-            enabled = true;
+            enabled = false;
         }
         else
         {
             foreach (Light light in lights)
             {
-                light.enabled = false;
+                light.enabled = true;
             }
-            enabled = false;
+            enabled = true;
         }
     }
 
@@ -92,7 +92,7 @@ public class Breaker : Interactable
     void Start()
     {
         commandCenter = FindObjectOfType<CommandCenter>();
-        enabled = true;
+        //enabled = true;
         // Set the lights to the proper enabled value:
         SetLights();
     }
