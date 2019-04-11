@@ -35,7 +35,8 @@ public class Breaker : Interactable
     {
         CurrentHealth = maxHealth;
         enabled = true;
-        InteractBreaker();
+        SetLights();
+        GetComponent<Collider>().enabled = true;
     }
 
     //class methods
@@ -81,8 +82,9 @@ public class Breaker : Interactable
     {
         base.Die();
         enabled = false;
-        InteractBreaker();
+        SetLights();
         commandCenter.powerStatusEvent.Invoke(this); //Activates the CC response
+        GetComponent<Collider>().enabled = false;
     }
 
     #endregion
@@ -92,7 +94,7 @@ public class Breaker : Interactable
     void Start()
     {
         commandCenter = FindObjectOfType<CommandCenter>();
-        //enabled = true;
+        enabled = true;
         // Set the lights to the proper enabled value:
         SetLights();
     }

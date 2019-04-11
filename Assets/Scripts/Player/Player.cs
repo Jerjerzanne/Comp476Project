@@ -117,7 +117,13 @@ public class Player : Destructible
                 playerGun = playerGuns[2];
             }
         }
-        
+
+        // Testing demo
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            UpdateGrowth();
+        }
+
         damagedUI();
         AutoReload();
     }
