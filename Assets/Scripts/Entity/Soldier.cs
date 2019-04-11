@@ -13,7 +13,8 @@ public class Soldier : Entity
     private Pods myPod;
     private bool deployed;
     private Vector3 reportPosition;
-    private bool isWalking = true;
+
+    //private bool isWalking = true;
     private bool canAttack = true;
     public int mediumResponse = 2;
     public int largeResponse = 4;

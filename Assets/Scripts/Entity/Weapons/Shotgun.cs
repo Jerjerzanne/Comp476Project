@@ -57,6 +57,8 @@ public class Shotgun : Gun
             currentAngle.y += angleDeviation;
             Projectile bullet = Instantiate(bulletPrefab, this.transform.position + this.transform.forward * offset, Quaternion.Euler(currentAngle)).GetComponent<Projectile>();
             bullet.SetSpeed(bulletSpeed, damage);
+            if (ammoCount > 0)
+                ammoCount--;
         }
     }
     #endregion

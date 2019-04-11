@@ -25,6 +25,8 @@ public class MachineGun : Gun
         {
             Projectile bullet = Instantiate(bulletPrefab, this.transform.position + this.transform.forward * offset, this.transform.rotation).GetComponent<Projectile>();
             bullet.SetSpeed(bulletSpeed, damage);
+            if (ammoCount > 0)
+                ammoCount--;
             timer = 0;
             timeSinceFired = Time.time;
         }
@@ -43,6 +45,8 @@ public class MachineGun : Gun
         {
             Projectile bullet = Instantiate(bulletPrefab, this.transform.position + this.transform.forward * offset, this.transform.rotation).GetComponent<Projectile>();
             bullet.SetSpeed(bulletSpeed, damage);
+            if (ammoCount > 0)
+                ammoCount--;
             timer = 0;
             timeSinceFired = Time.time;
         }
