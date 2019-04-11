@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 7494559690999771368}
   - component: {fileID: 5040619922988891275}
   - component: {fileID: 495519803850880639}
+  - component: {fileID: 8937547256881725640}
   m_Layer: 0
   m_Name: Food
   m_TagString: Untagged
@@ -178,6 +179,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8937547256881725640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972865493360012207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65b5915dbcc83fd4b9b37b105dd19125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2814142038371320641
 GameObject:
   m_ObjectHideFlags: 0
