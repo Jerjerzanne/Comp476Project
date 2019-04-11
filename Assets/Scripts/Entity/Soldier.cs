@@ -10,7 +10,7 @@ public class Soldier : Entity
     private Pods myPod;
     private bool deployed;
     private Vector3 reportPosition;
-    private bool isWalking = true;
+
 
     [HideInInspector]
     public Barracks barracks;
@@ -120,23 +120,9 @@ public class Soldier : Entity
 
     protected void Update()
     {
-        if(CurrentInstruction == null){ return; }
-        else if ((CurrentInstruction.GetType() != typeof(Attack) && CurrentInstruction.GetType() != typeof(FixBreaker)) && isWalking == true )
-        {
-            isWalking = false;
-            StartCoroutine(walkingLoop());
-        }
         base.Update();
     }
 
-    public IEnumerator walkingLoop() {
-
-        AudioSource walkSound = gameObject.GetComponent(typeof(AudioSource)) as AudioSource;
-        walkSound.transform.position = this.transform.position;
-        walkSound.Play();
-        yield return new WaitForSeconds(1);
-        isWalking = true;
-    }
 
     #endregion
 
