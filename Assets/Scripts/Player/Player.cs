@@ -155,6 +155,8 @@ public class Player : Destructible
     {
         if (other.gameObject.name == "Food(Clone)")
         {
+            CurrentHealth += 5;
+            updateHealthUI();
             UpdateGrowth();
             Destroy(other.gameObject);
         }

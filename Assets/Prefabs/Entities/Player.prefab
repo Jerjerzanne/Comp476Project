@@ -452,6 +452,7 @@ MonoBehaviour:
   rateOfFire: 1
   offset: 0.75
   maxAmmo: 4
+  ammoCount: 0
   bulletCount: 4
   burstSize: 1
   spreadAngle: 90
@@ -505,6 +506,7 @@ MonoBehaviour:
   rateOfFire: 10
   offset: 0.75
   maxAmmo: 60
+  ammoCount: 0
   bulletCount: 1
   burstSize: 0
 --- !u!1 &2711881014395402121
@@ -669,6 +671,7 @@ MonoBehaviour:
   rateOfFire: 2
   offset: 0.75
   maxAmmo: 30
+  ammoCount: 0
   bulletCount: 1
   burstSize: 2
 --- !u!1 &7612817677053469155
@@ -716,7 +719,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7612817677053469155}
   m_Enabled: 1
-  m_AgentTypeID: 0
+  m_AgentTypeID: -1372625422
   m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
@@ -745,6 +748,7 @@ MonoBehaviour:
   foodPrefab: {fileID: 972865493360012207, guid: c9e19913ebeac3840b175e642d8c6681,
     type: 3}
   maxHealth: 100
+  size: 0
   healthBar: {fileID: 4659775885045128629}
   initialGrowth: 0
   growthMeter: 0
@@ -766,8 +770,6 @@ MonoBehaviour:
   damage: 2
   bulletSpeed: 2
   ammoText: {fileID: 1886235552415527799}
-  ammoCount: 0
-  refreshAmmoRate: 1
   damageImage: {fileID: 153567602}
   growthText: {fileID: 1206384091909525684}
   growthBar: {fileID: 1264592227}
@@ -806,15 +808,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7612817677053469157}
     m_Modifications:
-    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
+    - target: {fileID: 2759010850980869958, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
         type: 3}
-      propertyPath: m_FillOrigin
-      value: 0
+      propertyPath: m_Name
+      value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 2759010850980869958, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
+        type: 3}
+      propertyPath: m_FillOrigin
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
+        type: 3}
+      propertyPath: m_FillOrigin
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4501954933802991247, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
         type: 3}
@@ -936,16 +948,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2759010850980869958, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
-        type: 3}
-      propertyPath: m_FillOrigin
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8675459972807255331, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -993,11 +995,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 287725409589857757}
     m_Modifications:
-    - target: {fileID: 8678946343217545137, guid: 630933703f9914f46b158075893ab1a1,
-        type: 3}
-      propertyPath: m_Text
-      value: 'Ammo: 29'
-      objectReference: {fileID: 0}
     - target: {fileID: 5048331293514066690, guid: 630933703f9914f46b158075893ab1a1,
         type: 3}
       propertyPath: m_Name
@@ -1107,6 +1104,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8678946343217545137, guid: 630933703f9914f46b158075893ab1a1,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Ammo: 29'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 630933703f9914f46b158075893ab1a1, type: 3}
