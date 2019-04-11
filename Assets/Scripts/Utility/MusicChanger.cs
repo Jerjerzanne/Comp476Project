@@ -13,19 +13,25 @@ public class MusicChanger : MonoBehaviour
 
     //Editor variables
     [SerializeField, Header("Music")]
+    public AudioClip musicNeutral;
     public AudioClip musicSoldier;
     public AudioClip musicAlien;
+
 
     #endregion
 
     #region Functions
 
     void OnTriggerEnter(Collider other) {
-
-        if (other.gameObject.layer == playerLayer)
+        AudioSource currentSound = this.gameObject.GetComponent<AudioSource>();
+        if (other.gameObject.layer == playerLayer && other.GetType() == typeof(SphereCollider))
         {
-            AudioSource currentSound = this.gameObject.GetComponent<AudioSource>();
+
             currentSound.clip = musicSoldier;
+            currentSound.Play();
+        }
+        else if (other.gameObject.layer == playerLayer && other.GetType() == typeof(BoxCollider)) {
+            currentSound.clip = musicAlien;
             currentSound.Play();
         }
     }
@@ -35,7 +41,7 @@ public class MusicChanger : MonoBehaviour
         if (other.gameObject.layer == playerLayer)
         {
             AudioSource currentSound = this.gameObject.GetComponent<AudioSource>();
-            currentSound.clip = musicAlien;
+            currentSound.clip = musicNeutral;
             currentSound.Play();
         }
     }
