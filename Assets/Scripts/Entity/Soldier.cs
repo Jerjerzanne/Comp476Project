@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+
 
 public class Soldier : Entity
 {
@@ -13,6 +15,8 @@ public class Soldier : Entity
     private Vector3 reportPosition;
     private bool isWalking = true;
     private bool canAttack = true;
+    public int mediumResponse = 2;
+    public int largeResponse = 4;
 
     [HideInInspector]
     public Barracks barracks;
@@ -68,7 +72,7 @@ public class Soldier : Entity
             else if (target.CurrentGrowth == (int)Sizes.Medium)
             {
                 canAttack = false;
-                NumberOfSoldiersToSend = 2;
+                NumberOfSoldiersToSend = mediumResponse;
                 Instructions.Clear();
                 Instructions.Push(new Interact(barracks, this));
                 CurrentInstruction = new Goto(barracks.transform.position, 0, this);
@@ -77,7 +81,7 @@ public class Soldier : Entity
             else if (target.CurrentGrowth == (int)Sizes.Large)
             {
                 canAttack = false;
-                NumberOfSoldiersToSend = 4;
+                NumberOfSoldiersToSend = largeResponse;
                 Instructions.Clear();
                 Instructions.Push(new Interact(barracks, this));
                 CurrentInstruction = new Goto(barracks.transform.position, 0, this);
@@ -90,6 +94,17 @@ public class Soldier : Entity
 
     protected override void DetectionReaction(GameObject[] target)
     {
+        GameObject threat = Array.Find(target, potentialTarget => potentialTarget.GetComponent<Destructible>().CurrentGrowth == (int)Destructible.Sizes.Large);
+        if (threat != null && this.SpookLevel != ReportState.Attacking)
+        {
+            canAttack = false;
+            NumberOfSoldiersToSend = largeResponse;
+            Instructions.Clear();
+            Instructions.Push(new Interact(barracks, this));
+            CurrentInstruction = new Goto(barracks.transform.position, 0, this);
+            reportPosition = threat.transform.position;
+            return;
+        }
         foreach (GameObject potentialEnemy in target)
         {
             Destructible enemy = potentialEnemy.GetComponent<Destructible>();

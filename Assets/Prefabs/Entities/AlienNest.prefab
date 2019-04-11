@@ -323,7 +323,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3, y: 1, z: 3}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &7586534057862867187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,6 +360,7 @@ MonoBehaviour:
   foodPrefab: {fileID: 972865493360012207, guid: c9e19913ebeac3840b175e642d8c6681,
     type: 3}
   maxHealth: 20
+  size: 2
   healthBar: {fileID: 4603665499069403556}
   initialOrder: {fileID: 0}
   instructionEvent:
@@ -432,6 +433,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7586534057862867196}
     m_Modifications:
+    - target: {fileID: 2759010850980869958, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
     - target: {fileID: 9020364730306014951, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
         type: 3}
       propertyPath: m_Sprite
@@ -452,11 +458,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FillOrigin
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2759010850980869958, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 4501954933802991247, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
         type: 3}

@@ -22,6 +22,7 @@ public class Destructible : MonoBehaviour
     [SerializeField, Header("Destructible")]
     public GameObject foodPrefab;
     public int maxHealth;
+    public Sizes size;
 
     [SerializeField, Header("HealthBar")]
     public Image healthBar;
@@ -101,6 +102,7 @@ public class Destructible : MonoBehaviour
     protected void Awake()
     {
         CurrentHealth = maxHealth;
+        CurrentGrowth = (int)size;
         //Debug.Log(this.name + " has " + CurrentHealth);
     }
     #endregion

@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e2c9bcdb6283e44ae0152870990cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionRadius: 7
+  visionRadius: 9
   visionAngle: 64
   maskOfTarget:
     serializedVersion: 2
@@ -348,6 +348,7 @@ MonoBehaviour:
   foodPrefab: {fileID: 972865493360012207, guid: c9e19913ebeac3840b175e642d8c6681,
     type: 3}
   maxHealth: 20
+  size: 1
   healthBar: {fileID: 2321358659193391352}
   initialOrder: {fileID: 0}
   instructionEvent:
@@ -360,6 +361,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: MyReactionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  mediumResponse: 2
+  largeResponse: 4
   barracks: {fileID: 0}
   walking: {fileID: 8300000, guid: 202101c2347eb3a4fb1021d88a9dbc8b, type: 3}
   walkingVol: 0.01
@@ -381,9 +384,9 @@ MonoBehaviour:
   bulletSpeed: 10
   rateOfFire: 2
   offset: 0
-  burstSize: 0
-  angleDeviation: 0
+  maxAmmo: 0
   bulletCount: 0
+  burstSize: 0
 --- !u!1001 &6708633401406383647
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -391,6 +394,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7126475692247932813}
     m_Modifications:
+    - target: {fileID: 2759010850980869958, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
     - target: {fileID: 4501954933802991247, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -510,11 +518,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.015000007
-      objectReference: {fileID: 0}
-    - target: {fileID: 2759010850980869958, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2aa0e6d3c1652ee47b9380e912e9fae3, type: 3}

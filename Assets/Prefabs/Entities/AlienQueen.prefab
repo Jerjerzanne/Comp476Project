@@ -268,6 +268,7 @@ MonoBehaviour:
   foodPrefab: {fileID: 972865493360012207, guid: c9e19913ebeac3840b175e642d8c6681,
     type: 3}
   maxHealth: 50
+  size: 1
   healthBar: {fileID: 7118773618850064815}
   initialOrder: {fileID: 0}
   instructionEvent:
