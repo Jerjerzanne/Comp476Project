@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Manages the player information
@@ -52,6 +53,7 @@ public class Player : Destructible
     public Image growthBar;
     public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     //The colour the damageImage is set to, to flash.
+
     #endregion
 
     #region Properties
@@ -78,6 +80,10 @@ public class Player : Destructible
 
     protected void Update()
     {
+        if(CurrentHealth <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
         ammoText.text = "Ammo: " + ammoCount.ToString();
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {

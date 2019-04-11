@@ -71,7 +71,7 @@ public class Destructible : MonoBehaviour
     /// </summary>
     protected virtual void Die()
     {
-        Debug.Log(this.name + " died.");
+        //Debug.Log(this.name + " died.");
         if (gameObject.layer != 9 && gameObject.layer != 11)
         {
             if(droppedFood == null)
