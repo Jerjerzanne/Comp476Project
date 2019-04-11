@@ -11,6 +11,7 @@ public class Soldier : Entity
     private bool deployed;
     private Vector3 reportPosition;
     private bool isWalking = true;
+    private bool canAttack = true;
 
     [HideInInspector]
     public Barracks barracks;
@@ -40,14 +41,17 @@ public class Soldier : Entity
 
     private void TargetAcquired(Destructible target)
     {
-        if (CurrentInstruction != null)
+        if (canAttack)
         {
-            Instructions.Push(CurrentInstruction);
-        }
+            if (CurrentInstruction != null)
+            {
+                Instructions.Push(CurrentInstruction);
+            }
 
-        _navMeshAgent.SetDestination(this.transform.position);
-        Instructions.Push(new Attack(target, "Soldier", this));
-        CurrentInstruction = Instructions.Pop();
+            _navMeshAgent.SetDestination(this.transform.position);
+            Instructions.Push(new Attack(target, "Soldier", this));
+            CurrentInstruction = Instructions.Pop();
+        }
     }
 
 
@@ -62,7 +66,7 @@ public class Soldier : Entity
                 {
                     if (CurrentInstruction == null)
                     {
-                        Debug.Log(enemy + " has a tag " + target[0].gameObject.layer);
+                       // Debug.Log(enemy + " has a tag " + target[0].gameObject.layer);
                         //Instructions.Push(new Goto(this.transform.position, 0,  this));
                         TargetAcquired(target[0].gameObject.GetComponent<Destructible>());
                         break;
@@ -70,13 +74,13 @@ public class Soldier : Entity
                     else if (CurrentInstruction.GetType() == typeof(Chase))
                     {
                         Instructions.Pop();
-                        Debug.Log(enemy + " has a tag " + target[0].gameObject.layer);
+                       // Debug.Log(enemy + " has a tag " + target[0].gameObject.layer);
                         TargetAcquired(target[0].gameObject.GetComponent<Destructible>());
                         break;
                     }
                     else if (CurrentInstruction.GetType() != typeof(Attack))
                     {
-                        Debug.Log(enemy + " has a tag " + target[0].gameObject.layer);
+                        //Debug.Log(enemy + " has a tag " + target[0].gameObject.layer);
                         TargetAcquired(target[0].gameObject.GetComponent<Destructible>());
                         break;
                     }
@@ -115,6 +119,20 @@ public class Soldier : Entity
                 CurrentInstruction = new Goto(origin, 2, this);
             }
         }
+
+        if (CurrentHealth < 10)
+        {
+            canAttack = false;
+            Instructions.Clear();
+            Instructions.Push(new Interact(barracks, this));
+            CurrentInstruction = new Goto(barracks.transform.position, 0, this);
+            reportPosition = origin;
+        }
+    }
+
+    public void setCanAttack(bool canAttack)
+    {
+        this.canAttack = canAttack;
     }
 
     #endregion
@@ -129,6 +147,7 @@ public class Soldier : Entity
             StartCoroutine(walkingLoop());
         }
         base.Update();
+        
     }
 
     public IEnumerator walkingLoop() {

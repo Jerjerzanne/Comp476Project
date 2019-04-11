@@ -60,14 +60,17 @@ public class Barracks : Interactable
         Pods pod = soldiers.Find(soldierPod => soldierPod.soldierRef == entity);
         if (pod != null)
         {
+            entity.HealToFull();
+            pod.soldierRef.setCanAttack(true);
             pod.deployed = false;
             pod.soldierRef.Deployed = false;
             if (pod.soldierRef.ReportPosition != Vector3.zero)
             {
             commandCenter.reportEvent.Invoke(pod.soldierRef.ReportPosition);
+                Debug.Log("Last position saw:"+pod.soldierRef.ReportPosition);
             pod.soldierRef.ReportPosition = Vector3.zero;
             }
-            Debug.Log(this.transform.position + pod.podPosition);
+            //Debug.Log(this.transform.position + pod.podPosition);
             return new Goto(this.transform.position + pod.podPosition, 0, entity);
         }
         return null;

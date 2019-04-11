@@ -57,7 +57,7 @@ public class Destructible : MonoBehaviour
         if (healthBar != null)
         {
             healthBar.fillAmount = (float) CurrentHealth / maxHealth;
-            Debug.Log(this.name + " has " + healthBar.fillAmount);
+            //Debug.Log(this.name + " has " + healthBar.fillAmount);
         }
         
         if (IsDead())
@@ -102,5 +102,14 @@ public class Destructible : MonoBehaviour
         //Debug.Log(this.name + " has " + CurrentHealth);
     }
     #endregion
+
+    public void HealToFull()
+    {
+        CurrentHealth = maxHealth;
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = (float)CurrentHealth / maxHealth;
+        }
+    }
 
 }

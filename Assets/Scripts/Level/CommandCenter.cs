@@ -47,7 +47,7 @@ public class CommandCenter : Destructible
     private void ReportReaction(Vector3 position)
     {
         RaycastHit ray;
-      if(Physics.Raycast(position + Vector3.up * 50, Vector3.down, out ray, 100, 1 << 18))
+        if (Physics.Raycast(position + Vector3.up * 50, Vector3.down, out ray, 100, 1 << 18))
         {
             Room room = ray.collider.gameObject.GetComponent<Room>();
             Debug.Log("Command center received a report to " + room.name);
@@ -66,7 +66,7 @@ public class CommandCenter : Destructible
             {
                 Debug.Log("No soldier was available for a ReportReaction");
             }
-        } 
+        }
     }
 
     /// <summary>
