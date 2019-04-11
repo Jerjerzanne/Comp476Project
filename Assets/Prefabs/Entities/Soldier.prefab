@@ -348,7 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodPrefab: {fileID: 972865493360012207, guid: c9e19913ebeac3840b175e642d8c6681,
     type: 3}
-  maxHealth: 20
+  maxHealth: 50
   size: 1
   healthBar: {fileID: 2321358659193391352}
   initialOrder: {fileID: 0}

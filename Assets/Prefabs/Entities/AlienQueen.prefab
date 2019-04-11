@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 528f4855ca8093943aa466e3ec6666e9, type: 2}
+  - {fileID: 2100000, guid: 8aef5ee972a40f643b5ba3ad6b066224, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -165,12 +165,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8286133731327984229}
-  - component: {fileID: 6744756675815992504}
   - component: {fileID: 6983051420523425294}
   - component: {fileID: 4560950323407600734}
   - component: {fileID: 2001051030041628420}
   - component: {fileID: 3159833201399544295}
   - component: {fileID: 4250056385800528103}
+  - component: {fileID: 7470285878102546095}
   m_Layer: 16
   m_Name: AlienQueen
   m_TagString: Alien/Queen
@@ -195,20 +195,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &6744756675815992504
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7651501314730931065}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6983051420523425294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +214,7 @@ MonoBehaviour:
     m_Bits: 1536
   maskOfObstacle:
     serializedVersion: 2
-    m_Bits: 8192
+    m_Bits: 139264
   meshes: 1
   meshFilter: {fileID: 4673680139222191767}
   listOfTargets: []
@@ -405,6 +391,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &7470285878102546095
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7651501314730931065}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &8383115547367429940
 GameObject:
   m_ObjectHideFlags: 0
