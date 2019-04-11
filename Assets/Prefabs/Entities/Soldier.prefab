@@ -380,10 +380,11 @@ MonoBehaviour:
   damage: 2
   bulletPrefab: {fileID: 1077086788633318468, guid: 728acd0ff01974b4fa9581d292af553a,
     type: 3}
-  bulletSpeed: 10
-  rateOfFire: 2
+  bulletSpeed: 25
+  rateOfFire: 10
   offset: 0
   maxAmmo: 0
+  ammoCount: 0
   bulletCount: 0
   burstSize: 0
 --- !u!82 &2292883947096473935

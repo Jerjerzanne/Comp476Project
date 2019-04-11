@@ -302,10 +302,11 @@ MonoBehaviour:
   damage: 2
   bulletPrefab: {fileID: 1077086788633318468, guid: cc81385622a048d4faa69267bd925153,
     type: 3}
-  bulletSpeed: 10
-  rateOfFire: 2
+  bulletSpeed: 15
+  rateOfFire: 4
   offset: 0
   maxAmmo: 0
+  ammoCount: 0
   bulletCount: 0
   burstSize: 0
 --- !u!82 &4250056385800528103
@@ -491,6 +492,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8286133731327984229}
     m_Modifications:
+    - target: {fileID: 2759010850980869958, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
     - target: {fileID: 4501954933802991247, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -595,11 +601,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2759010850980869958, guid: 2aa0e6d3c1652ee47b9380e912e9fae3,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2aa0e6d3c1652ee47b9380e912e9fae3, type: 3}

@@ -110,6 +110,11 @@ public class Destructible : MonoBehaviour
     public void HealToFull()
     {
         CurrentHealth = maxHealth;
+        updateHealthUI();
+    }
+
+    public void updateHealthUI()
+    {
         if (healthBar != null)
         {
             healthBar.fillAmount = (float)CurrentHealth / maxHealth;
