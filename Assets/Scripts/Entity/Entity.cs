@@ -23,6 +23,7 @@ public class Entity : Destructible
     #region Variables
 
     public enum Sizes { Small, Medium, Large };
+    private bool isWalking = true;
 
     //Editor fields
     [SerializeField, Header("Entity")]
@@ -176,7 +177,25 @@ public class Entity : Destructible
         {
             GetNextInstruction();
         }
+
+        if (CurrentInstruction == null) { return; }
+        else if ((CurrentInstruction.GetType() != typeof(Attack) && CurrentInstruction.GetType() != typeof(FixBreaker) && CurrentInstruction.GetType() != typeof(CreateNest) && CurrentInstruction.GetType() != typeof(CreateQueen)) && isWalking == true)
+        {
+            isWalking = false;
+            StartCoroutine(walkingLoop());
+        }
     }
+
+    public IEnumerator walkingLoop()
+    {
+
+        AudioSource walkSound = gameObject.GetComponent(typeof(AudioSource)) as AudioSource;
+        walkSound.transform.position = this.transform.position;
+        walkSound.Play();
+        yield return new WaitForSeconds(1);
+        isWalking = true;
+    }
+
     #endregion
 
 

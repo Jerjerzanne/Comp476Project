@@ -15,9 +15,6 @@ public class Soldier : Entity
     [HideInInspector]
     public Barracks barracks;
 
-    [Header("UI")]
-    public AudioClip walking;
-    [Range(0, 1)] public float walkingVol = 0.25f;
 
     #endregion
 
@@ -123,7 +120,8 @@ public class Soldier : Entity
 
     protected void Update()
     {
-        if((CurrentInstruction == null || CurrentInstruction.GetType() != typeof(Attack) && CurrentInstruction.GetType() != typeof(FixBreaker)) && isWalking == true )
+        if(CurrentInstruction == null){ return; }
+        else if ((CurrentInstruction.GetType() != typeof(Attack) && CurrentInstruction.GetType() != typeof(FixBreaker)) && isWalking == true )
         {
             isWalking = false;
             StartCoroutine(walkingLoop());
@@ -133,10 +131,13 @@ public class Soldier : Entity
 
     public IEnumerator walkingLoop() {
 
-        AudioSource.PlayClipAtPoint(walking, Camera.main.transform.position, walkingVol);
+        AudioSource walkSound = gameObject.GetComponent(typeof(AudioSource)) as AudioSource;
+        walkSound.transform.position = this.transform.position;
+        walkSound.Play();
         yield return new WaitForSeconds(1);
         isWalking = true;
     }
+
     #endregion
 
 }
