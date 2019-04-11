@@ -13,6 +13,7 @@ public class Gun : Weapon
     public float offset;
     protected bool locked;
     public int maxAmmo;
+    public int ammoCount;
     public int bulletCount;
 
     [Header("Burst fire")]
@@ -26,6 +27,11 @@ public class Gun : Weapon
 
     #region Methods
 
+    void Awake()
+    {
+        ammoCount = maxAmmo;
+    }
+
     override
     public void FireSingle()
     {
@@ -38,11 +44,11 @@ public class Gun : Weapon
         {
             Projectile bullet = Instantiate(bulletPrefab, this.transform.position + this.transform.forward * offset, this.transform.rotation).GetComponent<Projectile>();
             bullet.SetSpeed(bulletSpeed, damage);
+            if (ammoCount > 0)
+                ammoCount--;
             timer = 0;
             timeSinceFired = Time.time;
         }
-
-        
     }
 
     override
@@ -50,7 +56,7 @@ public class Gun : Weapon
     {
         if (!locked)
         {
-        timer = Time.time - timeSinceFired;
+            timer = Time.time - timeSinceFired;
         }
 
         if (timer > 1 / rateOfFire)
@@ -72,6 +78,9 @@ public class Gun : Weapon
             Projectile pScript = playerBullet.GetComponent<Projectile>();
             pScript.SetSpeed(bulletSpeed, damage);
             //playerBullet.SetSpeed(bulletSpeed, damage);
+
+            if (ammoCount > 0)
+                ammoCount--;
             yield return new WaitForSeconds(bulletDelay / burstSize);
         }
         timeSinceFired = Time.time;

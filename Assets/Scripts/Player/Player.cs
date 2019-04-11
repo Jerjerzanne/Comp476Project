@@ -14,6 +14,7 @@ public class Player : Destructible
     private const int playerLayer = 9;
     private const int entityLayer = 10;
     private const int thresholdInterval = 5;
+    private const int maxGrowMeter = 5;
     private const float defaultColliderRadius = 0.375f;
 
     #endregion
@@ -23,7 +24,6 @@ public class Player : Destructible
     //Editor variables
     [SerializeField, Header("Player")]
     private int initialGrowth;
-    private const int maxGrowMeter = 5;
     public int growthMeter;
     public int maxGrowth;
     public List<Sprite> playerSprites;
@@ -42,8 +42,7 @@ public class Player : Destructible
 
     [Header("Ammo")]
     public Text ammoText;
-    public int ammoCount;
-    public int refreshAmmoRate = 1;
+    private float refreshAmmoRate = 1.5f;
     protected bool cooldown;
 
     [Header("UI")]
@@ -64,9 +63,9 @@ public class Player : Destructible
 
     void UpdateMaxAmmo()
     {
-        ammoCount = playerGun.maxAmmo;
+        playerGun.ammoCount = playerGun.maxAmmo;
 
-        ammoText.text = "Ammo: " + ammoCount.ToString();
+        ammoText.text = "Ammo: " + playerGun.ammoCount.ToString();
     }
 
     protected void Awake()
@@ -78,26 +77,20 @@ public class Player : Destructible
 
     protected void Update()
     {
-        ammoText.text = "Ammo: " + ammoCount.ToString();
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        ammoText.text = "Ammo: " + playerGun.ammoCount.ToString();
+        if (Input.GetKey(KeyCode.Mouse0))
         {
-            //Debug.Log("Do you reach FireSingle()");
-            if (ammoCount > 0 && ammoCount >= playerGun.bulletCount)
+            if (playerGun.ammoCount > 0 && playerGun.ammoCount >= playerGun.bulletCount)
             {
-                playerGun.FireSingle();
-                ammoCount -= playerGun.bulletCount;
-                
+                playerGun.FireSingle();                
             }
-            //FireSingle();
         }
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKey(KeyCode.Mouse1))
         {
-            //Debug.Log("Do you reach Burst()");
-            if (ammoCount > 0 && ammoCount >= playerGun.burstSize)
+            if (playerGun.ammoCount > 0 && playerGun.ammoCount >= playerGun.burstSize)
             {
+                //Debug.Log("Burst size is" + playerGun.burstSize);
                 playerGun.FireBurst();
-                Debug.Log("Burst size is" + playerGun.burstSize);
-                ammoCount -= playerGun.burstSize;
             }
         }
         if (Input.GetKey(KeyCode.Alpha1) || Input.GetKey(KeyCode.Keypad1))
@@ -134,10 +127,10 @@ public class Player : Destructible
         }
         damaged = false;
     }
+
     public void AutoReload()
     {
-
-        if (ammoCount < playerGun.maxAmmo && cooldown == false)
+        if (playerGun.ammoCount < playerGun.maxAmmo && cooldown == false)
         {
             cooldown = true;
             StartCoroutine(ReloadAmmo());
@@ -147,7 +140,7 @@ public class Player : Destructible
 
     public IEnumerator ReloadAmmo()
     {
-        ammoCount ++;
+        playerGun.ammoCount ++;
         yield return new WaitForSeconds(refreshAmmoRate);
         cooldown = false;
     }
@@ -162,18 +155,14 @@ public class Player : Destructible
     }
     protected void UpdateGrowth()
     {
-
         if (maxGrowth <= 15)
         {
-            //For testing, simply change the code below to maxGrowth += 1
-
             growthMeter += 1;
-            maxGrowth += 1;
 
-            if (true) //(growthMeter >= 10)
+            if (growthMeter >= maxGrowMeter)
             {
-                //maxGrowth += 1;
-                //growthMeter = 0;
+                maxGrowth += 1;
+                growthMeter = 0;
 
                 if (maxGrowth % thresholdInterval == 0)
                 {

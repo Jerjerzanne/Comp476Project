@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311912, g: 0.3807398, b: 0.3587271, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1878,61 +1878,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7612817677053469153, guid: 0e88fd07dda18e34a86540e413d3a0a4,
+    - target: {fileID: 3263604266317699988, guid: 0e88fd07dda18e34a86540e413d3a0a4,
         type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 1077086788633318468, guid: c0f3cd02324d7424abadf982f68224ba,
-        type: 3}
-    - target: {fileID: 7612817677053469153, guid: 0e88fd07dda18e34a86540e413d3a0a4,
-        type: 3}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612817677053469153, guid: 0e88fd07dda18e34a86540e413d3a0a4,
-        type: 3}
-      propertyPath: offset
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612817677053469153, guid: 0e88fd07dda18e34a86540e413d3a0a4,
-        type: 3}
-      propertyPath: maxHealth
-      value: 2000
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612817677053469153, guid: 0e88fd07dda18e34a86540e413d3a0a4,
-        type: 3}
-      propertyPath: rateOfFire
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612817677053469153, guid: 0e88fd07dda18e34a86540e413d3a0a4,
-        type: 3}
-      propertyPath: bulletSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612817677053469153, guid: 0e88fd07dda18e34a86540e413d3a0a4,
-        type: 3}
-      propertyPath: playerGun
-      value: 
-      objectReference: {fileID: 529241197}
-    - target: {fileID: 4659775885045128629, guid: 0e88fd07dda18e34a86540e413d3a0a4,
-        type: 3}
-      propertyPath: m_FillAmount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612817677053469156, guid: 0e88fd07dda18e34a86540e413d3a0a4,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612817677053469152, guid: 0e88fd07dda18e34a86540e413d3a0a4,
-        type: 3}
-      propertyPath: m_AgentTypeID
-      value: -1372625422
-      objectReference: {fileID: 0}
-    - target: {fileID: 8530153721738647794, guid: 0e88fd07dda18e34a86540e413d3a0a4,
-        type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
+      propertyPath: refreshAmmoRate
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e88fd07dda18e34a86540e413d3a0a4, type: 3}
@@ -2398,27 +2347,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 372221859}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &529241197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 529241191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f90ead81e6cb2644588e22c016363a8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 2
-  bulletPrefab: {fileID: 1077086788633318468, guid: c0f3cd02324d7424abadf982f68224ba,
-    type: 3}
-  bulletSpeed: 10
-  rateOfFire: 5
-  offset: 0.75
-  maxAmmo: 0
-  bulletCount: 0
-  burstSize: 5
 --- !u!1001 &554210364
 PrefabInstance:
   m_ObjectHideFlags: 0
