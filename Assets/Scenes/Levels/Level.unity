@@ -38770,6 +38770,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6730115468644742685}
     m_Modifications:
+    - target: {fileID: 1618887050542535692, guid: 740187b5b22ea7648b16299331648cf2,
+        type: 3}
+      propertyPath: m_Name
+      value: Breaker (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 61068312186201099, guid: 740187b5b22ea7648b16299331648cf2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38839,11 +38844,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.20000012
-      objectReference: {fileID: 0}
-    - target: {fileID: 1618887050542535692, guid: 740187b5b22ea7648b16299331648cf2,
-        type: 3}
-      propertyPath: m_Name
-      value: Breaker (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7839849481542704236, guid: 740187b5b22ea7648b16299331648cf2,
         type: 3}
@@ -43433,7 +43433,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8484851287879789134, guid: c99f0d067a8014644857746f41cbc509,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2084829997621093693, guid: c99f0d067a8014644857746f41cbc509, type: 3}
+    - {fileID: 2084829997621093694, guid: c99f0d067a8014644857746f41cbc509, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c99f0d067a8014644857746f41cbc509, type: 3}
 --- !u!1001 &1863922006
 PrefabInstance:
@@ -43964,6 +43971,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4907201558576362152}
     m_Modifications:
+    - target: {fileID: 1618887050542535692, guid: 740187b5b22ea7648b16299331648cf2,
+        type: 3}
+      propertyPath: m_Name
+      value: Breaker
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618887050542535692, guid: 740187b5b22ea7648b16299331648cf2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 61068312186201099, guid: 740187b5b22ea7648b16299331648cf2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -44028,16 +44045,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.20000012
-      objectReference: {fileID: 0}
-    - target: {fileID: 1618887050542535692, guid: 740187b5b22ea7648b16299331648cf2,
-        type: 3}
-      propertyPath: m_Name
-      value: Breaker
-      objectReference: {fileID: 0}
-    - target: {fileID: 1618887050542535692, guid: 740187b5b22ea7648b16299331648cf2,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7839849481542704236, guid: 740187b5b22ea7648b16299331648cf2,
         type: 3}
