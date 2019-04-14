@@ -16,7 +16,7 @@ public class WinCondition : MonoBehaviour
     private IEnumerator CheckIfWin()
     {
         yield return new WaitForSeconds(1.0f);
-        if (GameObject.Find("AlienNest") == null && GameObject.Find("CommandCenter") == null && GameObject.Find("AlienNest(Clone)") == null)
+        if (GameObject.Find("AlienNest") == null && GameObject.Find("Command Center") == null && GameObject.Find("AlienNest(Clone)") == null)
         {
             Debug.Log("You win!!!");
             SceneManager.LoadScene("WinScreen");

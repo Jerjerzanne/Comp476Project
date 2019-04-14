@@ -43,7 +43,7 @@ public class Player : Destructible
 
     [Header("Ammo")]
     public Text ammoText;
-    private float refreshAmmoRate = 1.5f;
+    public float refreshAmmoRate = 1.5f;
     protected bool cooldown;
 
     [Header("UI")]
@@ -203,12 +203,14 @@ public class Player : Destructible
                 else if (maxGrowth % thresholdInterval == 1)
                 {
                     maxHealth += 10;
+                    refreshAmmoRate = 1f;
 
                 }
                 else if (maxGrowth % thresholdInterval == 2)
                 {
                     TopdownController moveScript = gameObject.GetComponent<TopdownController>();
                     moveScript.speed += 2;
+                    refreshAmmoRate = 0.5f;
                 }
                 else if (maxGrowth % thresholdInterval == 3)
                 {
