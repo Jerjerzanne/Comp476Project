@@ -19,7 +19,7 @@ public class CreateQueen : Instruction
 
     private void SpawnAlienQueen()
     {
-        AlienQueen queen = Object.Instantiate(alienQueenPrefab, instructionRunner.transform.position + instructionRunner.transform.forward, Quaternion.identity).GetComponent<AlienQueen>();
+        AlienQueen queen = Object.Instantiate(alienQueenPrefab, new Vector3(instructionRunner.transform.position.x, 0.5f, instructionRunner.transform.position.z)+ instructionRunner.transform.forward, Quaternion.identity).GetComponent<AlienQueen>();
         queen.homeNest = instructionRunner.GetComponent<AlienNest>();
         instructionRunner.GetComponent<AlienNest>().spawnedQueen = true;
         if (instructionRunner.GetComponent<Roam>() != null)
