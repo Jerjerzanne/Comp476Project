@@ -1711,6 +1711,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7612817677053469155, guid: 0e88fd07dda18e34a86540e413d3a0a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7612817677053469157, guid: 0e88fd07dda18e34a86540e413d3a0a4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -40411,7 +40416,7 @@ MonoBehaviour:
   - {fileID: 1750307116}
   alienNestPrefab: {fileID: 7586534057862867199, guid: 4fc5d11bf7821dd4db020a4363cd5cc7,
     type: 3}
-  protectionTimer: 10
+  protectionTimer: 9
 --- !u!4 &1202020844 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7586534057862867196, guid: 4fc5d11bf7821dd4db020a4363cd5cc7,
