@@ -322,7 +322,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 4.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodPrefab: {fileID: 972865493360012207, guid: c9e19913ebeac3840b175e642d8c6681,
     type: 3}
-  maxHealth: 50
+  maxHealth: 60
   size: 1
   healthBar: {fileID: 2321358659193391352}
   initialOrder: {fileID: 0}
@@ -377,7 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f90ead81e6cb2644588e22c016363a8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 3
   bulletPrefab: {fileID: 1077086788633318468, guid: 728acd0ff01974b4fa9581d292af553a,
     type: 3}
   bulletSpeed: 25

@@ -270,7 +270,7 @@ MonoBehaviour:
       PublicKeyToken=null
   homeNest: {fileID: 0}
   nestManager: {fileID: 0}
-  protectionTimer: 20
+  protectionTimer: 5
   nestPrefab: {fileID: 7586534057862867199, guid: 4fc5d11bf7821dd4db020a4363cd5cc7,
     type: 3}
 --- !u!114 &3159833201399544295
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f90ead81e6cb2644588e22c016363a8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 3
   bulletPrefab: {fileID: 1077086788633318468, guid: cc81385622a048d4faa69267bd925153,
     type: 3}
   bulletSpeed: 15

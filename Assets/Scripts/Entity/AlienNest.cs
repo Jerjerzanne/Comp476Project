@@ -128,11 +128,13 @@ public class AlienNest : Entity
 
     protected override void Die()
     {
-        base.Die();
+        
         if (nestInstance != null)
         {
         nestInstance.occupied = false;
         }
+        GameObject.Find("GameController").GetComponent<WinCondition>().CheckWin();
+        base.Die();
     }
     #endregion
 

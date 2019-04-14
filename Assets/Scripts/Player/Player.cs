@@ -55,9 +55,14 @@ public class Player : Destructible
 
     #endregion
 
-    #region Properties
+    #region Method
 
-
+    protected override void Die()
+    {
+        base.Die();
+        Debug.Log("You died! game over...");
+        SceneManager.LoadScene("GameOver");
+    }
 
     #endregion
 
@@ -79,12 +84,12 @@ public class Player : Destructible
 
     protected void Update()
     {
-        if(CurrentHealth <= 0)
-        {
-            SceneManager.LoadScene("GameOver");
-        }
+        //if(CurrentHealth <= 0)
+        //{
+        //    SceneManager.LoadScene("GameOver");
+        //}
         ammoText.text = "Ammo: " + playerGun.ammoCount.ToString();
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
             if (playerGun.ammoCount > 0 && playerGun.ammoCount >= playerGun.bulletCount)
             {
@@ -161,7 +166,7 @@ public class Player : Destructible
     {
         if (other.gameObject.name == "Food(Clone)")
         {
-            CurrentHealth += 5;
+            CurrentHealth += 10;
             updateHealthUI();
             UpdateGrowth();
             Destroy(other.gameObject);

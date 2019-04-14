@@ -68,6 +68,21 @@ public class Spiders : Entity
     {
         Instructions.Push(new Wander(nestPosition,timer, minRange, visionRange, nestRange,this));
     }
+
+    public override void TakeDamage(int damage, Vector3 origin = default(Vector3))
+    {
+        base.TakeDamage(damage);
+
+        if (!IsDead() && origin != default && (CurrentInstruction.GetType() != typeof(Attack) &&
+                                               CurrentInstruction.GetType() != typeof(Chase)))
+        {
+            Instructions.Push(CurrentInstruction);
+            if (origin != default)
+            {
+                CurrentInstruction = new Goto(origin, 2, this);
+            }
+        }
+    }
     #endregion
 
     #region Functions

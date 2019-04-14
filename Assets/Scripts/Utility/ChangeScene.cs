@@ -18,7 +18,7 @@ public class ChangeScene : MonoBehaviour
     void Update()
     {
         Scene currentScene = SceneManager.GetActiveScene();
-        if (currentScene.name == "GameOver")
+        if (currentScene.name == "GameOver" || currentScene.name == "WinScreen")
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {

@@ -84,11 +84,26 @@ public class AlienQueen : Entity
         }
     }
 
+    public override void TakeDamage(int damage, Vector3 origin = default(Vector3))
+    {
+        base.TakeDamage(damage);
+
+        if (!IsDead() && origin != default && (CurrentInstruction.GetType() != typeof(Attack) &&
+                                               CurrentInstruction.GetType() != typeof(Chase)))
+        {
+            Instructions.Push(CurrentInstruction);
+            if (origin != default)
+            {
+                CurrentInstruction = new Goto(origin, 2, this);
+            }
+        }
+    }
+
     #endregion
 
-    #region Functions
+        #region Functions
 
-    protected void Start()
+        protected void Start()
     {
         nestManager = GameObject.FindObjectOfType<NestManager>();
         if (CurrentOrder == null)

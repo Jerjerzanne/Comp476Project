@@ -147,13 +147,26 @@ public class CommandCenter : Destructible
         }
     }
 
+
+    protected override void Die()
+    {
+        base.Die();
+        GameObject.Find("GameController").GetComponent<WinCondition>().CheckWin();
+        Destroy(this.gameObject);
+    }
+
+    public override void TakeDamage(int damage, Vector3 origin = default(Vector3))
+    {
+        Debug.Log(CurrentHealth);
+        base.TakeDamage(damage,origin);
+    }
     #endregion
 
     #region Functions
 
     void Awake()
     {
-
+        base.Awake();
         if (reportEvent == null)
             reportEvent = new ReportEvent();
 
