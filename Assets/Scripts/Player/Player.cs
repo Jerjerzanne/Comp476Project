@@ -167,6 +167,7 @@ public class Player : Destructible
         if (other.gameObject.name == "Food(Clone)")
         {
             CurrentHealth += 10;
+            CurrentHealth = Mathf.Min(CurrentHealth, maxHealth);
             updateHealthUI();
             UpdateGrowth();
             Destroy(other.gameObject);
