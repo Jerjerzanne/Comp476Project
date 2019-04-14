@@ -47,7 +47,7 @@ public class CreateNest : Instruction
             }
             else
             {
-                GameObject nest = Object.Instantiate(alienNestPrefab, instructionRunner.transform.position + instructionRunner.transform.forward, Quaternion.identity) as GameObject;
+                GameObject nest = Object.Instantiate(alienNestPrefab, new Vector3(instructionRunner.transform.position.x, 0.5f, instructionRunner.transform.position.z) + instructionRunner.transform.forward, Quaternion.identity) as GameObject;
                 nest.transform.parent = instructionRunner.transform.parent;
                 instructionRunner.instructionEvent.Invoke(null);    
             }
